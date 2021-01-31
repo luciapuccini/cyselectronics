@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import NavBar from "./components/NavBar";
+
+import "./App.css";
+import Footer from "./components/Footer";
+import Home from "./routes/Home";
+import Company from "./routes/Company";
+import Contact from "./routes/Contact";
+import News from "./routes/News";
+import Products from "./routes/Products";
+import Services from "./routes/Services";
+import Error from "./routes/Error";
+
+const App = () => (
+  <>
+    <NavBar />
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/company">
+        <Company />
+      </Route>
+      <Route path="/contact">
+        <Contact />
+      </Route>
+      <Route path="/news">
+        <News />
+      </Route>
+      <Route path="/products">
+        <Products />
+      </Route>
+      <Route path="/services">
+        <Services />
+      </Route>
+      <Route path="*">
+        <Error />
+      </Route>
+    </Switch>
+    <Footer />
+  </>
+);
 
 export default App;
