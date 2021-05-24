@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
+import CustomNavBar from "./components/atoms/NavBar/NavBar";
 
 import "./App.css";
 import Footer from "./components/Footer";
@@ -15,7 +15,7 @@ import Error from "./routes/Error";
 
 const App = () => (
   <>
-    <NavBar />
+    <CustomNavBar />
     <Switch>
       <Route exact path="/">
         <Home />

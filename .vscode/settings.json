@@ -1,0 +1,9 @@
+{
+  // Format all files on save.
+  "editor.formatOnSave": true,
+  "prettier.tslintIntegration": true,
+  // Format per-language file on save.
+  "[javascript]": {
+    "editor.formatOnSave": false
+  }
+}
