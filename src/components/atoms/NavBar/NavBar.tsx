@@ -110,9 +110,9 @@ const LinksContainer = styled.ul<{ toggle: boolean }>`
 `;
 
 const LogoImg = styled.img`
-  height: 3rem;
-  width: 5.5rem;
-  margin: 0.6em 1em 1em 0.6em;
+  height: 4rem;
+  width: 6.5rem;
+  margin: 0.5em 1em 0.5em 1em;
   margin-top: 0.6rem;
   @media (max-width: 929px) {
   }
