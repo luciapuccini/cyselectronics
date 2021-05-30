@@ -93,7 +93,6 @@ const ExtrasContainer = styled.div`
   justify-content: space-around;
   @media (max-width: 599px) {
     width: 100%;
-
   }
 `;
 

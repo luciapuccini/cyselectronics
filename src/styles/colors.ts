@@ -1,0 +1,3 @@
+export const primaryGreen = "#1e7e34"
+export const secondaryOrange = "f0563d"
+export const gray = '#444444'

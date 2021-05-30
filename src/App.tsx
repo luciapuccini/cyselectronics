@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import CustomNavBar from "./components/atoms/NavBar/NavBar";
+import CustomNavBar from "./components/organisms/NavBar/NavBar";
 
 import "./App.css";
 import Footer from "./components/Footer";

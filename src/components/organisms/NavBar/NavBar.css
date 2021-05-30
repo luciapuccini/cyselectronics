@@ -5,6 +5,7 @@
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 1px;
+  font-size:16px;
   margin:0
 }
 .navWrapper * {
@@ -40,23 +41,24 @@
 .navWrapper a:before {
   left: 0;
   top: 0;
-  border-left: 3px solid #009c22;
-  border-top: 3px solid #009c22;
+  border-left: 3px solid #1e7e34;
+  border-top: 3px solid #1e7e34;
   -webkit-transform: translate(100%, 50%);
   transform: translate(100%, 50%);
 }
 .navWrapper a:after {
   right: 0;
   bottom: 0;
-  border-right: 3px solid #009c22;
-  border-bottom: 3px solid #009c22;
+  border-right: 3px solid #1e7e34;
+  border-bottom: 3px solid #1e7e34;
   -webkit-transform: translate(-100%, -50%);
   transform: translate(-100%, -50%);
 }
 .navWrapper a:hover,
 .navWrapper .current a {
-  color: #009c22;
+  color: #1e7e34;
   text-decoration: none;
+  font-weight: bold;
 }
 .navWrapper a:hover:before,
 .navWrapper .current a:before,
