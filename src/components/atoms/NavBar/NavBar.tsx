@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useHistory, useLocation } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
+import {  useLocation } from 'react-router-dom';
 
 import logo from '../../../assets/cys-branding.svg';
-import usFlag from '../assets/united-states.svg';
 import { ReactComponent as Menu } from '../../../assets/menu.svg';
 
 import './NavBar.css';
@@ -30,16 +28,14 @@ const getCurrentPage = (path: string) => {
 };
 
 const CustomNavBar = () => {
-  const history = useHistory();
   const [toggle, setToggle] = React.useState(true);
-  const lang = 'En'; // TODO: hangle languages
   const location = useLocation();
   const [active, setActive] = useState(getCurrentPage(location.pathname));
 
   return (
     <TopBarContainer>
       <ExtrasContainer>
-        <LogoImg src={logo} />
+        <LogoImg src={logo} alt='cyslogo'/>
         <ToggleNav onClick={() => setToggle(!toggle)} />
       </ExtrasContainer>
       <LinksContainer className="navWrapper" toggle={toggle}>

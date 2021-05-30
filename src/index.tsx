@@ -4,14 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-
+import {IntlProvider} from 'react-intl'
+import messagesInSpanish from './lang/es.json'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <IntlProvider messages={messagesInSpanish} locale="es" defaultLocale="en">
         <App />
+        </IntlProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
