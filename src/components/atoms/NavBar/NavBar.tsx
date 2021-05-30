@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 
-import logo from '../../../assets/cyslogo.jpg';
+import logo from '../../../assets/cys-branding.svg';
 import usFlag from '../assets/united-states.svg';
 import { ReactComponent as Menu } from '../../../assets/menu.svg';
 
