@@ -15,9 +15,9 @@ const ProductsSection = () => {
         time quality control, equipment protection, among others.
       </p>
       <Section>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard name='magnaposi'/>
+        <ProductCard name='pemcc'/>
+        <ProductCard name='rotor'/>
       </Section>
     </MainCol>
   );
@@ -41,6 +41,8 @@ const Section = styled.div`
   width: 100vw;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 5vh;
+
   @media (max-width: 599px) {
     flex-direction: column;
     align-items: center;
