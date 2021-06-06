@@ -7,7 +7,7 @@ import SplideCarousel from '../components/organisms/Carousel';
 import { gray } from '../styles/colors';
 
 const Home = () => (
-  <Col style={{ padding: 0 }}>
+  <Col style={{ padding: 0, marginBottom:"-0.8rem" }}>
     <SplideCarousel />
     <MainCol>
       <MainHeader>C&S Controles y Sistemas</MainHeader>

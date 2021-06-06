@@ -59,7 +59,7 @@ interface Props {
 const ProductCard = ({ name }: Props) => {
   const product = getProduct(name);
   return (
-    <Card style={{ width: '15rem' }}>
+    <Card style={{ width: '17rem' }}>
       <Card.Img variant="top" src={product?.image} alt="product image" />
       <Card.Body>
         <CardTitle>{product?.title}</CardTitle>

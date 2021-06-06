@@ -17,5 +17,5 @@ const FooterBar = styled.div`
   justify-content: center;
   align-self:center;
   width: 100vw;
-  margin-top: -0.4rem;
+  margin-top: 0.4rem;
 `;
