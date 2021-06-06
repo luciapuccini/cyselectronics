@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import Map from '../components/atoms/Map';
 import ProductsSection from '../components/molecules/ProductsSection';
