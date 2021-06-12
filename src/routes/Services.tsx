@@ -1,8 +1,9 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import electronic from '../assets/electronics.png';
+import repair from '../assets/repair.jpeg';
 import { green200, primaryGreen } from '../styles/colors';
 
 const Services = () => (
@@ -10,12 +11,19 @@ const Services = () => (
     <br />
     <h2>Services</h2>
     <hr />
+    <Row>
+
+    <Col sm={1} md={5} lg={5} >
     <img
-      src={electronic}
+      src={repair}
       alt="services"
-      style={{ height: '40vh', width: '100%', objectFit: 'cover' }}
+      style={{  objectFit: 'cover',
+      width:"100%",
+      height: "100%" }}
     />
-    <hr />
+    </Col>
+
+    <Col sm={1} md={7} lg={7} >
     <Header>Engineering</Header>
     <p>
       Our product engineering process includes conceptualization, requirements,
@@ -58,6 +66,8 @@ const Services = () => (
     <ul>
       <li>Infrared positioning system for coking ovens.</li>
     </ul>
+    </Col>
+    </Row>
   </Col>
 );
 export default Services;
