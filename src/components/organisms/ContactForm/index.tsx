@@ -11,7 +11,9 @@ const ContactForm = () => {
   }}>
       {/* @ts-ignore */}
       <Container xs={1} md={6} lg={6} style={{ margin: 0, padding: 0 }}>
-        <FormContainer name="contact" netlify method='post'>
+        <FormContainer form name="contact" method="post">
+        <input type="hidden" name="form-name" value="contact" />
+
           <b>
             Use this simple form to send us your inquiries or quotation
             requests.
@@ -21,13 +23,14 @@ const ContactForm = () => {
           <FormRow>
             <Form.Group controlId="contactName">
               <Form.Label>Name</Form.Label>
-              <Form.Control required={true} type="text" placeholder="Name" />
+              <Form.Control required={true} type="text" name="name" placeholder="Name" />
             </Form.Group>
 
             <Form.Group controlId="contactEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 required={true}
+                name='email'
                 type="email"
                 placeholder="Enter email"
               />
@@ -39,8 +42,9 @@ const ContactForm = () => {
 
           <Form.Group controlId="contactText">
             <Form.Label>Your message</Form.Label>
-            <Form.Control as="textarea" type="text" placeholder="Message" rows={5} style={{resize:"none"}}/>
+            <Form.Control as="textarea" type="text" name="message" placeholder="Message" rows={5} style={{resize:"none"}}/>
           </Form.Group>
+
 
           <OrangeButton type="submit">Submit</OrangeButton>
         </FormContainer>
