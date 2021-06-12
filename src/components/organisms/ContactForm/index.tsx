@@ -11,7 +11,7 @@ const ContactForm = () => {
   }}>
       {/* @ts-ignore */}
       <Container xs={1} md={6} lg={6} style={{ margin: 0, padding: 0 }}>
-        <FormContainer name="contact" netlify>
+        <FormContainer name="contact" netlify method='post'>
           <b>
             Use this simple form to send us your inquiries or quotation
             requests.
