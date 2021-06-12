@@ -26,12 +26,8 @@ const App = () => (
       <Route path="/contact">
         <Contact />
       </Route>
-      <Route path="/news">
-        <News />
-      </Route>
       <Route path="/products">
         <Products />
-        
       </Route>
       <Route path="/services">
         <Services />
