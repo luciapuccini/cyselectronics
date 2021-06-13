@@ -12,6 +12,7 @@ React website for electronics company in San Nicolás, Argentina.
 - UI components based in react-bootstrap
 - Styled Components
 - Google Analytics + Search console
+- Collecting forms data with neltify
 
 ## Hosting
 Hosted with netlify
