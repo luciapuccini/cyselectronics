@@ -2,9 +2,9 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
-import electronic from '../assets/electronics.png';
+
 import repair from '../assets/repair.jpeg';
-import { green200, primaryGreen } from '../styles/colors';
+import {  primaryGreen } from '../styles/colors';
 
 const Services = () => (
   <Col>

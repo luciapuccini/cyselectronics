@@ -67,6 +67,7 @@ export const productsConfig = [
     brochure: '',
     presentation: (
       <iframe
+      title='manual'
         src="https://e.issuu.com/embed.html?identifier=z39bobtblh88&embedType=script#1523476/13436921"
         sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups"
       />

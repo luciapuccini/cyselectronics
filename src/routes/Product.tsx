@@ -11,7 +11,7 @@ interface Props {
 
 const Product: React.FC<Props> = ({ product }) => {
   // @ts-ignore
-  const {complete_title,title,description,image,presentation,detail} = getProduct(product);
+  const {complete_title,title,description,image,detail} = getProduct(product);
   const isMagnaposi = product === 'magnaposi';
 
   return (

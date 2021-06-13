@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import Home from "./routes/Home";
 import Company from "./routes/Company";
 import Contact from "./routes/Contact";
-import News from "./routes/News";
 import Products from "./routes/Products";
 import Services from "./routes/Services";
 import Error from "./routes/Error";
