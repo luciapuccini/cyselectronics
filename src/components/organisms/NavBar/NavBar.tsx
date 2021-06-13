@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import logo from '../../../assets/cys-branding.svg';
 import { ReactComponent as Menu } from '../../../assets/menu.svg';
 
 import './NavBar.css';
+import { Navbar, NavDropdown } from 'react-bootstrap';
 
 const getCurrentPage = (path: string) => {
   const page = path.slice(1);
@@ -17,6 +18,8 @@ const getCurrentPage = (path: string) => {
     case 'contact':
       return 2;
     case 'products':
+    case 'products/positioning':
+    case 'products/protection':
       return 3;
     case 'services':
       return 4;
@@ -35,7 +38,9 @@ const CustomNavBar = () => {
   return (
     <TopBarContainer>
       <ExtrasContainer>
-        <LogoImg src={logo} alt='cyslogo'/>
+        <Navbar.Brand href="/">
+          <LogoImg src={logo} alt="cyslogo" />
+        </Navbar.Brand>
         <ToggleNav onClick={() => setToggle(!toggle)} />
       </ExtrasContainer>
       <LinksContainer className="navWrapper" toggle={toggle}>
@@ -45,28 +50,42 @@ const CustomNavBar = () => {
           </a>
         </li>
         <li className={active === 1 ? 'current' : ''}>
-          <a href="company" onClick={() => setActive(1)}>
+          <a href="/company" onClick={() => setActive(1)}>
             Company
           </a>
         </li>
         <li className={active === 2 ? 'current' : ''}>
-          <a onClick={() => setActive(2)} href="contact">
+          <a onClick={() => setActive(2)} href="/contact">
             Contact Us
           </a>
         </li>
+
         <li className={active === 3 ? 'current' : ''}>
-          <a href="products" onClick={() => setActive(3)}>
-            Products
-          </a>
+          <NavDropdownStyle
+            title="Products"
+            id="nav-dropdown"
+          >
+            <NavDropdown.Item
+              eventKey="1"
+              style={{ width: '90%' }}
+              href="/products/positioning"
+              onClick={() => setActive(3)}
+            >
+              Positioning
+            </NavDropdown.Item>
+            <NavDropdown.Item
+              eventKey="2"
+              style={{ width: '90%' }}
+              href="/products/protection"
+              onClick={() => setActive(3)}
+            >
+              Protection
+            </NavDropdown.Item>
+          </NavDropdownStyle>
         </li>
         <li className={active === 4 ? 'current' : ''}>
-          <a href="services" onClick={() => setActive(4)}>
+          <a href="/services" onClick={() => setActive(4)}>
             Services
-          </a>
-        </li>
-        <li className={active === 5 ? 'current' : ''}>
-          <a href="news" onClick={() => setActive(5)}>
-            News
           </a>
         </li>
       </LinksContainer>
@@ -75,6 +94,19 @@ const CustomNavBar = () => {
 };
 
 export default CustomNavBar;
+
+const NavDropdownStyle = styled(NavDropdown)<{ isActive: boolean }>`
+  .dropdown-toggle:after {
+    border-top: 0px;
+    border-left: 0px;
+  }
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const TopBarContainer = styled.div`
   display: flex;
@@ -100,7 +132,7 @@ const LinksContainer = styled.ul<{ toggle: boolean }>`
   @media (max-width: 599px) {
     display: ${({ toggle }) => (toggle ? 'flex' : 'none')};
     flex-direction: column;
-    padding:0
+    padding: 0;
   }
 `;
 

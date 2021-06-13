@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+h1, h2, h3, b, p, div  {
+  cursor:default;
+}
+
 #root {
   width: 100%;
   height: 100%;
