@@ -1,18 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import React from "react";
+import styled from "styled-components";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
-import { secondaryOrange, orange200 } from '../../../styles/colors';
-import Map from '../../atoms/Map';
+import { secondaryOrange, orange200 } from "../../../styles/colors";
+import Map from "../../atoms/Map";
 
 const ContactForm = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height:'90vh',    alignItems: "flex-start"
-  }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        height: "90vh",
+        alignItems: "flex-start",
+      }}
+    >
       {/* @ts-ignore */}
       <Container xs={1} md={6} lg={6} style={{ margin: 0, padding: 0 }}>
-        <FormContainer form name="contact" method="post">
-        <input type="hidden" name="form-name" value="contact" />
+        <FormContainer
+          form
+          name="contact"
+          method="post"
+          netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contact" />
 
           <b>
             Use this simple form to send us your inquiries or quotation
@@ -20,17 +33,23 @@ const ContactForm = () => {
           </b>
           <br />
           <br />
+          <div data-netlify-recaptcha="true"></div>
           <FormRow>
             <Form.Group controlId="contactName">
               <Form.Label>Name</Form.Label>
-              <Form.Control required={true} type="text" name="name" placeholder="Name" />
+              <Form.Control
+                required={true}
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
             </Form.Group>
 
             <Form.Group controlId="contactEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 required={true}
-                name='email'
+                name="email"
                 type="email"
                 placeholder="Enter email"
               />
@@ -42,9 +61,15 @@ const ContactForm = () => {
 
           <Form.Group controlId="contactText">
             <Form.Label>Your message</Form.Label>
-            <Form.Control as="textarea" type="text" name="message" placeholder="Message" rows={5} style={{resize:"none"}}/>
+            <Form.Control
+              as="textarea"
+              type="text"
+              name="message"
+              placeholder="Message"
+              rows={5}
+              style={{ resize: "none" }}
+            />
           </Form.Group>
-
 
           <OrangeButton type="submit">Submit</OrangeButton>
         </FormContainer>
