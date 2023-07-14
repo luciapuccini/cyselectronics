@@ -11,7 +11,7 @@ interface Props {
 
 const Product: React.FC<Props> = ({ product }) => {
   // @ts-ignore
-  const {complete_title,title,description,image,detail} = getProduct(product);
+  const { complete_title, title, description, image, detail } = getProduct(product);
   const isMagnaposi = product === 'magnaposi';
 
   return (
@@ -25,9 +25,14 @@ const Product: React.FC<Props> = ({ product }) => {
           {description}
           {isMagnaposi && (
             <div>
-<hr/>
+              <hr />
               <ProductLink href="https://magnaposi.com">
                 Website &rarr;{' '}
+              </ProductLink>
+              <br />
+              <br />
+              <ProductLink href="assets/Magnaposi_datasheet_3.02.pdf" download="Magnaposi_Datasheet">
+                Magnaposi Datasheet
               </ProductLink>
             </div>
           )}
