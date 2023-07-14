@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { green200, primaryGreen } from '../styles/colors';
 import { getProduct } from '../utils/products';
@@ -9,10 +9,25 @@ interface Props {
   product: string;
 }
 
-var pdfUrl = '../assets/Magnaposi_datashet_3.02.pdf';
-var fileName = 'Magnaposi_Datasheet.pdf';
 
 const Product: React.FC<Props> = ({ product }) => {
+  const downloadPDF = () => {
+    fetch("../../public/Magnaposi_eng_datasheet_3.02.pdf")
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "Magnaposi_Datasheet.pdf");
+        document.body.appendChild(link);
+        link.click();
+        // @ts-ignore
+        link.parentNode.removeChild(link);
+      })
+      .catch((error) => {
+        console.error("Error downloading PDF:", error);
+      });
+  };
   // @ts-ignore
   const { complete_title, title, description, image, detail } = getProduct(product);
   const isMagnaposi = product === 'magnaposi';
@@ -34,13 +49,11 @@ const Product: React.FC<Props> = ({ product }) => {
               </ProductLink>
               <br />
               <br />
-              <ProductLink href={pdfUrl} download={fileName} id="downloadLink">
+              <ProductBtn onClick={downloadPDF}>
                 Download PDF
-              </ProductLink>
+              </ProductBtn>
             </div>
           )}
-
-
 
         </Col>
         <ProductImgContainer sm={1} md={4} lg={4}>
@@ -81,6 +94,18 @@ const ProductRow = styled(Row)`
 `;
 
 const ProductLink = styled.a`
+  color: ${primaryGreen};
+  font-weight: 500;
+  :hover {
+    color: ${green200};
+  }
+`;
+const normalize = css`
+  all: unset;
+`;
+
+const ProductBtn = styled.button`
+  ${normalize}
   color: ${primaryGreen};
   font-weight: 500;
   :hover {
