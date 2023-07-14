@@ -9,6 +9,9 @@ interface Props {
   product: string;
 }
 
+var pdfUrl = '../assets/Magnaposi_datashet_3.02.pdf';
+var fileName = 'Magnaposi_Datasheet.pdf';
+
 const Product: React.FC<Props> = ({ product }) => {
   // @ts-ignore
   const { complete_title, title, description, image, detail } = getProduct(product);
@@ -31,11 +34,14 @@ const Product: React.FC<Props> = ({ product }) => {
               </ProductLink>
               <br />
               <br />
-              <ProductLink href="assets/Magnaposi_datasheet_3.02.pdf" download="Magnaposi_Datasheet">
-                Magnaposi Datasheet
+              <ProductLink href={pdfUrl} download={fileName} id="downloadLink">
+                Download PDF
               </ProductLink>
             </div>
           )}
+
+
+
         </Col>
         <ProductImgContainer sm={1} md={4} lg={4}>
           <ProductImg src={image} alt={`product=${title}`} />
