@@ -10,24 +10,11 @@ interface Props {
 }
 
 
+
+
+
 const Product: React.FC<Props> = ({ product }) => {
-  const downloadPDF = () => {
-    fetch("../../public/Magnaposi_eng_datasheet_3.02.pdf")
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "Magnaposi_Datasheet.pdf");
-        document.body.appendChild(link);
-        link.click();
-        // @ts-ignore
-        link.parentNode.removeChild(link);
-      })
-      .catch((error) => {
-        console.error("Error downloading PDF:", error);
-      });
-  };
+
   // @ts-ignore
   const { complete_title, title, description, image, detail } = getProduct(product);
   const isMagnaposi = product === 'magnaposi';
@@ -49,9 +36,10 @@ const Product: React.FC<Props> = ({ product }) => {
               </ProductLink>
               <br />
               <br />
-              <ProductBtn onClick={downloadPDF}>
+
+              <ProductLink href='/Magnaposi_eng_datasheet_3.02.pdf' target="_blank">
                 Download PDF
-              </ProductBtn>
+              </ProductLink>
             </div>
           )}
 
