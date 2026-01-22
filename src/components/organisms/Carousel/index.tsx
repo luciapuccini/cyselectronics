@@ -7,9 +7,9 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import './Carousel.css';
 
-import slide1 from '../../../assets/slide-1.png';
-import slide2 from '../../../assets/slide-2.png';
-import slide3 from '../../../assets/slide-3.png';
+import slide1 from '../../../assets/slide-1.webp';
+import slide2 from '../../../assets/slide-2.webp';
+import slide3 from '../../../assets/slide-3.webp';
 
 
 
