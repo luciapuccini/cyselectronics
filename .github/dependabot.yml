@@ -10,7 +10,6 @@ updates:
     # Allow only direct dependencies
     allow:
       - dependency-type: "direct"
-        update-type: "version-update:semver-major"
     # Limit to 5 open pull requests at once
     open-pull-requests-limit: 5
     
