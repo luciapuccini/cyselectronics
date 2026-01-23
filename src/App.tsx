@@ -12,7 +12,7 @@ import Products from "./routes/Products";
 import Services from "./routes/Services";
 import Error from "./routes/Error";
 
-const App = () => (
+const AppReact = () => (
   <>
     <CustomNavBar />
     <Switch>
@@ -38,5 +38,19 @@ const App = () => (
     <Footer />
   </>
 );
+const AppNext = () => (
+  <>
+  <h2>Next JS Wrapper</h2>
+  </>
+);
+
+const App = ()=>{
+  //get url search params
+  const params = new URLSearchParams(window.location.search);
+  const isNext = params.get("next");
+
+  return isNext ? <AppNext /> : <AppReact />;
+
+} 
 
 export default App;
