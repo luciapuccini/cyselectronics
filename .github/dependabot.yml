@@ -7,9 +7,11 @@ updates:
     # Check for updates on the first day of each month
     schedule:
       interval: "monthly"
-    # Allow only direct dependencies
     allow:
       - dependency-type: "direct"
+    ignore:
+      - update-types:
+          - "version-update:semver-major"
     # Limit to 5 open pull requests at once
     open-pull-requests-limit: 5
     
