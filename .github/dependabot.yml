@@ -1,0 +1,27 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Enable version updates for npm with monthly major updates only
+  - package-ecosystem: "npm"
+    # Look for package.json and lock files in the root directory
+    directory: "/"
+    # Check for updates on the first day of each month
+    schedule:
+      interval: "monthly"
+    # Allow only direct dependencies
+    allow:
+      - dependency-type: "direct"
+    # Ignore minor and patch updates, only allow major updates
+    ignore:
+      - update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    # Limit to 5 open pull requests at once
+    open-pull-requests-limit: 5
+    # Add labels for better organization
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "major-update"
