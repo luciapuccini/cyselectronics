@@ -1,5 +1,7 @@
-import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
+import style from './index.module.scss';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,26 +16,22 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div
-      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
+      className={`${geistSans.className} ${geistMono.className}`}
     >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main >
         <Image
-          className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={100}
           height={20}
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-          CYSelectronics
+        <div >
+          <h1  className={style.primaryText}>
+            CYSelectronics
           </h1>
-         
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-       
-        </div>
+        <div ></div>
       </main>
     </div>
   );

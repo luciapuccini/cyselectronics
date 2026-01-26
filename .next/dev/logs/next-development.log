@@ -1,0 +1,3418 @@
+[00:00:00.370] Server  LOG     ✓ Ready in 289ms
+[00:00:02.707] Browser ERROR   uncaughtError: Error: ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+
+
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.872] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:02.873] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.154] Server  LOG     ✓ Compiled in 61ms
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:00:58.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "abbr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "acronym" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "address" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "applet" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "article" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "aside" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "audio" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "b" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "big" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "blockquote" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "canvas" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "caption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "center" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "cite" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "code" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "del" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "details" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dfn" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "div" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dl" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "dt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "em" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "embed" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "fieldset" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figcaption" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "figure" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "footer" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "form" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h1" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h2" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h3" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h4" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h5" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "h6" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "header" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "hgroup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "i" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "iframe" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "img" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ins" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "kbd" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "label" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "legend" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "li" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "mark" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "menu" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "nav" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "object" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ol" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "output" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "p" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "pre" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "q" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ruby" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "s" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "samp" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "section" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "small" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "span" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strike" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "strong" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sub" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "summary" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "sup" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "table" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tbody" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "td" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tfoot" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "th" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "thead" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "time" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tr" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "tt" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "u" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "ul" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "var" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:04.976] Browser ERROR   ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "video" is not pure. Pure selectors must contain at least one local class or id.
+
+Import trace:
+  Browser:
+    ./src/styles/reset.module.scss.module.css
+    ./src/styles/reset.module.scss
+    ./src/pages/_app.tsx
+[00:01:14.532] Browser ERROR   uncaughtError: Error: ./src/styles/reset.module.scss.module.css
+Transforming CSS failed
+Selector "a" is not pure. Pure selectors must contain at least one local class or id.
+
+
+[00:01:35.621] Server  ERROR   ⨯ ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:01:35.625] Server  ERROR   ⨯ ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:01:35.626] Server  ERROR   ⨯ ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:01:35.628] Server  ERROR   ⨯ ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:01:35.630] Server  ERROR   ⨯ ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:01:35.660] Server  LOG     ✓ Compiled in 109ms
+[00:01:35.763] Browser ERROR   ./src/pages/_app.tsx:1:1
+Module not found: Can't resolve 'styles/reset.module.scss'
+> 1 | import 'styles/reset.module.scss';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import type { AppProps } from "next/app";
+  3 |
+  4 | export default function App({ Component, pageProps }: AppProps) {
+
+https://nextjs.org/docs/messages/module-not-found
+[00:01:46.533] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:46.538] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:46.564] Server  LOG     ✓ Compiled in 79ms
+[00:01:55.582] Server  LOG     ✓ Compiled in 47ms
+[00:02:04.327] Server  LOG     ✓ Compiled in 36ms
+[00:02:27.712] Server  LOG     ✓ Compiled in 103ms
+[00:03:12.602] Server  LOG     ✓ Compiled in 91ms
