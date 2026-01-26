@@ -1,9 +1,0 @@
-.container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-.container img {
-  z-index: -1
-}
