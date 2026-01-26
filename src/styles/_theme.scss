@@ -1,0 +1,33 @@
+// Theme Variables
+$primaryGreen: #1e7e34;
+$green200: #009c22;
+$secondaryOrange: #f0563d;
+$orange200: #d14832;
+$gray: #444444;
+
+// Font Families
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+$font-family-raleway: "Raleway", Arial, sans-serif;
+$font-family-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+
+// Mixins
+@mixin base-font {
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin raleway-font {
+  font-family: $font-family-raleway;
+}
+
+@mixin code-font {
+  font-family: $font-family-code;
+}
+
+@mixin default-cursor {
+  cursor: default;
+}

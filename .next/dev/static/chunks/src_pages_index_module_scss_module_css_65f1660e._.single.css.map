@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/pages/index.module.scss"],"sourcesContent":["$primary-color: #64ff00;\n \n\n.primaryText {\n  color: $primary-color;\n}"],"names":[],"mappings":"AAGA"}}]
-}

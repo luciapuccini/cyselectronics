@@ -2,12 +2,14 @@
   "name": "cyselectronics",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start:build": "next build && next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "scaffold-component": "ts-node scripts/generate-component.ts"
   },
   "dependencies": {
     "next": "16.1.4",
@@ -21,6 +23,7 @@
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "sass": "^1.97.3",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
