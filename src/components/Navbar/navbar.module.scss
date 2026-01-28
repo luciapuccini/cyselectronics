@@ -1,8 +1,10 @@
+@use "styles/theme" as *;
+
 .container {
   display: flex;
   padding: 1rem 1.5rem;
   box-shadow: 0px 0px 3px #181819;
-  
+
   @media (max-width: 599px) {
     flex-direction: column;
     justify-content: space-around;
@@ -11,7 +13,57 @@
 
 .nav {
   display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: space-around;
   gap: 1rem;
   margin-left: 2rem;
+}
+
+.link {
+  // TODO: import font
+  // font-family: 'Raleway', Arial, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-decoration: none;
+  color: $primaryGreen;
+  margin: 10px;
+}
+
+.link:hover {
+  color: $green200;
+  font-weight: 700;
+}
+
+
+.linkWrapper {
+  display: flex;
+
+  & div {
+    display: flex;
+  }
+}
+
+
+.linkWrapper::before {
+  display: inline-block;
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-top: 3px solid $primaryGreen;
+  border-left: 3px solid $primaryGreen;
+}
+
+.linkWrapper::after {
+  display: inline-block;
+  align-self: end;
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-bottom: 3px solid $primaryGreen;
+  border-right: 3px solid $primaryGreen;
+
 }
