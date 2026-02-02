@@ -32,12 +32,17 @@ if (fs.existsSync(componentDir)) {
 fs.mkdirSync(componentDir, { recursive: true });
 
 // Create index.tsx file
-const tsxContent = `import style from "./${componentName}.module.scss";
+const tsxContent = `import { Card, CardContent, CardHeader, CardTitle } from "../../@/components/ui/card";
 
 const ${componentName} = () => (
-  <div className={style.container}>
-    <h1>${componentName} Component</h1>
-  </div>
+  <Card className="w-full max-w-md">
+    <CardHeader>
+      <CardTitle>${componentName} Component</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p>This is a new component using shadcn/ui components and Tailwind CSS.</p>
+    </CardContent>
+  </Card>
 );
 
 export default ${componentName};
@@ -45,25 +50,8 @@ export default ${componentName};
 
 fs.writeFileSync(path.join(componentDir, "index.tsx"), tsxContent);
 
-// Create SCSS file
-const scssContent = `.container {
-  padding: 1rem;
-  
-  h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-}
-`;
-
-fs.writeFileSync(
-  path.join(componentDir, `${componentName}.module.scss`),
-  scssContent,
-);
-
 console.log(
   `✅ Component "${componentName}" created successfully at ${componentDir}`,
 );
 console.log(`📁 Created files:`);
 console.log(`   - ${componentName}/index.tsx`);
-console.log(`   - ${componentName}/${componentName}.module.scss`);

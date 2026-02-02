@@ -13,10 +13,15 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": "src/",
+    "baseUrl": ".",
     "paths": {
-      "@/styles/*": ["styles/*"]
-    },
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/layout/*": ["./src/layout/*"]
+    }
   },
   "include": [
     ".",
@@ -27,5 +32,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }
