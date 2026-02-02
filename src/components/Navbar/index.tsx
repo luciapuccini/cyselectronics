@@ -4,29 +4,21 @@ import Image from "next/image";
 import brandingSvg from "../../assets/cys-branding.svg";
 import { useRouter } from "next/router";
 
-const getCurrentPage = (path: string) => {
-  const page = path.slice(1);
-  switch (page) {
-    case "":
-      return 0;
-    case "company":
-      return 1;
-    case "contact":
-      return 2;
-    case "products":
-    case "products/positioning":
-    case "products/protection":
-      return 3;
-    case "services":
-      return 4;
-    default:
-      return 0;
-  }
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/company", label: "Company" },
+  { href: "/contact", label: "Contact us" },
+  { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
+];
+
+const isCurrentPath = (route: string, href: string) => {
+  if (href === "/") return route === "/";
+  return route.startsWith(href);
 };
 
 const Navbar = () => {
   const { route } = useRouter();
-  const isActive = getCurrentPage(route);
 
   return (
     <header className={style.container}>
@@ -39,41 +31,15 @@ const Navbar = () => {
       />
 
       <nav className={style.nav}>
-        <div className={isActive === 0 ? style.linkWrapper : ""}>
-          <div>
-            <Link href="/" className={style.link}>
-              Home
-            </Link>
-          </div>
-        </div>
-        <div className={isActive === 1 ? style.linkWrapper : ""}>
-          <div>
-            <Link href="/company" className={style.link}>
-              Company
-            </Link>
-          </div>
-        </div>
-        <div className={isActive === 2 ? style.linkWrapper : ""}>
-          <div>
-            <Link href="/contact" className={style.link}>
-              Contact us
-            </Link>
-          </div>
-        </div>
-        <div className={isActive === 3 ? style.linkWrapper : ""}>
-          <div>
-            <Link href="/products" className={style.link}>
-              Products
-            </Link>
-          </div>
-        </div>
-        <div className={isActive === 4 ? style.linkWrapper : ""}>
-          <div>
-            <Link href="/services" className={style.link}>
-              Services
-            </Link>
-          </div>
-        </div>
+        {navItems.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={`${style.link} ${isCurrentPath(route, href) ? style.current : ""}`}
+          >
+            {label}
+          </Link>
+        ))}
       </nav>
     </header>
   );
