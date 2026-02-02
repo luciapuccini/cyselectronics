@@ -11,11 +11,17 @@ React website for electronics company in San Nicolás, Argentina.
 
 ## About the proyect
 
-- Typescript
-- UI components based in react-bootstrap
-- Styled Components
+- Next.js Typescript
+- Sass + TBD
 - Google Analytics + Search console
 - Collecting forms data with neltify
+
+## UI Design system
+
+**Decision**: We chose [shadcn/ui](https://ui.shadcn.com/) as our design system.
+
+See [Design System Decision](./docs/design-system-decision.md) for detailed requirements analysis, evaluation process, and bundle size impact. 
+
 
 ## Hosting
 Hosted with netlify
