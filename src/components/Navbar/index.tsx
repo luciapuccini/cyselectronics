@@ -28,13 +28,15 @@ const Navbar = () => {
 
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-background border-b">
-      <Image
-        src={brandingSvg}
-        alt="cyselectronics logo"
-        width={104}
-        height={64}
-        priority
-      />
+      <Link href="/">
+        <Image
+          src={brandingSvg}
+          alt="cyselectronics logo"
+          width={104}
+          height={64}
+          priority
+        />
+      </Link>
 
       <NavigationMenu>
         <NavigationMenuList>
