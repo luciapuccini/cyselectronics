@@ -41,7 +41,17 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent",
+  "relative inline-block px-4 py-2 text-foreground no-underline hover:text-foreground focus:text-foreground focus:outline-none transition-none before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-transparent before:w-0 before:h-0 before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-transparent after:w-0 after:h-0 after:transition-all after:duration-300 after:ease-in-out hover:before:w-[10px] hover:before:h-[10px] hover:before:border-neutral-500 hover:after:w-[10px] hover:after:h-[10px] hover:after:border-neutral-500",
+  {
+    variants: {
+      active: {
+        true: "before:w-[10px] before:h-[10px] before:border-neutral-500 after:w-[10px] after:h-[10px] after:border-neutral-500",
+      },
+    },
+    defaultVariants: {
+      active: false,
+    },
+  },
 );
 
 const NavigationMenuTrigger = React.forwardRef<

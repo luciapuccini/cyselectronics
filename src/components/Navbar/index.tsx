@@ -40,21 +40,14 @@ const Navbar = () => {
         <NavigationMenuList>
           {navItems.map(({ href, label }) => (
             <NavigationMenuItem key={href}>
-              <Link href={href} legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={navigationMenuTriggerStyle()}
-                  style={{
-                    backgroundColor: isCurrentPath(route, href)
-                      ? "hsl(var(--muted))"
-                      : "transparent",
-                    color: isCurrentPath(route, href)
-                      ? "hsl(var(--muted-foreground))"
-                      : "hsl(var(--foreground))",
-                  }}
-                >
-                  {label}
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle({
+                  active: isCurrentPath(route, href),
+                })}
+              >
+                <Link href={href}>{label}</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
         </NavigationMenuList>
