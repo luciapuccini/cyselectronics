@@ -6,6 +6,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import HeroItem from "./components/HeroItem";
+import slide1 from "src/assets/slide-1.webp";
+import Image from "next/image";
 
 const Home = () => (
   <div className="container mx-auto px-6 py-8 space-y-12">
@@ -31,23 +40,62 @@ const Home = () => (
       </div>
     </section>
 
-    {/* Carousel Placeholder */}
-    <section>
-      <Card>
-        <CardHeader>
-          <CardTitle>Featured Solutions</CardTitle>
-          <CardDescription>
-            Explore our latest innovations and success stories
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-            <p className="text-muted-foreground">
-              Carousel Component Placeholder
+    {/* Carousel Hero Section */}
+    <section className="w-full">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={
+          [
+            // Autoplay({
+            //   delay: 4000,
+            // }),
+          ]
+        }
+        className="w-full"
+      >
+        <CarouselContent>
+          <HeroItem image={slide1}>
+            <h2 className="text-4xl font-bold mb-4">Steelmakers</h2>
+            <p className="text-xl mb-6">
+              Our expertise in this market has been improved over the years
+              having made top state of the art solutions related to sensors,
+              automatic control, real-time quality control, equipment
+              protection, etc.
             </p>
-          </div>
-        </CardContent>
-      </Card>
+          </HeroItem>
+          <CarouselItem>
+            <div className="relative h-96 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h2 className="text-4xl font-bold mb-4">ELECTRONIC</h2>
+                  <p className="text-xl mb-6">
+                    Development, manufacture and repair of electronic and
+                    electromechanical products ranging from the concept to
+                    turnkey supply.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CarouselItem>
+          <CarouselItem>
+            <div className="relative h-96 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h2 className="text-4xl font-bold mb-4">ENGINEERING</h2>
+                  <p className="text-xl mb-6">
+                    Conceptualization, requirements, specification, architecture
+                    design, hardware development, testing, documentation and
+                    reverse engineering.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CarouselItem>
+        </CarouselContent>
+      </Carousel>
     </section>
 
     {/* Products Section */}
