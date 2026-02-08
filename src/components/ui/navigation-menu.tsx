@@ -41,11 +41,11 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "relative inline-block px-4 py-2 text-foreground no-underline hover:text-foreground focus:text-foreground focus:outline-none transition-none before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-transparent before:w-0 before:h-0 before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-transparent after:w-0 after:h-0 after:transition-all after:duration-300 after:ease-in-out hover:before:w-[10px] hover:before:h-[10px] hover:before:border-neutral-500 hover:after:w-[10px] hover:after:h-[10px] hover:after:border-neutral-500",
+  "relative inline-block px-4 py-2 text-foreground font-medium uppercase no-underline focus:outline-none transition-none before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-transparent before:w-0 before:h-0 before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-transparent after:w-0 after:h-0 after:transition-all after:duration-300 after:ease-in-out hover:before:w-[10px] hover:before:h-[10px] hover:before:border-primary hover:after:w-[10px] hover:after:h-[10px] hover:after:border-primary",
   {
     variants: {
       active: {
-        true: "before:w-[10px] before:h-[10px] before:border-neutral-500 after:w-[10px] after:h-[10px] after:border-neutral-500",
+        true: "before:w-[10px] before:h-[10px] before:border-primary after:w-[10px] after:h-[10px] after:border-primary text-primary font-semibold before:[transition:none] after:[transition:none]",
       },
     },
     defaultVariants: {
