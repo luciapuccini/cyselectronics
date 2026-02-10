@@ -23,17 +23,15 @@ const Home = () => (
           align: "start",
           loop: true,
         }}
-        plugins={
-          [
-            // Autoplay({
-            //   delay: 4000,
-            // }),
-          ]
-        }
+        plugins={[
+          Autoplay({
+            delay: 4000,
+          }),
+        ]}
         className="w-full"
       >
         <CarouselContent>
-          <HeroItem image={slide1}>
+          <HeroItem image={slide1} loading="eager">
             <HeroHeader>STEELMAKERS</HeroHeader>
             <HeroDetail>
               Our expertise in this market has been improved over the years
@@ -42,7 +40,7 @@ const Home = () => (
               protection, etc.
             </HeroDetail>
           </HeroItem>
-          <HeroItem image={slide2}>
+          <HeroItem image={slide2} loading="lazy">
             <HeroHeader>ELECTRONIC</HeroHeader>
             <HeroDetail>
               Development, manufacture and repair of electronic and
@@ -50,7 +48,7 @@ const Home = () => (
               supply.
             </HeroDetail>
           </HeroItem>
-          <HeroItem image={slide3}>
+          <HeroItem image={slide3} loading="lazy">
             <HeroHeader>ENGINEERING</HeroHeader>
             <HeroDetail>
               Conceptualization, requirements, specification, architecture
