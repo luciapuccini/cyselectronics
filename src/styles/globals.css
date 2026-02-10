@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 134, 62%, 31%;
+    --primary: rgb(30, 126, 52);
     --primary-foreground: 0 0% 100%;
 
     --secondary: 8 77% 58%;
