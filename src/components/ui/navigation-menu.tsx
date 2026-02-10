@@ -5,14 +5,35 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+const navigationMenuTriggerStyle = cva(
+  "relative inline-block px-4 py-2 text-foreground font-medium uppercase no-underline focus:outline-none transition-none before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-transparent before:w-0 before:h-0 before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-transparent after:w-0 after:h-0 after:transition-all after:duration-300 after:ease-in-out hover:before:w-[10px] hover:before:h-[10px] hover:before:border-primary hover:after:w-[10px] hover:after:h-[10px] hover:after:border-primary",
+  {
+    variants: {
+      active: {
+        true: "before:w-[10px] before:h-[10px] before:border-primary after:w-[10px] after:h-[10px] after:border-primary text-primary font-semibold before:[transition:none] after:[transition:none]",
+      },
+    },
+    defaultVariants: {
+      active: false,
+    },
+  },
+);
+
+type NavigationMenuProps = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Root
+> & {
+  show?: boolean;
+};
+
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+  NavigationMenuProps
+>(({ className, children, show, ...props }, ref) => (
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      "relative z-10 flex max-w-max flex-1 items-center justify-center",
+      "relative z-10 flex sm:max-w-max flex-1 items-center justify-center",
+      show === false ? "hidden sm:flex" : "flex",
       className,
     )}
     {...props}
@@ -30,7 +51,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-1",
+      "group flex flex-col items-center sm:flex-row sm:flex-1 list-none sm:items-center sm:justify-center space-x-1",
       className,
     )}
     {...props}
@@ -39,20 +60,6 @@ const NavigationMenuList = React.forwardRef<
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
-
-const navigationMenuTriggerStyle = cva(
-  "relative inline-block px-4 py-2 text-foreground font-medium uppercase no-underline focus:outline-none transition-none before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-transparent before:w-0 before:h-0 before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-transparent after:w-0 after:h-0 after:transition-all after:duration-300 after:ease-in-out hover:before:w-[10px] hover:before:h-[10px] hover:before:border-primary hover:after:w-[10px] hover:after:h-[10px] hover:after:border-primary",
-  {
-    variants: {
-      active: {
-        true: "before:w-[10px] before:h-[10px] before:border-primary after:w-[10px] after:h-[10px] after:border-primary text-primary font-semibold before:[transition:none] after:[transition:none]",
-      },
-    },
-    defaultVariants: {
-      active: false,
-    },
-  },
-);
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
