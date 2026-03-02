@@ -1,45 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import { Col, Nav } from 'react-bootstrap';
 
 import Product from './Product';
-import { primaryGreen } from '../styles/colors';
+import { TabNav, TabLink } from '../components/atoms/TabNav';
 
 function Protection() {
-const {pathname} =useLocation()
-const isRotor = pathname.includes('rotor')
+  const { pathname } = useLocation();
+  const isRotor = pathname.includes('rotor');
 
   return (
-    <Col>
-    <br/>
+    <div>
+      <br />
       <h2>Protection</h2>
-      <Nav variant="tabs" defaultActiveKey={isRotor? 1:0} className="justify-content-end">
-        <NavItem>
-          <Nav.Link eventKey={0}  href='/products/protection/pemcc'>
-            PEMCC
-          </Nav.Link>
-        </NavItem>
-        <NavItem>
-          <Nav.Link eventKey={1}  href='/products/protection/rotor'>
-            Rotor
-          </Nav.Link>
-        </NavItem>
-      </Nav>
-      { isRotor ?<Product product="rotor"/>: <Product product='pemcc'/>  }
-    </Col>
+      <TabNav>
+        <TabLink href="/products/protection/pemcc" active={!isRotor}>PEMCC</TabLink>
+        <TabLink href="/products/protection/rotor" active={isRotor}>Rotor</TabLink>
+      </TabNav>
+      {isRotor ? <Product product="rotor" /> : <Product product="pemcc" />}
+    </div>
   );
 }
 
 export default Protection;
-
-const NavItem = styled(Nav.Item)`
-  .nav-link {
-    color: black;
-  }
-
-  .active {
-    color: ${primaryGreen} !important;
-    font-weight: 500;
-  }
-`;

@@ -1,13 +1,12 @@
-import React from 'react';
-import { Col } from 'react-bootstrap';
 import ContactForm from '../components/organisms/ContactForm';
 
 const Contact = () => (
-  <Col>
+  <div>
     <br />
     <h2>Contact Us</h2>
     <hr />
-    <ContactForm/>
-  </Col>
+    <ContactForm />
+  </div>
 );
+
 export default Contact;

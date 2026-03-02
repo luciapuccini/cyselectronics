@@ -1,14 +1,11 @@
-import React from 'react';
-import { Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import Map from '../components/atoms/Map';
 import ProductsSection from '../components/molecules/ProductsSection';
-
 import SplideCarousel from '../components/organisms/Carousel';
 import { gray } from '../styles/colors';
 
 const Home = () => (
-  <Col style={{ padding: 0, marginBottom:"-0.8rem" }}>
+  <div style={{ padding: 0, marginBottom: '-0.8rem' }}>
     <SplideCarousel />
     <MainCol>
       <MainHeader>C&S Controles y Sistemas</MainHeader>
@@ -19,15 +16,13 @@ const Home = () => (
       </MainDetail>
     </MainCol>
     <ProductsSection />
-    <Map/>
-  </Col>
+    <Map />
+  </div>
 );
 
 export default Home;
 
-
-
-const MainCol = styled(Col)`
+const MainCol = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

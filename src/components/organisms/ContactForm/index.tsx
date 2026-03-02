@@ -1,24 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import styled from 'styled-components';
 
-import { secondaryOrange, orange200 } from "../../../styles/colors";
-import Map from "../../atoms/Map";
+import { secondaryOrange, orange200 } from '../../../styles/colors';
+import Map from '../../atoms/Map';
 
 const ContactForm = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        height: "90vh",
-        alignItems: "flex-start",
-      }}
-    >
-      {/* @ts-ignore */}
-      <Container xs={1} md={6} lg={6} style={{ margin: 0, padding: 0 }}>
+    <Wrapper>
+      <FormPanel>
         <FormContainer
-          form
           name="contact"
           method="post"
           netlify-honeypot="bot-field"
@@ -27,86 +16,134 @@ const ContactForm = () => {
         >
           <input type="hidden" name="form-name" value="contact" />
 
-          <b>
-            Use this simple form to send us your inquiries or quotation
-            requests.
-          </b>
+          <b>Use this simple form to send us your inquiries or quotation requests.</b>
           <br />
           <br />
           <div data-netlify-recaptcha="true"></div>
           <FormRow>
-            <Form.Group controlId="contactName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                required={true}
+            <FormGroup>
+              <label htmlFor="contactName">Name</label>
+              <Input
+                id="contactName"
+                required
                 type="text"
                 name="name"
                 placeholder="Name"
               />
-            </Form.Group>
+            </FormGroup>
 
-            <Form.Group controlId="contactEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                required={true}
+            <FormGroup>
+              <label htmlFor="contactEmail">Email address</label>
+              <Input
+                id="contactEmail"
+                required
                 name="email"
                 type="email"
                 placeholder="Enter email"
               />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
+              <small>We'll never share your email with anyone else.</small>
+            </FormGroup>
           </FormRow>
 
-          <Form.Group controlId="contactText">
-            <Form.Label>Your message</Form.Label>
-            <Form.Control
-              as="textarea"
-              type="text"
+          <FormGroup>
+            <label htmlFor="contactText">Your message</label>
+            <Textarea
+              id="contactText"
               name="message"
               placeholder="Message"
               rows={5}
-              style={{ resize: "none" }}
             />
-          </Form.Group>
+          </FormGroup>
 
           <OrangeButton type="submit">Submit</OrangeButton>
         </FormContainer>
-      </Container>
-      <MapCol md={6} lg={6}>
+      </FormPanel>
+      <MapPanel>
         <Map width="50vw" />
-      </MapCol>
-    </div>
+      </MapPanel>
+    </Wrapper>
   );
 };
 
 export default ContactForm;
 
-const FormContainer = styled(Form)`
-  padding: 0 1rem 0 1rem;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  align-items: flex-start;
 `;
 
-const FormRow = styled(Row)`
+const FormPanel = styled.div`
+  margin: 0;
+  padding: 0;
+`;
+
+const FormContainer = styled.form`
+  padding: 0 1rem;
+`;
+
+const FormRow = styled.div`
+  display: flex;
   justify-content: space-between;
   padding: 0;
   margin: 0;
+  gap: 1rem;
 `;
 
-const OrangeButton = styled(Button)`
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  flex: 1;
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  &:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+`;
+
+const Textarea = styled.textarea`
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  resize: none;
+  &:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+`;
+
+const OrangeButton = styled.button`
   background-color: ${secondaryOrange};
+  color: white;
   border: none;
-  :hover {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
     background-color: ${orange200};
-    border: none;
   }
-  :active {
+  &:active {
     background-color: ${secondaryOrange};
-    border: none;
   }
 `;
 
-const MapCol = styled(Col)`
+const MapPanel = styled.div`
   margin-right: 2rem;
   @media (max-width: 699px) {
     display: none;

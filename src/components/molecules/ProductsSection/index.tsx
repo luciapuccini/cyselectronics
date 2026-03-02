@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Col } from 'react-bootstrap';
 
 import { primaryGreen } from '../../../styles/colors';
 import ProductCard from '../../atoms/ProductCard';
@@ -25,7 +23,7 @@ const ProductsSection = () => {
 
 export default ProductsSection;
 
-const MainCol = styled(Col)`
+const MainCol = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

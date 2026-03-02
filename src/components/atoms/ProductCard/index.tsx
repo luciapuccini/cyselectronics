@@ -1,8 +1,6 @@
-import React from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
-import { gray, primaryGreen,green200 } from '../../../styles/colors';
+import { gray, primaryGreen, green200 } from '../../../styles/colors';
 import { getProduct } from '../../../utils/products';
 
 interface Props {
@@ -12,35 +10,58 @@ interface Props {
 const ProductCard = ({ name }: Props) => {
   const product = getProduct(name);
   return (
-    <Card style={{ width: '17rem' }}>
-      <Card.Img variant="top" src={product?.image} alt="product image" />
-      <Card.Body>
+    <CardWrapper>
+      <img src={product?.image} alt="product image" />
+      <CardBody>
         <CardTitle>{product?.title}</CardTitle>
         <CardText>{product?.detail}</CardText>
-      </Card.Body>
-      <ListGroup variant="flush">
-        <ListGroup.Item>
-          <CardLink href={product?.link}>Learn more &rarr; </CardLink>
-        </ListGroup.Item>
-      </ListGroup>
-    </Card>
+      </CardBody>
+      <CardFooter>
+        <CardLink href={product?.link}>Learn more &rarr;</CardLink>
+      </CardFooter>
+    </CardWrapper>
   );
 };
 
 export default ProductCard;
 
-const CardTitle = styled(Card.Title)`
+const CardWrapper = styled.div`
+  width: 17rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+`;
+
+const CardBody = styled.div`
+  padding: 1rem;
+  flex: 1;
+`;
+
+const CardTitle = styled.h5`
   color: ${gray};
   font-weight: bold;
 `;
 
-const CardText = styled(Card.Text)`
+const CardText = styled.p`
   color: ${gray};
 `;
 
-const CardLink = styled(Card.Link)`
+const CardFooter = styled.div`
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+`;
+
+const CardLink = styled.a`
   color: ${primaryGreen};
   font-weight: 500;
+  text-decoration: none;
   :hover {
     color: ${green200};
   }
