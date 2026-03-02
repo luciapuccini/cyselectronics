@@ -59,7 +59,7 @@ const ContactForm = () => {
         </FormContainer>
       </FormPanel>
       <MapPanel>
-        <Map width="50vw" />
+        <Map />
       </MapPanel>
     </Wrapper>
   );
@@ -70,25 +70,27 @@ export default ContactForm;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  height: 90vh;
   align-items: flex-start;
+  gap: 2rem;
+  @media (max-width: 699px) {
+    flex-direction: column;
+  }
 `;
 
 const FormPanel = styled.div`
-  margin: 0;
-  padding: 0;
+  flex: 1;
+  min-width: 0;
 `;
 
-const FormContainer = styled.form`
-  padding: 0 1rem;
-`;
+const FormContainer = styled.form``;
 
 const FormRow = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0;
-  margin: 0;
   gap: 1rem;
+  @media (max-width: 499px) {
+    flex-direction: column;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -105,6 +107,7 @@ const Input = styled.input`
   font-size: 1rem;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   &:focus {
     outline: none;
     border-color: #86b7fe;
@@ -120,6 +123,7 @@ const Textarea = styled.textarea`
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   resize: none;
+  box-sizing: border-box;
   &:focus {
     outline: none;
     border-color: #86b7fe;
@@ -144,7 +148,9 @@ const OrangeButton = styled.button`
 `;
 
 const MapPanel = styled.div`
-  margin-right: 2rem;
+  flex: 1;
+  min-width: 0;
+  position: relative;
   @media (max-width: 699px) {
     display: none;
   }
