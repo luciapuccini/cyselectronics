@@ -34,31 +34,16 @@ jobs:
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          BASE_REF: ${{ github.base_ref }}
         run: |
-          git fetch origin “+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}”
-
-          # Truncate to 8 000 chars – tinyllama has a ~2k token context anyway
-          # Three-dot diff = changes since the fork point (equivalent to merge-base diff)
-          git diff “origin/${BASE_REF}...HEAD” -- \
-            ':(exclude)**/node_modules' \
-            ':(exclude)**/.git*' \
-            ':(exclude)**/.github' \
-            ':(exclude)**/dist' \
-            ':(exclude)**/build' \
-            | head -c 8000 > /tmp/pr_diff.txt
-
-          # Write prompt to a file – use a group redirect to avoid printf line-continuation issues
+          # Hardcoded stub – replace with real diff logic once downstream steps are verified
           {
             echo 'You are an assistant that writes project documentation for a PR.'
             echo 'Summarise the changes in concise Markdown for a changelog or release notes.'
-            echo 'Use headings, bullet-points, and a short Why paragraph if the purpose is clear.'
             echo ''
             printf 'PR title: %s\n' “$PR_TITLE”
             printf 'PR number: #%s\n' “$PR_NUMBER”
             echo ''
-            echo 'Diff:'
-            cat /tmp/pr_diff.txt
+            echo 'Diff: (not available in this run)'
           } > /tmp/ollama_prompt.txt
 
       # ---------------------------------------------------------------
