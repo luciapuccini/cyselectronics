@@ -36,11 +36,11 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           BASE_REF: ${{ github.base_ref }}
         run: |
-          git fetch origin “$BASE_REF”
-          BASE=$(git merge-base “origin/$BASE_REF” HEAD)
+          git fetch origin “+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}”
 
           # Truncate to 8 000 chars – tinyllama has a ~2k token context anyway
-          git diff “$BASE” HEAD -- \
+          # Three-dot diff = changes since the fork point (equivalent to merge-base diff)
+          git diff “origin/${BASE_REF}...HEAD” -- \
             ':(exclude)**/node_modules' \
             ':(exclude)**/.git*' \
             ':(exclude)**/.github' \
