@@ -31,29 +31,35 @@ jobs:
       # ---------------------------------------------------------------
       - name: Capture PR diff
         id: prdiff
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          BASE=$(git merge-base ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          git fetch origin “$BASE_REF”
+          BASE=$(git merge-base “origin/$BASE_REF” HEAD)
 
           # Truncate to 8 000 chars – tinyllama has a ~2k token context anyway
-          DIFF=$(git diff “$BASE” “${{ github.sha }}” \
+          git diff “$BASE” HEAD -- \
             ':(exclude)**/node_modules' \
             ':(exclude)**/.git*' \
             ':(exclude)**/.github' \
             ':(exclude)**/dist' \
-            ':(exclude)**/build' | head -c 8000)
+            ':(exclude)**/build' \
+            | head -c 8000 > /tmp/pr_diff.txt
 
-          # Write prompt to a file to avoid ARG_MAX issues (no heredoc – keeps YAML valid)
-          printf '%s\n' \
-            “You are an assistant that writes project documentation for a PR.” \
-            “Summarise the changes in concise Markdown for a changelog or release notes.” \
-            “Use headings, bullet-points, and a short Why paragraph if the purpose is clear.” \
-            “” \
-            “PR title: ${{ github.event.pull_request.title }}” \
-            “PR number: #${{ github.event.pull_request.number }}” \
-            “” \
-            “Diff:” \
-            “$DIFF” \
-            > /tmp/ollama_prompt.txt
+          # Write prompt to a file – use a group redirect to avoid printf line-continuation issues
+          {
+            echo 'You are an assistant that writes project documentation for a PR.'
+            echo 'Summarise the changes in concise Markdown for a changelog or release notes.'
+            echo 'Use headings, bullet-points, and a short Why paragraph if the purpose is clear.'
+            echo ''
+            printf 'PR title: %s\n' “$PR_TITLE”
+            printf 'PR number: #%s\n' “$PR_NUMBER”
+            echo ''
+            echo 'Diff:'
+            cat /tmp/pr_diff.txt
+          } > /tmp/ollama_prompt.txt
 
       # ---------------------------------------------------------------
       # 3️⃣ Start Ollama, pull the model, generate docs via REST API
@@ -67,10 +73,10 @@ jobs:
       - name: Generate documentation with Ollama
         id: ollama
         run: |
-          PROMPT=$(cat /tmp/ollama_prompt.txt)
           RESPONSE=$(curl -s http://localhost:11434/api/generate \
             -H 'Content-Type: application/json' \
-            -d “$(jq -n --arg model tinyllama --arg prompt “$PROMPT” \
+            -d “$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
+                  --arg model tinyllama \
                   '{model: $model, prompt: $prompt, stream: false}')” \
             | jq -r '.response')
 
@@ -82,8 +88,10 @@ jobs:
       # 4️⃣ Write the LLM output to a file inside the repo
       # ---------------------------------------------------------------
       - name: Save generated markdown
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          DOC_PATH="docs/auto-generated/pr-${{ github.event.pull_request.number }}.md"
+          DOC_PATH="docs/auto-generated/pr-${PR_NUMBER}.md"
           mkdir -p "$(dirname "$DOC_PATH")"
           cp /tmp/ollama_response.txt "$DOC_PATH"
           echo "Generated markdown written to $DOC_PATH"
