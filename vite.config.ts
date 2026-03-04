@@ -7,4 +7,7 @@ export default defineConfig({
     react(),
     svgr(),
   ],
+  build: {
+    outDir: 'build',
+  },
 });
