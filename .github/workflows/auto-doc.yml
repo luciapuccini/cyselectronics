@@ -87,7 +87,7 @@ jobs:
       - name: Open documentation PR
         uses: peter-evans/create-pull-request@v6
         with:
-          # Branch that will be created from the current HEAD
+          base: ${{ github.event.pull_request.base.ref }}
           branch: ai-docs/pr-${{ github.event.pull_request.number }}
           # Same commit message for the doc file
           commit-message: "🤖 Auto‑generated docs for PR #${{ github.event.pull_request.number }}"
