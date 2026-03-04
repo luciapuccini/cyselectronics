@@ -32,45 +32,51 @@ jobs:
       - name: Capture PR diff
         id: prdiff
         run: |
-          # GitHub sets GITHUB_SHA to the HEAD of the PR.
-          # Compute diff against the target branch (e.g. main).
           BASE=$(git merge-base ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
-          echo "base=$BASE" >> $GITHUB_OUTPUT
 
-          echo "diff<<EOF" >> $GITHUB_OUTPUT
-          # Show only real source files, skip node_modules, .git, .github, etc.
-          git diff $BASE ${{ github.sha }} \
+          # Truncate to 8 000 chars – tinyllama has a ~2k token context anyway
+          DIFF=$(git diff “$BASE” “${{ github.sha }}” \
             ':(exclude)**/node_modules' \
             ':(exclude)**/.git*' \
             ':(exclude)**/.github' \
             ':(exclude)**/dist' \
-            ':(exclude)**/build' >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+            ':(exclude)**/build' | head -c 8000)
+
+          # Write prompt to a file to avoid ARG_MAX issues (no heredoc – keeps YAML valid)
+          printf '%s\n' \
+            “You are an assistant that writes project documentation for a PR.” \
+            “Summarise the changes in concise Markdown for a changelog or release notes.” \
+            “Use headings, bullet-points, and a short Why paragraph if the purpose is clear.” \
+            “” \
+            “PR title: ${{ github.event.pull_request.title }}” \
+            “PR number: #${{ github.event.pull_request.number }}” \
+            “” \
+            “Diff:” \
+            “$DIFF” \
+            > /tmp/ollama_prompt.txt
 
       # ---------------------------------------------------------------
-      # 3️⃣ Run Ollama with the selected model and a custom prompt
+      # 3️⃣ Start Ollama, pull the model, generate docs via REST API
       # ---------------------------------------------------------------
+      - name: Setup Ollama
+        uses: ai-action/setup-ollama@v2
+
+      - name: Pull model
+        run: ollama pull tinyllama
+
       - name: Generate documentation with Ollama
         id: ollama
-        uses: ai-action/ollama-action@v2
-        with:
-          # Choose the model you want – tinyllama | llama3.2 | mixtral-8x7b | gemma-7b
-          model: tinyllama
+        run: |
+          PROMPT=$(cat /tmp/ollama_prompt.txt)
+          RESPONSE=$(curl -s http://localhost:11434/api/generate \
+            -H 'Content-Type: application/json' \
+            -d “$(jq -n --arg model tinyllama --arg prompt “$PROMPT” \
+                  '{model: $model, prompt: $prompt, stream: false}')” \
+            | jq -r '.response')
 
-          # Prompt that the LLM will receive.
-          # The ${{ steps.prdiff.outputs.diff }} variable expands to the full PR diff.
-          prompt: |
-            You are an assistant that writes **project documentation** for a PR.
-            Summarise the changes represented by the following diff in concise
-            Markdown suitable for a changelog or release notes.
-            Use headings, bullet‑points, and add a short “Why?” paragraph if the
-            purpose is clear from the commit messages.
-
-            PR title: "${{ github.event.pull_request.title }}"
-            PR number: #${{ github.event.pull_request.number }}
-
-            Diff:
-            ${{ steps.prdiff.outputs.diff }}
+          # Write to file to safely pass between steps
+          echo “$RESPONSE” > /tmp/ollama_response.txt
+          echo “response_file=/tmp/ollama_response.txt” >> $GITHUB_OUTPUT
 
       # ---------------------------------------------------------------
       # 4️⃣ Write the LLM output to a file inside the repo
@@ -79,7 +85,7 @@ jobs:
         run: |
           DOC_PATH="docs/auto-generated/pr-${{ github.event.pull_request.number }}.md"
           mkdir -p "$(dirname "$DOC_PATH")"
-          echo "${{ steps.ollama.outputs.response }}" > "$DOC_PATH"
+          cp /tmp/ollama_response.txt "$DOC_PATH"
           echo "Generated markdown written to $DOC_PATH"
 
       # ---------------------------------------------------------------
