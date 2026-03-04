@@ -2,52 +2,80 @@ name: AI‑Generated Documentation for PRs
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [closed]
 
-# ======================================================================
-#  JOB: generate a markdown file with Ollama and open a PR with it
-# ======================================================================
 jobs:
   doc-gen:
-    # Use the default GitHub‑hosted runner (Ubuntu) – 7 GB RAM is enough for tiny models.
+    # Only on actual merges; skip our own docs PRs to prevent loops
+    if: >
+      github.event.pull_request.merged == true &&
+      !startsWith(github.event.pull_request.head.ref, 'ai-docs/')
+
     runs-on: ubuntu-latest
 
-    # Give the job permission to push a branch and open a PR.
     permissions:
-      contents: write          # needed to push the new docs
-      pull-requests: write    # needed to create the PR
+      contents: write
+      pull-requests: write
 
     steps:
       # ---------------------------------------------------------------
-      # 1️⃣ Checkout the repository (needed for diff & for writing files)
+      # 1️⃣ Checkout the base branch at the merge commit
+      #    fetch-depth: 2 gives us HEAD (merge) and HEAD~1 (previous tip)
       # ---------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # fetch full history so we can diff against base
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 2
 
       # ---------------------------------------------------------------
-      # 2️⃣ Compute a *clean* diff of the PR (excluding vendored files)
+      # 2️⃣ Build the Ollama prompt: diff + current AGENT_DOCS.md
       # ---------------------------------------------------------------
-      - name: Capture PR diff
-        id: prdiff
+      - name: Build prompt
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          # Hardcoded stub – replace with real diff logic once downstream steps are verified
+          # Diff introduced by this merge (works for merge, squash, and rebase)
+          git diff HEAD~1 HEAD -- \
+            ':(exclude)**/node_modules' \
+            ':(exclude)**/.git*' \
+            ':(exclude)**/.github' \
+            ':(exclude)**/dist' \
+            ':(exclude)**/build' \
+            | head -c 6000 > /tmp/pr_diff.txt
+
+          # Read existing AGENT_DOCS.md (cap at 2000 chars to stay within context)
+          if [ -f AGENT_DOCS.md ]; then
+            head -c 2000 AGENT_DOCS.md > /tmp/current_docs.txt
+          else
+            echo '(no existing documentation)' > /tmp/current_docs.txt
+          fi
+
           {
-            echo 'You are an assistant that writes project documentation for a PR.'
-            echo 'Summarise the changes in concise Markdown for a changelog or release notes.'
+            echo 'You are a technical writer maintaining AGENT_DOCS.md for a software project.'
+            echo 'This file is a concise tech-stack and architecture reference, similar to a README.'
+            echo 'Keep it under 120 lines. Use markdown headings and bullet points.'
             echo ''
-            printf 'PR title: %s\n' “$PR_TITLE”
-            printf 'PR number: #%s\n' “$PR_NUMBER”
+            echo 'Task:'
+            echo '- Read the current AGENT_DOCS.md and the PR diff below.'
+            echo '- If the diff introduces relevant changes (new deps, frameworks, architecture, config),'
+            echo '  reply with the full updated AGENT_DOCS.md content — nothing else.'
+            echo '- If the diff has no impact on the tech stack or architecture, reply with exactly: NO_UPDATE'
             echo ''
-            echo 'Diff: (not available in this run)'
+            echo '=== CURRENT AGENT_DOCS.md ==='
+            cat /tmp/current_docs.txt
+            echo ''
+            echo '=== PR INFO ==='
+            printf 'Title: %s\n' "$PR_TITLE"
+            printf 'Number: #%s\n' "$PR_NUMBER"
+            echo ''
+            echo '=== DIFF ==='
+            cat /tmp/pr_diff.txt
           } > /tmp/ollama_prompt.txt
 
       # ---------------------------------------------------------------
-      # 3️⃣ Start Ollama, pull the model, generate docs via REST API
+      # 3️⃣ Run Ollama
       # ---------------------------------------------------------------
       - name: Setup Ollama
         uses: ai-action/setup-ollama@v2
@@ -55,50 +83,44 @@ jobs:
       - name: Pull model
         run: ollama pull tinyllama
 
-      - name: Generate documentation with Ollama
+      - name: Generate updated docs
         id: ollama
         run: |
           RESPONSE=$(curl -s http://localhost:11434/api/generate \
             -H 'Content-Type: application/json' \
-            -d “$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
+            -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
                   --arg model tinyllama \
-                  '{model: $model, prompt: $prompt, stream: false}')” \
-            | jq -r '.response')
+                  '{model: $model, prompt: $prompt, stream: false}')" \
+            | jq -r '.response // ""')
 
-          # Write to file to safely pass between steps
-          echo “$RESPONSE” > /tmp/ollama_response.txt
-          echo “response_file=/tmp/ollama_response.txt” >> $GITHUB_OUTPUT
+          echo "$RESPONSE" > /tmp/ollama_response.txt
 
-      # ---------------------------------------------------------------
-      # 4️⃣ Write the LLM output to a file inside the repo
-      # ---------------------------------------------------------------
-      - name: Save generated markdown
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-          DOC_PATH="docs/auto-generated/pr-${PR_NUMBER}.md"
-          mkdir -p "$(dirname "$DOC_PATH")"
-          cp /tmp/ollama_response.txt "$DOC_PATH"
-          echo "Generated markdown written to $DOC_PATH"
+          if [ "$RESPONSE" = "NO_UPDATE" ] || [ -z "$RESPONSE" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
 
       # ---------------------------------------------------------------
-      # 5️⃣ Commit the new file and open a PR (requires the create‑pull‑request action)
+      # 4️⃣ Write AGENT_DOCS.md and open a PR (skipped if no changes)
       # ---------------------------------------------------------------
+      - name: Write AGENT_DOCS.md
+        if: steps.ollama.outputs.skip == 'false'
+        run: cp /tmp/ollama_response.txt AGENT_DOCS.md
+
       - name: Open documentation PR
+        if: steps.ollama.outputs.skip == 'false'
         uses: peter-evans/create-pull-request@v6
         with:
           base: ${{ github.event.pull_request.base.ref }}
           branch: ai-docs/pr-${{ github.event.pull_request.number }}
-          # Same commit message for the doc file
-          commit-message: "🤖 Auto‑generated docs for PR #${{ github.event.pull_request.number }}"
-          title: "docs: auto‑generated documentation for PR #${{ github.event.pull_request.number }}"
+          commit-message: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
+          title: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
           body: |
-            This documentation was generated automatically by Ollama on the PR diff.
-            Review it, edit if needed, then merge.
+            Auto-generated update to `AGENT_DOCS.md` based on changes merged in PR #${{ github.event.pull_request.number }}.
 
-            **Generated by:** `ai-action/ollama-action` (model: `tinyllama`)
+            Review and merge if the content looks accurate.
 
-          # Optional: label the bot‑generated PR
+            **Model:** `tinyllama` via Ollama
           labels: autogenerated, documentation
-          # Prevent loops – only run when the PR is not created by a bot
           delete-branch: true
