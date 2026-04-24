@@ -4,17 +4,23 @@ import { orange200, secondaryOrange } from "../../../styles/colors";
 import Map from "../../atoms/Map";
 
 const ContactForm = () => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		const data = new FormData(e.currentTarget);
+		console.log("Netlify form POST:", Object.fromEntries(data.entries()));
+	};
+
 	return (
 		<Wrapper>
 			<FormPanel>
 				<FormContainer
 					name="contact"
 					method="post"
-					netlify-honeypot="bot-field"
-					data-netlify-recaptcha="true"
 					data-netlify="true"
+					data-netlify-recaptcha="true"
+					onSubmit={handleSubmit}
 				>
 					<input type="hidden" name="form-name" value="contact" />
+					<p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
 
 					<b>
 						Use this simple form to send us your inquiries or quotation
