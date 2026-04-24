@@ -1,5 +1,5 @@
+import { Button, Col, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
-
 import { orange200, secondaryOrange } from "../../../styles/colors";
 import Map from "../../atoms/Map";
 
@@ -71,6 +71,21 @@ const ContactForm = () => {
 
 export default ContactForm;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  @media (max-width: 699px) {
+    flex-direction: column;
+  }
+`;
+
+const FormPanel = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
 const FormContainer = styled(Form)`
   padding: 0 1rem 0 1rem;
 `;
@@ -91,12 +106,5 @@ const OrangeButton = styled(Button)`
   :active {
     background-color: ${secondaryOrange};
     border: none;
-  }
-`;
-
-const MapCol = styled(Col)`
-  margin-right: 2rem;
-  @media (max-width: 699px) {
-    display: none;
   }
 `;
