@@ -19,7 +19,6 @@ const ContactForm = () => {
           <b>Use this simple form to send us your inquiries or quotation requests.</b>
           <br />
           <br />
-          <div data-netlify-recaptcha="true"></div>
           <FormRow>
             <FormGroup>
               <label htmlFor="contactName">Name</label>
@@ -55,6 +54,7 @@ const ContactForm = () => {
             />
           </FormGroup>
 
+          <div data-netlify-recaptcha="true"></div>
           <OrangeButton type="submit">Submit</OrangeButton>
         </FormContainer>
       </FormPanel>
