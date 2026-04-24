@@ -1,4 +1,4 @@
-import styled from "styled-components";
+§import styled from "styled-components";
 
 import { orange200, secondaryOrange } from "../../../styles/colors";
 import Map from "../../atoms/Map";
@@ -50,6 +50,7 @@ const ContactForm = () => {
 					<FormGroup>
 						<label htmlFor="contactText">Your message</label>
 						<Textarea
+              required
 							id="contactText"
 							name="message"
 							placeholder="Message"
