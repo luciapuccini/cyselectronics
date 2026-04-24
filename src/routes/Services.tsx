@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 import repair from '../assets/repair.jpeg';
+import { usePageTitle } from '../hooks/usePageTitle';
 import { primaryGreen } from '../styles/colors';
 
-const Services = () => (
+const Services = () => {
+  usePageTitle(
+    { en: 'Services', es: 'Servicios' },
+    { en: 'Electronics design, repair, and maintenance services for industrial equipment.', es: 'Servicios de diseño, reparación y mantenimiento de equipos electrónicos industriales.' }
+  );
+  return (
   <div>
     <br />
     <h2>Services</h2>
@@ -59,7 +65,8 @@ const Services = () => (
       </ContentCol>
     </TwoColumn>
   </div>
-);
+  );
+};
 
 export default Services;
 

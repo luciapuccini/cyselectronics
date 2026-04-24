@@ -1,11 +1,20 @@
 import { useLocation } from 'react-router-dom';
 
-import Product from './Product';
 import { TabNav, TabLink } from '../components/atoms/TabNav';
+import { usePageTitle } from '../hooks/usePageTitle';
+import Product from './Product';
 
 function Protection() {
   const { pathname } = useLocation();
   const isRotor = pathname.includes('rotor');
+  usePageTitle(
+    isRotor
+      ? { en: 'Rotor Protection', es: 'Protección de Rotor' }
+      : { en: 'PEMCC Protection', es: 'Protección PEMCC' },
+    isRotor
+      ? { en: 'Rotor protection systems for industrial motors.', es: 'Sistemas de protección de rotor para motores industriales.' }
+      : { en: 'PEMCC protection systems for industrial applications.', es: 'Sistemas de protección PEMCC para aplicaciones industriales.' }
+  );
 
   return (
     <div>

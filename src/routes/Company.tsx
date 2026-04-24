@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 import partners from '../assets/partners.png';
+import { usePageTitle } from '../hooks/usePageTitle';
 import { secondaryOrange } from '../styles/colors';
 
-const Company = () => (
+const Company = () => {
+  usePageTitle(
+    { en: 'Company', es: 'Empresa' },
+    { en: 'Over 30 years of industrial electronics expertise in Argentina.', es: 'Más de 30 años de experiencia en electrónica industrial en Argentina.' }
+  );
+  return (
   <div>
     <br />
     <h2>Company</h2>
@@ -30,7 +36,8 @@ const Company = () => (
       <PartnersImg src={partners} alt="partners" />
     </div>
   </div>
-);
+  );
+};
 
 export default Company;
 

@@ -1,12 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { domainConfig } from './config/domain';
 import { LanguageContext, useLanguageState } from './hooks/useTranslation';
+import './index.css';
 
 function Root() {
-  const lang = useLanguageState('es');
+  const lang = useLanguageState(domainConfig.locale);
   return (
     <LanguageContext.Provider value={lang}>
       <App />
@@ -14,10 +15,13 @@ function Root() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Root />
-    </BrowserRouter>
-  </StrictMode>
-);
+const rootEl = document.getElementById('root');
+if (rootEl) {
+  createRoot(rootEl).render(
+    <StrictMode>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </StrictMode>
+  );
+}
