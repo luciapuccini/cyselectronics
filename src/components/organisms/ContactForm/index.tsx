@@ -1,84 +1,72 @@
-import React from "react";
 import styled from "styled-components";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
-import { secondaryOrange, orange200 } from "../../../styles/colors";
+import { orange200, secondaryOrange } from "../../../styles/colors";
 import Map from "../../atoms/Map";
 
 const ContactForm = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        height: "90vh",
-        alignItems: "flex-start",
-      }}
-    >
-      {/* @ts-ignore */}
-      <Container xs={1} md={6} lg={6} style={{ margin: 0, padding: 0 }}>
-        <FormContainer
-          form
-          name="contact"
-          method="post"
-          netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
-          data-netlify="true"
-        >
-          <input type="hidden" name="form-name" value="contact" />
+	return (
+		<Wrapper>
+			<FormPanel>
+				<FormContainer
+					name="contact"
+					method="post"
+					netlify-honeypot="bot-field"
+					data-netlify-recaptcha="true"
+					data-netlify="true"
+				>
+					<input type="hidden" name="form-name" value="contact" />
 
-          <b>
-            Use this simple form to send us your inquiries or quotation
-            requests.
-          </b>
-          <br />
-          <br />
-          <div data-netlify-recaptcha="true"></div>
-          <FormRow>
-            <Form.Group controlId="contactName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                required={true}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-            </Form.Group>
+					<b>
+						Use this simple form to send us your inquiries or quotation
+						requests.
+					</b>
+					<br />
+					<br />
+					<div data-netlify-recaptcha="true"></div>
+					<FormRow>
+						<FormGroup>
+							<label htmlFor="contactName">Name</label>
+							<Input
+								id="contactName"
+								required
+								type="text"
+								name="name"
+								placeholder="Name"
+							/>
+						</FormGroup>
 
-            <Form.Group controlId="contactEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                required={true}
-                name="email"
-                type="email"
-                placeholder="Enter email"
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-          </FormRow>
+						<FormGroup>
+							<label htmlFor="contactEmail">Email address</label>
+							<Input
+								id="contactEmail"
+								required
+								name="email"
+								type="email"
+								placeholder="Enter email"
+							/>
+							<small>We'll never share your email with anyone else.</small>
+						</FormGroup>
+					</FormRow>
 
-          <Form.Group controlId="contactText">
-            <Form.Label>Your message</Form.Label>
-            <Form.Control
-              as="textarea"
-              type="text"
-              name="message"
-              placeholder="Message"
-              rows={5}
-              style={{ resize: "none" }}
-            />
-          </Form.Group>
+					<FormGroup>
+						<label htmlFor="contactText">Your message</label>
+						<Textarea
+							id="contactText"
+							name="message"
+							placeholder="Message"
+							rows={5}
+							required
+						/>
+					</FormGroup>
 
-          <OrangeButton type="submit">Submit</OrangeButton>
-        </FormContainer>
-      </Container>
-      <MapCol md={6} lg={6}>
-        <Map width="50vw" />
-      </MapCol>
-    </div>
-  );
+					<OrangeButton type="submit">Submit</OrangeButton>
+				</FormContainer>
+			</FormPanel>
+			<MapPanel>
+				<Map />
+			</MapPanel>
+		</Wrapper>
+	);
 };
 
 export default ContactForm;
