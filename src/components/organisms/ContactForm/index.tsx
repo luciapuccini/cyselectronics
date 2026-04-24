@@ -1,68 +1,71 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { secondaryOrange, orange200 } from '../../../styles/colors';
-import Map from '../../atoms/Map';
+import { orange200, secondaryOrange } from "../../../styles/colors";
+import Map from "../../atoms/Map";
 
 const ContactForm = () => {
-  return (
-    <Wrapper>
-      <FormPanel>
-        <FormContainer
-          name="contact"
-          method="post"
-          netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
-          data-netlify="true"
-        >
-          <input type="hidden" name="form-name" value="contact" />
+	return (
+		<Wrapper>
+			<FormPanel>
+				<FormContainer
+					name="contact"
+					method="post"
+					netlify-honeypot="bot-field"
+					data-netlify-recaptcha="true"
+					data-netlify="true"
+				>
+					<input type="hidden" name="form-name" value="contact" />
 
-          <b>Use this simple form to send us your inquiries or quotation requests.</b>
-          <br />
-          <br />
-          <FormRow>
-            <FormGroup>
-              <label htmlFor="contactName">Name</label>
-              <Input
-                id="contactName"
-                required
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-            </FormGroup>
+					<b>
+						Use this simple form to send us your inquiries or quotation
+						requests.
+					</b>
+					<br />
+					<br />
+					<FormRow>
+						<FormGroup>
+							<label htmlFor="contactName">Name</label>
+							<Input
+								id="contactName"
+								required
+								type="text"
+								name="name"
+								placeholder="Name"
+							/>
+						</FormGroup>
 
-            <FormGroup>
-              <label htmlFor="contactEmail">Email address</label>
-              <Input
-                id="contactEmail"
-                required
-                name="email"
-                type="email"
-                placeholder="Enter email"
-              />
-              <small>We'll never share your email with anyone else.</small>
-            </FormGroup>
-          </FormRow>
+						<FormGroup>
+							<label htmlFor="contactEmail">Email address</label>
+							<Input
+								id="contactEmail"
+								required
+								name="email"
+								type="email"
+								placeholder="Enter email"
+							/>
+							<small>We'll never share your email with anyone else.</small>
+						</FormGroup>
+					</FormRow>
 
-          <FormGroup>
-            <label htmlFor="contactText">Your message</label>
-            <Textarea
-              id="contactText"
-              name="message"
-              placeholder="Message"
-              rows={5}
-            />
-          </FormGroup>
+					<FormGroup>
+						<label htmlFor="contactText">Your message</label>
+						<Textarea
+							id="contactText"
+							name="message"
+							placeholder="Message"
+							rows={5}
+						/>
+					</FormGroup>
 
-          <div data-netlify-recaptcha="true"></div>
-          <OrangeButton type="submit">Submit</OrangeButton>
-        </FormContainer>
-      </FormPanel>
-      <MapPanel>
-        <Map />
-      </MapPanel>
-    </Wrapper>
-  );
+					<div data-netlify-recaptcha="true"></div>
+					<OrangeButton type="submit">Submit</OrangeButton>
+				</FormContainer>
+			</FormPanel>
+			<MapPanel>
+				<Map />
+			</MapPanel>
+		</Wrapper>
+	);
 };
 
 export default ContactForm;
