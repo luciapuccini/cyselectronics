@@ -8,14 +8,13 @@ const Footer = () => (
 
 export default Footer;
 
-const FooterBar = styled.div`
-  margin: 0;
-  padding: 0;
+const FooterBar = styled.footer`
   background-color: ${gray};
   color: #ffffff;
   display: flex;
   justify-content: center;
-  align-self:center;
-  width: 100vw;
-  margin-top: 0.4rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
 `;

@@ -1,5 +1,5 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
+
 import { orange200, secondaryOrange } from "../../../styles/colors";
 import Map from "../../atoms/Map";
 
@@ -22,7 +22,6 @@ const ContactForm = () => {
 					</b>
 					<br />
 					<br />
-					<div data-netlify-recaptcha="true"></div>
 					<FormRow>
 						<FormGroup>
 							<label htmlFor="contactName">Name</label>
@@ -51,14 +50,15 @@ const ContactForm = () => {
 					<FormGroup>
 						<label htmlFor="contactText">Your message</label>
 						<Textarea
+							required
 							id="contactText"
 							name="message"
 							placeholder="Message"
 							rows={5}
-							required
 						/>
 					</FormGroup>
 
+					<div data-netlify-recaptcha="true"></div>
 					<OrangeButton type="submit">Submit</OrangeButton>
 				</FormContainer>
 			</FormPanel>
@@ -86,25 +86,76 @@ const FormPanel = styled.div`
   min-width: 0;
 `;
 
-const FormContainer = styled(Form)`
-  padding: 0 1rem 0 1rem;
-`;
+const FormContainer = styled.form``;
 
-const FormRow = styled(Row)`
+const FormRow = styled.div`
+  display: flex;
   justify-content: space-between;
-  padding: 0;
-  margin: 0;
+  gap: 1rem;
+  @media (max-width: 499px) {
+    flex-direction: column;
+  }
 `;
 
-const OrangeButton = styled(Button)`
-  background-color: ${secondaryOrange};
-  border: none;
-  :hover {
-    background-color: ${orange200};
-    border: none;
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  flex: 1;
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   }
-  :active {
+`;
+
+const Textarea = styled.textarea`
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  resize: none;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+`;
+
+const OrangeButton = styled.button`
+  background-color: ${secondaryOrange};
+  color: white;
+  border: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: ${orange200};
+  }
+  &:active {
     background-color: ${secondaryOrange};
-    border: none;
+  }
+`;
+
+const MapPanel = styled.div`
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  @media (max-width: 699px) {
+    display: none;
   }
 `;
