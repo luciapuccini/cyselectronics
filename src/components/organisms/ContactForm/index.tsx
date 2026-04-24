@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { orange200, secondaryOrange } from "../../../styles/colors";
-import Map from "../../atoms/Map";
+import MapEmbed from "../../atoms/Map";
 
 const ContactForm = () => {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +16,6 @@ const ContactForm = () => {
 					name="contact"
 					method="post"
 					data-netlify="true"
-					data-netlify-recaptcha="true"
 					onSubmit={handleSubmit}
 				>
 					<input type="hidden" name="form-name" value="contact" />
@@ -64,12 +63,11 @@ const ContactForm = () => {
 						/>
 					</FormGroup>
 
-					<div data-netlify-recaptcha="true"></div>
 					<OrangeButton type="submit">Submit</OrangeButton>
 				</FormContainer>
 			</FormPanel>
 			<MapPanel>
-				<Map />
+				<MapEmbed />
 			</MapPanel>
 		</Wrapper>
 	);
