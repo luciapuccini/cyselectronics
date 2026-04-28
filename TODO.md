@@ -12,3 +12,13 @@ Generic alt text — "product image", "cyslogo", "partners" are vague. Descripti
 ## i18n
 
 guaranteed Spanish content on .com.ar in the future, the proper path is translating the hardcoded strings into es.json and running them through useTranslation.
+
+
+## Design
+- simlpify navigation
+- improve cards and spacing
+- re design layout, more SPA feeling
+- images look ugly find alternatives like stats section
+- FAQs 
+- 3 pages should be enough: home, about, products & services
+- keep the carousel & an industrial aestethic
