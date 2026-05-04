@@ -1,22 +1,22 @@
-import React from 'react'
-import { Col, Nav } from 'react-bootstrap'
-
-import Product from './Product'
+import { TabNav, TabLink } from '../components/atoms/TabNav';
+import { usePageTitle } from '../hooks/usePageTitle';
+import Product from './Product';
 
 function Positioning() {
+  usePageTitle(
+    { en: 'Positioning', es: 'Posicionamiento' },
+    { en: 'Industrial positioning systems designed and manufactured by C&S Controles y Sistemas.', es: 'Sistemas de posicionamiento industrial diseñados y fabricados por C&S Controles y Sistemas.' }
+  );
   return (
-
-<Col>
-<br/>
-  <h2>Positioning</h2>
-        <Nav variant="tabs" defaultActiveKey="magnaposi" className="justify-content-end">
-   <Nav.Item>
-     <Nav.Link eventKey="magnaposi" href="https://magnaposi.com">Magnaposi</Nav.Link>
-   </Nav.Item>
- </Nav>
-  <Product product="magnaposi"/>
-</Col>
-  )
+    <div>
+      <br />
+      <h2>Positioning</h2>
+      <TabNav>
+        <TabLink href="https://magnaposi.com" active>Magnaposi</TabLink>
+      </TabNav>
+      <Product product="magnaposi" />
+    </div>
+  );
 }
 
 export default Positioning;

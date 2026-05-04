@@ -1,0 +1,126 @@
+name: AI‑Generated Documentation for PRs
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  doc-gen:
+    # Only on actual merges; skip our own docs PRs to prevent loops
+    if: >
+      github.event.pull_request.merged == true &&
+      !startsWith(github.event.pull_request.head.ref, 'ai-docs/')
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      # ---------------------------------------------------------------
+      # 1️⃣ Checkout the base branch at the merge commit
+      #    fetch-depth: 2 gives us HEAD (merge) and HEAD~1 (previous tip)
+      # ---------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 2
+
+      # ---------------------------------------------------------------
+      # 2️⃣ Build the Ollama prompt: diff + current AGENT_DOCS.md
+      # ---------------------------------------------------------------
+      - name: Build prompt
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Diff introduced by this merge (works for merge, squash, and rebase)
+          git diff HEAD~1 HEAD -- \
+            ':(exclude)**/node_modules' \
+            ':(exclude)**/.git*' \
+            ':(exclude)**/.github' \
+            ':(exclude)**/dist' \
+            ':(exclude)**/build' \
+            | head -c 6000 > /tmp/pr_diff.txt
+
+          # Read existing AGENT_DOCS.md (cap at 2000 chars to stay within context)
+          if [ -f AGENT_DOCS.md ]; then
+            head -c 2000 AGENT_DOCS.md > /tmp/current_docs.txt
+          else
+            echo '(no existing documentation)' > /tmp/current_docs.txt
+          fi
+
+          {
+            echo 'You are a technical writer maintaining AGENT_DOCS.md for a software project.'
+            echo 'This file is a concise tech-stack and architecture reference, similar to a README.'
+            echo 'Keep it under 120 lines. Use markdown headings and bullet points.'
+            echo ''
+            echo 'Task:'
+            echo '- Read the current AGENT_DOCS.md and the PR diff below.'
+            echo '- If the diff introduces relevant changes (new deps, frameworks, architecture, config),'
+            echo '  reply with the full updated AGENT_DOCS.md content — nothing else.'
+            echo '- If the diff has no impact on the tech stack or architecture, reply with exactly: NO_UPDATE'
+            echo ''
+            echo '=== CURRENT AGENT_DOCS.md ==='
+            cat /tmp/current_docs.txt
+            echo ''
+            echo '=== PR INFO ==='
+            printf 'Title: %s\n' "$PR_TITLE"
+            printf 'Number: #%s\n' "$PR_NUMBER"
+            echo ''
+            echo '=== DIFF ==='
+            cat /tmp/pr_diff.txt
+          } > /tmp/ollama_prompt.txt
+
+      # ---------------------------------------------------------------
+      # 3️⃣ Run Ollama
+      # ---------------------------------------------------------------
+      - name: Setup Ollama
+        uses: ai-action/setup-ollama@v2
+
+      - name: Pull model
+        run: ollama pull tinyllama
+
+      - name: Generate updated docs
+        id: ollama
+        run: |
+          RESPONSE=$(curl -s http://localhost:11434/api/generate \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
+                  --arg model tinyllama \
+                  '{model: $model, prompt: $prompt, stream: false}')" \
+            | jq -r '.response // ""')
+
+          echo "$RESPONSE" > /tmp/ollama_response.txt
+
+          if [ "$RESPONSE" = "NO_UPDATE" ] || [ -z "$RESPONSE" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      # ---------------------------------------------------------------
+      # 4️⃣ Write AGENT_DOCS.md and open a PR (skipped if no changes)
+      # ---------------------------------------------------------------
+      - name: Write AGENT_DOCS.md
+        if: steps.ollama.outputs.skip == 'false'
+        run: cp /tmp/ollama_response.txt AGENT_DOCS.md
+
+      - name: Open documentation PR
+        if: steps.ollama.outputs.skip == 'false'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: ${{ github.event.pull_request.base.ref }}
+          branch: ai-docs/pr-${{ github.event.pull_request.number }}
+          commit-message: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
+          title: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
+          body: |
+            Auto-generated update to `AGENT_DOCS.md` based on changes merged in PR #${{ github.event.pull_request.number }}.
+
+            Review and merge if the content looks accurate.
+
+            **Model:** `tinyllama` via Ollama
+          labels: autogenerated, documentation
+          delete-branch: true

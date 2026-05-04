@@ -1,42 +1,70 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
-import CustomNavBar from "./components/organisms/NavBar/NavBar";
+import CustomNavBar from './components/organisms/NavBar/NavBar';
+import './App.css';
+import Footer from './components/Footer';
+import Home from './routes/Home';
+import Company from './routes/Company';
+import Contact from './routes/Contact';
+import Products from './routes/Products';
+import Services from './routes/Services';
+import Error from './routes/Error';
 
-import "./App.css";
-import Footer from "./components/Footer";
-import Home from "./routes/Home";
-import Company from "./routes/Company";
-import Contact from "./routes/Contact";
-import Products from "./routes/Products";
-import Services from "./routes/Services";
-import Error from "./routes/Error";
+// Full-width pages (Home has carousel + full-bleed sections)
+const FullWidthLayout = () => (
+  <Main>
+    <Outlet />
+  </Main>
+);
+
+// Centered content pages
+const PageLayout = () => (
+  <Main>
+    <PageContainer>
+      <Outlet />
+    </PageContainer>
+  </Main>
+);
 
 const App = () => (
-  <>
+  <AppShell>
     <CustomNavBar />
-    <Switch>
-      <Route exact path="/">
-        <Home />
+    <Routes>
+      <Route element={<FullWidthLayout />}>
+        <Route path="/" element={<Home />} />
       </Route>
-      <Route path="/company">
-        <Company />
+      <Route element={<PageLayout />}>
+        <Route path="/company" element={<Company />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/products/*" element={<Products />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="*" element={<Error />} />
       </Route>
-      <Route path="/contact">
-        <Contact />
-      </Route>
-      <Route path="/products">
-        <Products />
-      </Route>
-      <Route path="/services">
-        <Services />
-      </Route>
-      <Route path="*">
-        <Error />
-      </Route>
-    </Switch>
+    </Routes>
     <Footer />
-  </>
+  </AppShell>
 );
 
 export default App;
+
+const AppShell = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+const PageContainer = styled.div`
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  box-sizing: border-box;
+`;

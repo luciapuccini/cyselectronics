@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <!-- Default EN metadata — patched to ES at runtime for controlesysistemas.com.ar -->
+  <meta name="description" content="C&S Controles y Sistemas – industrial electronics design, development, and maintenance since 1991." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.cyselectronics.com" />
+  <meta property="og:title" content="CYS Electronics | Industrial Electronics since 1991" />
+  <meta property="og:description" content="Industrial electronics design, development, and maintenance since 1991." />
+  <meta property="og:image" content="https://www.cyselectronics.com/logo512.png" />
+  <!-- Canonical (updated per-route by usePageTitle) -->
+  <link rel="canonical" href="https://www.cyselectronics.com" />
+  <script>
+    (() => {
+      const h = location.hostname;
+      const isES = h.includes('controlesysistemas') || h.endsWith('.com.ar');
+      if (!isES) return;
+      // Keep lang="en" so the browser auto-offers Spanish translation for Argentine visitors
+      const base = 'https://www.controlesysistemas.com.ar';
+      const ogMap = {
+        'og:url': base,
+        'og:title': 'C&S Controles y Sistemas | Electrónica Industrial desde 1991',
+        'og:description': 'Diseño, desarrollo y mantenimiento de electrónica industrial desde 1991.',
+        'og:image': `${base}/logo512.png`,
+      };
+      document.querySelectorAll('meta[property]').forEach((m) => {
+        const p = m.getAttribute('property');
+        if (ogMap[p]) m.setAttribute('content', ogMap[p]);
+      });
+      const desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute('content', 'C&S Controles y Sistemas – diseño, desarrollo y mantenimiento de electrónica industrial desde 1991.');
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', base);
+      document.title = 'C&S Controles y Sistemas';
+    })();
+  </script>
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Raleway:400,500&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500&display=swap" rel="stylesheet"
+      type="text/css" />
+  </noscript>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6PD3YHFP4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args) { dataLayer.push(args); }
+    gtag('js', new Date());
+    gtag('config', 'G-F6PD3YHFP4');
+  </script>
+  <title>CYS Electronics</title>
+  <link rel="shortcut icon" type="image/jpg" href="/cyslogo.ico" />
+</head>
+
+<body>
+  <!-- A little help for the Netlify post-processing bots -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="bot-field" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
+</html>

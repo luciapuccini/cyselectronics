@@ -1,25 +1,27 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import {IntlProvider} from 'react-intl'
-import messagesInSpanish from './lang/es.json'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { domainConfig } from './config/domain';
+import { LanguageContext, useLanguageState } from './hooks/useTranslation';
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <IntlProvider messages={messagesInSpanish} locale="es" defaultLocale="en">
-        <App />
-        </IntlProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+function Root() {
+  const lang = useLanguageState(domainConfig.locale);
+  return (
+    <LanguageContext.Provider value={lang}>
+      <App />
+    </LanguageContext.Provider>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const rootEl = document.getElementById('root');
+if (rootEl) {
+  createRoot(rootEl).render(
+    <StrictMode>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </StrictMode>
+  );
+}
