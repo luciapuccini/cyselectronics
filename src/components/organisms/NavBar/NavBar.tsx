@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 import logo from '../../../assets/cys-branding.svg';
 import Menu from '../../../assets/menu.svg?react';
-
 import './NavBar.css';
 
 const getCurrentPage = (path: string) => {
@@ -39,6 +38,7 @@ const CustomNavBar = () => {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: location is used as a navigation trigger, not a consumed value
   useEffect(() => {
     setDrawerOpen(false);
   }, [location]);
@@ -52,16 +52,11 @@ const CustomNavBar = () => {
 
   return (
     <>
-      <TopBarContainer>
-        <ExtrasContainer>
-          <a href="/">
-            <LogoImg src={logo} alt="cyslogo" />
-          </a>
-          <HamburgerButton onClick={() => setDrawerOpen(true)} aria-label="Open menu">
-            <Menu />
-          </HamburgerButton>
-        </ExtrasContainer>
-        <LinksContainer className="navWrapper">
+      <TopBar>
+        <a href="/" aria-label="Home">
+          <LogoImg src={logo} alt="C&S Logo" />
+        </a>
+        <DesktopLinks className="navWrapper">
           <li className={active === 0 ? 'current' : ''}>
             <a onClick={() => setActive(0)} href="/">Home</a>
           </li>
@@ -92,8 +87,11 @@ const CustomNavBar = () => {
           <li className={active === 4 ? 'current' : ''}>
             <a href="/services" onClick={() => setActive(4)}>Services</a>
           </li>
-        </LinksContainer>
-      </TopBarContainer>
+        </DesktopLinks>
+        <HamburgerButton onClick={() => setDrawerOpen(true)} aria-label="Open menu">
+          <Menu />
+        </HamburgerButton>
+      </TopBar>
 
       <Overlay open={drawerOpen} onClick={closeDrawer} />
       <Drawer open={drawerOpen}>
@@ -135,35 +133,33 @@ const CustomNavBar = () => {
 
 export default CustomNavBar;
 
-const TopBarContainer = styled.div`
+const TopBar = styled.nav`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-shadow: 0px 0px 3px #181819;
-`;
-
-const ExtrasContainer = styled.div`
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
   @media (max-width: 599px) {
-    width: 100%;
-    padding-right: 1rem;
+    padding: 0 1rem;
   }
 `;
 
-const LinksContainer = styled.ul`
+const DesktopLinks = styled.ul`
   @media (max-width: 599px) {
     display: none;
   }
 `;
 
 const LogoImg = styled.img`
-  height: 4rem;
-  width: 6.5rem;
-  margin: 0.5em 1em 0.5em 1em;
-  margin-top: 0.6rem;
+  height: 48px;
+  width: auto;
+  display: block;
 `;
 
 const HamburgerButton = styled.button`
@@ -173,9 +169,9 @@ const HamburgerButton = styled.button`
   cursor: pointer;
   padding: 0.25rem;
   svg {
-    fill: #009c22;
-    height: 2rem;
-    width: 2rem;
+    fill: var(--primary);
+    height: 1.75rem;
+    width: 1.75rem;
   }
   @media (max-width: 599px) {
     display: flex;
@@ -197,8 +193,8 @@ const Drawer = styled.nav<{ open: boolean }>`
   right: 0;
   height: 100%;
   width: 75vw;
-  max-width: 300px;
-  background: #fff;
+  max-width: 280px;
+  background: var(--card);
   z-index: 201;
   transform: translateX(${({ open }) => (open ? '0' : '100%')});
   transition: transform 0.28s ease;
@@ -211,8 +207,8 @@ const DrawerHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 0.75rem;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
 `;
 
 const CloseButton = styled.button`
@@ -220,10 +216,10 @@ const CloseButton = styled.button`
   border: none;
   font-size: 1.25rem;
   cursor: pointer;
-  color: #555;
+  color: var(--muted-foreground);
   padding: 0.5rem;
   line-height: 1;
-  &:hover { color: #1e7e34; }
+  &:hover { color: var(--primary); }
 `;
 
 const DrawerNav = styled.div`
@@ -234,86 +230,86 @@ const DrawerNav = styled.div`
 `;
 
 const DrawerLink = styled.a<{ isActive: boolean }>`
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.95rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
   font-weight: ${({ isActive }) => (isActive ? 700 : 500)};
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
+  color: ${({ isActive }) => (isActive ? 'var(--primary)' : 'var(--foreground)')};
   text-decoration: none;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #f0f0f0;
-  &:hover { color: #1e7e34; background: #f9f9f9; }
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  &:hover { color: var(--primary); background: var(--secondary); }
 `;
 
 const DrawerAccordion = styled.div`
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border);
 `;
 
 const DrawerAccordionToggle = styled.button<{ isActive: boolean }>`
   width: 100%;
   background: none;
   border: none;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.95rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
   font-weight: ${({ isActive }) => (isActive ? 700 : 500)};
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
+  color: ${({ isActive }) => (isActive ? 'var(--primary)' : 'var(--foreground)')};
   text-align: left;
-  padding: 1rem 1.5rem;
+  padding: 0.875rem 1.5rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  &:hover { color: #1e7e34; background: #f9f9f9; }
+  &:hover { color: var(--primary); background: var(--secondary); }
 `;
 
 const Chevron = styled.span<{ open: boolean }>`
   font-size: 1.1rem;
-  color: #888;
+  color: var(--muted-foreground);
   transform: rotate(${({ open }) => (open ? '90deg' : '0deg')});
   transition: transform 0.2s ease;
   display: inline-block;
 `;
 
 const DrawerSubLinks = styled.div`
-  background: #f7f7f7;
+  background: var(--secondary);
   display: flex;
   flex-direction: column;
 `;
 
 const DrawerSubLink = styled.a`
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.875rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
   font-weight: 500;
-  color: #555;
+  color: var(--muted-foreground);
   text-decoration: none;
-  padding: 0.8rem 2.25rem;
-  border-top: 1px solid #ebebeb;
-  &:hover { color: #1e7e34; }
+  padding: 0.75rem 2.25rem;
+  border-top: 1px solid var(--border);
+  &:hover { color: var(--primary); }
 `;
 
 const DropdownLi = styled.li`
   position: relative;
-  display: inline-block;
 `;
 
 const DropdownToggle = styled.button<{ isActive: boolean }>`
   background: none;
   border: none;
-  padding: 0.5em 0.8em;
-  margin: 0;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: ${({ isActive }) => (isActive ? 'bold' : '500')};
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
   cursor: pointer;
-  &:hover { color: #1e7e34; font-weight: bold; }
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: ${({ isActive }) => (isActive ? 'var(--primary)' : 'var(--foreground)')};
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  transition: background 0.15s;
+  &:hover { background: var(--secondary); }
 `;
 
 const DropdownMenu = styled.div`
@@ -321,22 +317,27 @@ const DropdownMenu = styled.div`
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.375rem 0;
+  min-width: 160px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
   z-index: 100;
-  min-width: 8rem;
-  padding: 0.5rem 0;
+  margin-top: 0.25rem;
+
   a {
-    padding: 0.5rem 1rem;
-    width: 90%;
-    text-align: center;
-    color: #181819;
-    font-size: 14px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--foreground);
     text-decoration: none;
-    &:hover { color: #1e7e34; }
+    padding: 0.5rem 1rem;
+    transition: background 0.15s;
+    &:hover { background: var(--secondary); }
   }
 `;

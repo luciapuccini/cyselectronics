@@ -1,74 +1,59 @@
 import styled from 'styled-components';
 
-import { primaryGreen } from '../../../styles/colors';
 import ProductCard from '../../atoms/ProductCard';
 
 const ProductsSection = () => {
   return (
-    <MainCol>
-      <h2>Our Products</h2>
-      <Description>
-        Our expertise providing service to the steelmaking industry allows us to
-        make top state of the art sensing solutions, automatic control, real
-        time quality control, equipment protection, among others.
-      </Description>
-      <Section>
-        <ProductCard name='magnaposi'/>
-        <ProductCard name='pemcc'/>
-        <ProductCard name='rotor'/>
-      </Section>
-    </MainCol>
+    <Section id="products">
+      <Inner>
+        <Title>Our Products</Title>
+        <Description>
+          Our expertise providing service to the steelmaking industry allows us
+          to make top state of the art sensing solutions, automatic control,
+          real time quality control, equipment protection, among others.
+        </Description>
+        <Cards>
+          <ProductCard name="magnaposi" />
+          <ProductCard name="pemcc" />
+          <ProductCard name="rotor" />
+        </Cards>
+      </Inner>
+    </Section>
   );
 };
 
 export default ProductsSection;
 
-const MainCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5vh;
-  padding-top: 5vh;
-  background-color: ${primaryGreen};
-  color: #f0f0f0;
+const Section = styled.section`
+  background: var(--accent);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+`;
 
-  h2 {
-    font-size: 2rem;
-    @media (max-width: 599px) {
-      font-size: 1.5rem;
-    }
-  }
+const Inner = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--accent-foreground);
+  margin: 0 0 1rem;
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
-  font-weight: 500;
-  max-width: 700px;
-  text-align: center;
-  margin: 1rem 1.5rem 2rem;
-  line-height: 1.6;
-
-  @media (max-width: 599px) {
-    font-size: 1rem;
-    margin: 0.75rem 1.25rem 1.5rem;
-  }
+  font-size: clamp(0.875rem, 1.3vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  text-wrap: pretty;
 `;
 
-const Section = styled.div`
+const Cards = styled.div`
   display: flex;
-  width: 100%;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   gap: 1.5rem;
-  padding: 0 1.5rem;
-  margin-bottom: 5vh;
-  box-sizing: border-box;
-
-  @media (max-width: 599px) {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
+  justify-content: center;
 `;

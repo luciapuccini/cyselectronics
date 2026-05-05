@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { primaryGreen, green200 } from '../../../styles/colors';
 import { getProduct } from '../../../utils/products';
 
 interface Props {
@@ -10,81 +9,87 @@ interface Props {
 const ProductCard = ({ name }: Props) => {
   const product = getProduct(name);
   return (
-    <CardWrapper>
-      <img src={product?.image} alt="product image" />
-      <CardBody>
-        <CardTitle>{product?.title}</CardTitle>
-        <CardText>{product?.detail}</CardText>
-      </CardBody>
-      <CardFooter>
-        <CardLink href={product?.link}>Learn more &rarr;</CardLink>
-      </CardFooter>
-    </CardWrapper>
+    <Card>
+      <ImageWrap>
+        <img src={product?.image} alt={product?.title ?? 'product'} />
+      </ImageWrap>
+      <Body>
+        <Title>{product?.title}</Title>
+        <Text>{product?.detail}</Text>
+      </Body>
+      <Footer>
+        <LearnMore href={product?.link}>Learn more &rarr;</LearnMore>
+      </Footer>
+    </Card>
   );
 };
 
 export default ProductCard;
 
-const CardWrapper = styled.div`
-  width: 17rem;
-  border: 1px solid #e0e0e0;
-  border-top: 3px solid ${primaryGreen};
-
-  @media (max-width: 599px) {
-    width: 100%;
-  }
-  border-radius: 0.375rem;
+const Card = styled.div`
+  flex: 1 1 280px;
+  max-width: 340px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 
   &:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
+`;
+
+const ImageWrap = styled.div`
+  height: 160px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
 
   img {
     width: 100%;
-    height: 160px;
+    height: 100%;
     object-fit: cover;
+    display: block;
   }
 `;
 
-const CardBody = styled.div`
-  padding: 1rem 1.25rem;
+const Body = styled.div`
+  padding: 1.25rem;
   flex: 1;
+  text-align: left;
 `;
 
-const CardTitle = styled.h5`
-  color: #1a1a1a;
+const Title = styled.h5`
+  font-size: 0.95rem;
   font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--card-foreground);
 `;
 
-const CardText = styled.p`
-  color: #555;
-  font-size: 0.875rem;
-  line-height: 1.55;
+const Text = styled.p`
+  font-size: 0.825rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
   margin: 0;
 `;
 
-const CardFooter = styled.div`
+const Footer = styled.div`
   padding: 0.75rem 1.25rem;
-  background: #f7f7f7;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border);
+  background: var(--secondary);
+  text-align: left;
 `;
 
-const CardLink = styled.a`
-  color: ${primaryGreen};
+const LearnMore = styled.a`
+  font-family: var(--font-display);
+  font-size: 0.825rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--primary);
   text-decoration: none;
-  &:hover {
-    color: ${green200};
-    text-decoration: underline;
-  }
+  &:hover { text-decoration: underline; }
 `;
