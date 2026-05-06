@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import airLiquideLogo from '../../../assets/partners/Air_Liquide.png';
 import akSteelLogo from '../../../assets/partners/AK_Steel.png';
 import arcelorMittalLogo from '../../../assets/partners/ArcelorMittal.png';
-import csnLogo from '../../../assets/partners/Companhia_Siderúrgica_Nacional.png';
+import csnLogo from '../../../assets/partners/Companhia_Siderurgica_Nacional.png';
 import generalElectricLogo from '../../../assets/partners/General_electric.webp';
 import msiGrupoLogo from '../../../assets/partners/msi_grupo.png';
 import nideraLogo from '../../../assets/partners/nidera.png';
