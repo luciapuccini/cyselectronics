@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import LocationMap from '../components/atoms/Map';
-import ProductsSection from '../components/molecules/ProductsSection';
+import TrustedBySection from '../components/molecules/TrustedBySection';
 import Carousel from '../components/organisms/Carousel';
 import { usePageTitle } from '../hooks/usePageTitle';
 
@@ -21,7 +21,7 @@ const Home = () => {
           to problems that have no reception in traditional suppliers.
         </Lede>
       </Hero>
-      <ProductsSection />
+      <TrustedBySection />
       <LocationMap />
     </>
   );
