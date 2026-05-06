@@ -130,7 +130,7 @@ const AccentBar = styled.span`
 `;
 
 const Header = styled.h2`
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);

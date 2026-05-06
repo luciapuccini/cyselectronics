@@ -13,21 +13,22 @@ type NavItem = {
   children?: Array<{ label: string; href: string }>;
 };
 
+// TODO: delete comments -- new verison in progress
 const NAV_ITEMS: NavItem[] = [
   { code: '01', label: 'Home', href: '/', match: (path) => path === '/' },
-  { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
+  // { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
   {
-    code: '03',
+    code: '02',
     label: 'Products',
     href: '/products',
     match: (path) => path.startsWith('/products'),
-    children: [
-      { label: 'Positioning', href: '/products/positioning' },
-      { label: 'Protection', href: '/products/protection' },
-    ],
+    // children: [
+    //   { label: 'Positioning', href: '/products/positioning' },
+    //   { label: 'Protection', href: '/products/protection' },
+    // ],
   },
-  { code: '04', label: 'Services', href: '/services', match: (path) => path.startsWith('/services') },
-  { code: '05', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
+  // { code: '04', label: 'Services', href: '/services', match: (path) => path.startsWith('/services') },
+  { code: '03', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
 ];
 
 const CTA = { href: '/contact', label: 'Request quote' };

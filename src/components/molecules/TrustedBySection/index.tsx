@@ -77,26 +77,6 @@ const Section = styled.section`
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: var(--color-white);
-    background-image: radial-gradient(circle, var(--color-grid-dot) 1px, transparent 1px);
-    background-size: 24px 24px;
-    mask-image: radial-gradient(
-      ellipse 80% 60% at 50% 50%,
-      transparent 30%,
-      black 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      ellipse 80% 60% at 50% 50%,
-      transparent 30%,
-      black 100%
-    );
-    z-index: var(--z-base);
-  }
 `;
 
 const Inner = styled.div`

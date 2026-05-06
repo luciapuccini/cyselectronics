@@ -1,15 +1,15 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 
 import CustomNavBar from './components/organisms/NavBar/NavBar';
 import './App.css';
 import Footer from './components/Footer';
-import Home from './routes/Home';
 import Company from './routes/Company';
 import Contact from './routes/Contact';
+import ErrorPage from './routes/Error';
+import Home from './routes/Home';
 import Products from './routes/Products';
 import Services from './routes/Services';
-import Error from './routes/Error';
 
 // Full-width pages (Home has carousel + full-bleed sections)
 const FullWidthLayout = () => (
@@ -29,6 +29,7 @@ const PageLayout = () => (
 
 const App = () => (
   <AppShell>
+    <GridBg />
     <CustomNavBar />
     <Routes>
       <Route element={<FullWidthLayout />}>
@@ -39,7 +40,7 @@ const App = () => (
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/*" element={<Products />} />
         <Route path="/services" element={<Services />} />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
     <Footer />
@@ -52,6 +53,25 @@ const AppShell = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  isolation: isolate;
+`;
+
+const GridBg = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, var(--color-grid-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 70%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 70%
+  );
+  pointer-events: none;
 `;
 
 const Main = styled.main`
