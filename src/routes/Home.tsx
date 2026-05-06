@@ -30,7 +30,7 @@ const Home = () => {
 export default Home;
 
 const Hero = styled.section`
-  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  padding: clamp(3rem, 6vw, 5rem) var(--space-8);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -39,16 +39,16 @@ const Hero = styled.section`
 
 const Title = styled.h1`
   font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-4);
 `;
 
 const Lede = styled.p`
   font-size: clamp(0.9rem, 1.5vw, 1.125rem);
   color: var(--muted-foreground);
   max-width: 680px;
-  line-height: 1.7;
+  line-height: var(--line-loose);
   text-wrap: pretty;
   margin: 0;
 `;

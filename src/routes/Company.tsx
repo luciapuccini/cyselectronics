@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import partners from '../assets/partners.png';
 import { usePageTitle } from '../hooks/usePageTitle';
-import { secondaryOrange } from '../styles/colors';
+import { tokens } from '../styles/tokens';
+
+const { secondaryOrange } = tokens.raw;
 
 const Company = () => {
   usePageTitle(
@@ -48,5 +50,5 @@ const PartnersImg = styled.img`
 
 const PartnersHeader = styled.h5`
   color: ${secondaryOrange};
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 `;

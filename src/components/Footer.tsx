@@ -62,17 +62,17 @@ export default Footer;
 const FooterBar = styled.footer`
   background: var(--foreground);
   color: var(--background);
-  padding: 3rem 2rem 2rem;
+  padding: var(--space-12) var(--space-8) var(--space-8);
   width: 100%;
   box-sizing: border-box;
 `;
 
 const Grid = styled.div`
-  max-width: 1100px;
+  max-width: var(--container-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: var(--space-8);
 `;
 
 const Col = styled.div`
@@ -83,67 +83,67 @@ const Col = styled.div`
 const BrandLogo = styled.img`
   height: 48px;
   width: auto;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   filter: brightness(1.5);
   align-self: flex-start;
 `;
 
 const Tagline = styled.p`
   font-size: 0.8rem;
-  line-height: 1.6;
+  line-height: var(--line-relaxed);
   opacity: 0.6;
   margin: 0;
 `;
 
 const ColTitle = styled.h4`
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0 0 1rem;
+  letter-spacing: var(--letter-wider);
+  margin: 0 0 var(--space-4);
   opacity: 0.5;
 `;
 
 const ColLinks = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 `;
 
 const FooterLink = styled.a`
-  font-size: 0.825rem;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: var(--font-size-sm);
+  color: var(--color-overlay-light-65);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--transition-fast);
   &:hover { color: var(--primary); }
 `;
 
 const ContactText = styled.p`
-  font-size: 0.825rem;
+  font-size: var(--font-size-sm);
   opacity: 0.65;
-  line-height: 1.7;
+  line-height: var(--line-loose);
   margin: 0;
 `;
 
 const BottomBar = styled.div`
-  max-width: 1100px;
-  margin: 2rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: var(--container-max);
+  margin: var(--space-8) auto 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-divider-on-dark);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
 `;
 
 const Copyright = styled.span`
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   opacity: 0.4;
 `;
 
 const Version = styled.span`
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   opacity: 0.4;
   font-family: var(--font-mono);
 `;

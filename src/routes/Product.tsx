@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { green200, primaryGreen } from '../styles/colors';
 import { getProduct } from '../utils/products';
 
 interface Props {
@@ -48,8 +47,8 @@ const Container = styled.div`
 `;
 
 const Header = styled.h3`
-  margin-top: 1rem;
-  color: ${primaryGreen};
+  margin-top: var(--space-4);
+  color: var(--primary);
   cursor: default;
 `;
 
@@ -70,7 +69,7 @@ const DescriptionCol = styled.div`
 
 const ProductImgContainer = styled.div`
   flex: 4;
-  margin-right: 1rem;
+  margin-right: var(--space-4);
 `;
 
 const ProductImg = styled.img`
@@ -80,9 +79,9 @@ const ProductImg = styled.img`
 `;
 
 const ProductLink = styled.a`
-  color: ${primaryGreen};
-  font-weight: 500;
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
   :hover {
-    color: ${green200};
+    color: var(--primary);
   }
 `;

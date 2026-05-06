@@ -29,22 +29,22 @@ const Wrapper = styled.section`
 
 const ContactCard = styled.div`
   position: absolute;
-  right: 1rem;
-  top: 1rem;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.92);
+  right: var(--space-4);
+  top: var(--space-4);
+  z-index: var(--z-raised);
+  background: var(--color-overlay-light-92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
   max-width: 300px;
   font-size: 0.85rem;
-  line-height: 1.6;
+  line-height: var(--line-relaxed);
   color: var(--foreground);
 
   p {
-    margin: 0 0 0.25rem;
+    margin: 0 0 var(--space-1);
   }
 
   @media (max-width: 799px) {
@@ -55,15 +55,15 @@ const ContactCard = styled.div`
 const CardTitle = styled.h3`
   font-family: var(--font-display);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-wide);
   border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
-  margin: 0 0 0.75rem;
+  padding-bottom: var(--space-2);
+  margin: 0 0 var(--space-3);
 `;
 
 const Location = styled.p`
   color: var(--muted-foreground);
-  margin-top: 0.25rem !important;
+  margin-top: var(--space-1) !important;
 `;

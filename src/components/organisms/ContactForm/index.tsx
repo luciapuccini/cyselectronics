@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-import { orange200, secondaryOrange } from "../../../styles/colors";
+import { tokens } from "../../../styles/tokens";
 import Map from "../../atoms/Map";
+
+const { secondaryOrange, orange200 } = tokens.raw;
 
 const ContactForm = () => {
 	return (

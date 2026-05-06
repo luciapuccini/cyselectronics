@@ -31,7 +31,7 @@ const PARTNERS: Partner[] = [
   { name: 'Sidersa', logo: sidersaLogo, industry: 'Steel', variant: 'darker' },
   { name: 'General Electric', logo: generalElectricLogo, industry: 'Energy' },
   { name: 'AK Steel', logo: akSteelLogo, industry: 'Steel' },
-  { name: 'Air Liquide', logo: airLiquideLogo, industry: 'Industrial Gases' },
+  { name: 'Air Liquide', logo: airLiquideLogo, industry: ' Gas' },
 ];
 
 const TrustedBySection = () => {
@@ -73,7 +73,7 @@ export default TrustedBySection;
 
 const Section = styled.section`
   position: relative;
-  padding: clamp(3.5rem, 7vw, 6rem) 2rem;
+  padding: clamp(3.5rem, 7vw, 6rem) var(--space-8);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
@@ -82,8 +82,8 @@ const Section = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background-color: #ffffff;
-    background-image: radial-gradient(circle, #c8cacc 1px, transparent 1px);
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, var(--color-grid-dot) 1px, transparent 1px);
     background-size: 24px 24px;
     mask-image: radial-gradient(
       ellipse 80% 60% at 50% 50%,
@@ -95,21 +95,21 @@ const Section = styled.section`
       transparent 30%,
       black 100%
     );
-    z-index: 0;
+    z-index: var(--z-base);
   }
 `;
 
 const Inner = styled.div`
   position: relative;
-  z-index: 1;
-  max-width: 1120px;
+  z-index: var(--z-raised);
+  max-width: var(--container-max-wide);
   margin: 0 auto;
 `;
 
 const HeadingRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: var(--space-10);
   align-items: flex-start;
 
   @media (min-width: 768px) {
@@ -126,7 +126,7 @@ const HeadingStack = styled.div`
 const Accent = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
 `;
 
 const AccentBar = styled.span`
@@ -139,17 +139,17 @@ const AccentBar = styled.span`
 const AccentLabel = styled.span`
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--letter-extreme);
   text-transform: uppercase;
   color: var(--accent);
 `;
 
 const Title = styled.h2`
-  margin: 1.5rem 0 0;
+  margin: var(--space-6) 0 0;
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-  line-height: 1.1;
+  line-height: var(--line-snug);
   color: var(--foreground);
 `;
 
@@ -157,7 +157,7 @@ const Subtitle = styled.p`
   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
   color: var(--muted-foreground);
   max-width: 360px;
-  line-height: 1.6;
+  line-height: var(--line-relaxed);
   text-wrap: pretty;
 
   @media (max-width: 767px) {
@@ -193,7 +193,7 @@ const LogoCell = styled.div`
   justify-content: center;
   aspect-ratio: 3 / 2;
   background: oklch(0.99 0.002 120 / 0.85);
-  padding: 1.5rem;
+  padding: var(--space-6);
   transition: background 0.25s ease;
   overflow: hidden;
 
@@ -202,24 +202,24 @@ const LogoCell = styled.div`
   }
 
   @media (max-width: 599px) {
-    padding: 1rem;
+    padding: var(--space-4);
   }
 `;
 
 const LogoMeta = styled.span`
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: var(--space-4);
+  left: var(--space-4);
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--letter-extreme);
   text-transform: uppercase;
-  color: rgba(31, 53, 45, 0.65);
+  color: var(--color-text-on-dark-muted);
   pointer-events: none;
 
   @media (max-width: 599px) {
-    top: 0.75rem;
-    left: 0.75rem;
+    top: var(--space-3);
+    left: var(--space-3);
     font-size: 0.6rem;
   }
 `;
@@ -248,7 +248,7 @@ const Footnote = styled.p`
   margin-top: clamp(2rem, 4vw, 2.75rem);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--letter-widest);
   text-transform: uppercase;
-  color: rgba(31, 53, 45, 0.65);
+  color: var(--color-text-on-dark-muted);
 `;

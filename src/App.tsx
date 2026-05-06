@@ -62,9 +62,9 @@ const Main = styled.main`
 
 const PageContainer = styled.div`
   flex: 1;
-  max-width: 1100px;
+  max-width: var(--container-max);
   width: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem 2rem;
+  padding: 0 var(--space-6) var(--space-8);
   box-sizing: border-box;
 `;

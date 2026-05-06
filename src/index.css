@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
-
-:root {
-  --background: oklch(0.985 0.004 120);
-  --foreground: oklch(0.2 0.02 150);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 150);
-  --primary: oklch(0.55 0.17 145);
-  --primary-foreground: oklch(0.99 0.005 120);
-  --secondary: oklch(0.96 0.01 140);
-  --secondary-foreground: oklch(0.2 0.02 150);
-  --muted: oklch(0.96 0.01 140);
-  --muted-foreground: oklch(0.45 0.015 150);
-  --accent: oklch(0.34 0.09 150);
-  --accent-foreground: oklch(0.99 0.005 120);
-  --border: oklch(0.91 0.01 140);
-  --ring: oklch(0.55 0.17 145);
-  --radius: 0.5rem;
-  --font-sans: 'Inter', "Inter Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-display: 'Inter', "Inter Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', "JetBrains Mono Fallback", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-}
+@import './styles/tokens.css';
 
 body {
   margin: 0;

@@ -87,7 +87,7 @@ const Slide = styled.div<{ image: string; active: boolean }>`
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 60%, transparent 100%),
+    linear-gradient(135deg, var(--color-overlay-dark-55) 0%, var(--color-overlay-dark-15) 60%, transparent 100%),
     url("${({ image }) => image}");
   background-size: cover;
   background-position: center;
@@ -96,27 +96,27 @@ const Slide = styled.div<{ image: string; active: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 4rem 4rem 5rem;
+  padding: var(--space-16) var(--space-16) var(--space-20);
 
   @media (max-width: 599px) {
-    padding: 3rem 1.5rem 4rem;
+    padding: var(--space-12) var(--space-6) var(--space-16);
   }
 `;
 
 const TextPanel = styled.div`
-  background: rgba(18, 92, 52, 0.78);
-  border-radius: 18px;
-  padding: 2.25rem 2.75rem 3rem;
+  background: var(--color-panel-overlay);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 2.75rem var(--space-12);
   max-width: min(640px, 90%);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-lg);
   backdrop-filter: blur(4px);
 
   @media (max-width: 959px) {
-    padding: 2rem 2rem 2.5rem;
+    padding: var(--space-8) var(--space-8) var(--space-10);
   }
 
   @media (max-width: 599px) {
-    padding: 1.75rem 1.5rem 2rem;
+    padding: 1.75rem var(--space-6) var(--space-8);
   }
 `;
 
@@ -125,33 +125,33 @@ const AccentBar = styled.span`
   width: 48px;
   height: 3px;
   background: var(--primary);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   border-radius: 2px;
 `;
 
 const Header = styled.h2`
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
-  color: #fff;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0 0 0.75rem;
+  line-height: var(--line-snug);
+  margin: 0 0 var(--space-3);
 `;
 
 const Detail = styled.p`
   font-family: var(--font-sans);
   font-size: clamp(0.875rem, 1.5vw, 1.125rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-overlay-light-85);
   max-width: 640px;
-  line-height: 1.6;
-  font-weight: 400;
+  line-height: var(--line-relaxed);
+  font-weight: var(--font-weight-regular);
   margin: 0;
 `;
 
 const Dots = styled.div`
   position: absolute;
-  bottom: 1.5rem;
+  bottom: var(--space-6);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -163,8 +163,8 @@ const Dot = styled.button<{ active: boolean }>`
   height: 10px;
   border-radius: 5px;
   border: none;
-  background: ${({ active }) => (active ? 'var(--primary)' : 'rgba(255, 255, 255, 0.4)')};
+  background: ${({ active }) => (active ? 'var(--primary)' : 'var(--color-overlay-light-40)')};
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
   padding: 0;
 `;

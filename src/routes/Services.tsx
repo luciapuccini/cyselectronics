@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import repair from '../assets/repair.jpeg';
 import { usePageTitle } from '../hooks/usePageTitle';
-import { primaryGreen } from '../styles/colors';
 
 const Services = () => {
   usePageTitle(
@@ -73,7 +72,7 @@ export default Services;
 const TwoColumn = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: var(--space-4);
   @media (max-width: 599px) {
     flex-direction: column;
   }
@@ -88,5 +87,5 @@ const ContentCol = styled.div`
 `;
 
 const Header = styled.h3`
-  color: ${primaryGreen};
+  color: var(--primary);
 `;
