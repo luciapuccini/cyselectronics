@@ -251,4 +251,5 @@ const Footnote = styled.p`
   letter-spacing: var(--letter-widest);
   text-transform: uppercase;
   color: var(--color-text-on-dark-muted);
+  text-align: right;
 `;

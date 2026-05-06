@@ -7,115 +7,121 @@
  */
 
 :root {
-  /* ===== Colors — surface ===== */
-  --background: oklch(0.985 0.004 120);
-  --foreground: oklch(0.2 0.02 150);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 150);
+	/* ===== Colors — surface ===== */
+	--background: rgba(250, 250, 248, 1);
+	--foreground: rgba(16, 25, 17, 1);
+	--card: rgba(255, 255, 255, 1);
+	--card-foreground: rgba(16, 25, 17, 1);
 
-  /* ===== Colors — brand ===== */
-  --primary: oklch(0.55 0.17 145);
-  --primary-foreground: oklch(0.99 0.005 120);
-  --secondary: oklch(0.96 0.01 140);
-  --secondary-foreground: oklch(0.2 0.02 150);
-  --accent: oklch(0.34 0.09 150);
-  --accent-foreground: oklch(0.99 0.005 120);
+	/* ===== Colors — brand ===== */
+	--primary: rgba(9, 137, 38, 1);
+	--primary-foreground: rgba(251, 252, 249, 1);
+	--secondary: rgba(238, 244, 237, 1);
+	--secondary-foreground: rgba(16, 25, 17, 1);
+	--accent: rgba(5, 68, 29, 1);
+	--accent-foreground: rgba(251, 252, 249, 1);
 
-  /* ===== Colors — state ===== */
-  --muted: oklch(0.96 0.01 140);
-  --muted-foreground: oklch(0.45 0.015 150);
-  --border: oklch(0.91 0.01 140);
-  --ring: oklch(0.55 0.17 145);
+	/* ===== Colors — state ===== */
+	--muted: rgba(238, 244, 237, 1);
+	--muted-foreground: rgba(80, 88, 81, 1);
+	--border: rgba(222, 227, 221, 1);
+	--ring: rgba(9, 137, 38, 1);
 
-  /* ===== Colors — overlays ===== */
-  --color-overlay-light-40: rgba(255, 255, 255, 0.4);
-  --color-overlay-light-65: rgba(255, 255, 255, 0.65);
-  --color-overlay-light-85: rgba(255, 255, 255, 0.85);
-  --color-overlay-light-90: rgba(255, 255, 255, 0.9);
-  --color-overlay-light-92: rgba(255, 255, 255, 0.92);
-  --color-overlay-light-96: rgba(255, 255, 255, 0.96);
-  --color-overlay-dark-15: rgba(0, 0, 0, 0.15);
-  --color-overlay-dark-25: rgba(0, 0, 0, 0.25);
-  --color-overlay-dark-55: rgba(0, 0, 0, 0.55);
-  --color-divider-on-dark: rgba(255, 255, 255, 0.1);
+	/* ===== Colors — overlays ===== */
+	--color-overlay-light-40: rgba(255, 255, 255, 0.4);
+	--color-overlay-light-65: rgba(255, 255, 255, 0.65);
+	--color-overlay-light-85: rgba(255, 255, 255, 0.85);
+	--color-overlay-light-90: rgba(255, 255, 255, 0.9);
+	--color-overlay-light-92: rgba(255, 255, 255, 0.92);
+	--color-overlay-light-96: rgba(255, 255, 255, 0.96);
+	--color-overlay-dark-15: rgba(0, 0, 0, 0.15);
+	--color-overlay-dark-25: rgba(0, 0, 0, 0.25);
+	--color-overlay-dark-55: rgba(0, 0, 0, 0.55);
+	--color-divider-on-dark: rgba(255, 255, 255, 0.1);
 
-  /* ===== Colors — component tints ===== */
-  --color-shadow-soft: rgba(17, 28, 24, 0.12);
-  --color-shadow-strong: rgba(0, 0, 0, 0.25);
-  --color-panel-overlay: rgba(18, 92, 52, 0.78);
-  --color-text-on-dark-muted: rgba(31, 53, 45, 0.65);
-  --color-grid-dot: #c8cacc;
-  --color-white: #ffffff;
+	/* ===== Colors — component tints ===== */
+	--color-shadow-soft: rgba(17, 28, 24, 0.12);
+	--color-shadow-strong: rgba(0, 0, 0, 0.25);
+	--color-panel-overlay: rgba(18, 92, 52, 0.78);
+	--color-text-on-dark-muted: rgba(31, 53, 45, 0.65);
+	--color-grid-dot: #c8cacc;
+	--color-white: #ffffff;
 
-  /* ===== Spacing scale ===== */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-14: 3.5rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
+	/* ===== Spacing scale ===== */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.25rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-10: 2.5rem;
+	--space-12: 3rem;
+	--space-14: 3.5rem;
+	--space-16: 4rem;
+	--space-20: 5rem;
 
-  /* ===== Radii ===== */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius: 0.5rem; /* legacy alias for --radius-md */
-  --radius-lg: 12px;
-  --radius-xl: 18px;
+	/* ===== Radii ===== */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius: 0.5rem; /* legacy alias for --radius-md */
+	--radius-lg: 12px;
+	--radius-xl: 18px;
 
-  /* ===== Shadows ===== */
-  --shadow-sm: 0 18px 35px var(--color-shadow-soft);
-  --shadow-lg: 0 22px 50px var(--color-shadow-strong);
+	/* ===== Shadows ===== */
+	--shadow-sm: 0 18px 35px var(--color-shadow-soft);
+	--shadow-lg: 0 22px 50px var(--color-shadow-strong);
 
-  /* ===== Z-index ===== */
-  --z-base: 0;
-  --z-raised: 1;
-  --z-sticky: 100;
-  --z-dropdown: 120;
+	/* ===== Z-index ===== */
+	--z-base: 0;
+	--z-raised: 1;
+	--z-sticky: 100;
+	--z-dropdown: 120;
 
-  /* ===== Typography — families ===== */
-  --font-sans: 'Inter', "Inter Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-display: 'Inter', "Inter Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', "JetBrains Mono Fallback", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+	/* ===== Typography — families ===== */
+	--font-sans:
+		"Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		system-ui, sans-serif;
+	--font-display:
+		"Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		system-ui, sans-serif;
+	--font-mono:
+		"JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, SFMono-Regular,
+		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* ===== Typography — weights ===== */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+	/* ===== Typography — weights ===== */
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
 
-  /* ===== Typography — sizes (most-reused) ===== */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.825rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
+	/* ===== Typography — sizes (most-reused) ===== */
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.825rem;
+	--font-size-base: 1rem;
+	--font-size-lg: 1.125rem;
 
-  /* ===== Typography — line-heights ===== */
-  --line-tight: 1;
-  --line-snug: 1.1;
-  --line-relaxed: 1.6;
-  --line-loose: 1.7;
+	/* ===== Typography — line-heights ===== */
+	--line-tight: 1;
+	--line-snug: 1.1;
+	--line-relaxed: 1.6;
+	--line-loose: 1.7;
 
-  /* ===== Typography — letter-spacings ===== */
-  --letter-tight: 0.02em;
-  --letter-wide: 0.08em;
-  --letter-wider: 0.1em;
-  --letter-widest: 0.18em;
-  --letter-extreme: 0.22em;
+	/* ===== Typography — letter-spacings ===== */
+	--letter-tight: 0.02em;
+	--letter-wide: 0.08em;
+	--letter-wider: 0.1em;
+	--letter-widest: 0.18em;
+	--letter-extreme: 0.22em;
 
-  /* ===== Transitions ===== */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.2s ease;
-  --transition-slow: 0.3s ease;
+	/* ===== Transitions ===== */
+	--transition-fast: 0.15s ease;
+	--transition-base: 0.2s ease;
+	--transition-slow: 0.3s ease;
 
-  /* ===== Layout ===== */
-  --container-max: 1100px;
-  --container-max-wide: 1120px;
-  --header-height: 64px;
-  --header-height-mobile: 60px;
+	/* ===== Layout ===== */
+	--container-max: 1100px;
+	--container-max-wide: 1120px;
+	--header-height: 64px;
+	--header-height-mobile: 60px;
 }

@@ -264,7 +264,7 @@ const NavCode = styled.span`
   font-size: 0.7rem;
   letter-spacing: var(--letter-extreme);
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--primary);
   opacity: 0.75;
 `;
 
@@ -285,7 +285,7 @@ const navBaseStyles = `
 
 const NavLink = styled.a<{ $active: boolean }>`
   ${navBaseStyles}
-  color: ${({ $active }) => ($active ? 'var(--foreground)' : 'var(--muted-foreground)')};
+  color: ${({ $active }) => ($active ? 'var(--color-text-on-dark-muted)' : 'var(--muted-foreground)')};
 
   &:hover {
     color: var(--foreground);
@@ -297,8 +297,8 @@ const NavLink = styled.a<{ $active: boolean }>`
     left: var(--space-4);
     right: var(--space-4);
     bottom: -6px;
-    height: 1px;
-    background: var(--accent);
+    height: 2px;
+    background: var(--primary);
     transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
     transform-origin: center;
     transition: transform var(--transition-base);
@@ -327,7 +327,7 @@ const NavDropdownToggle = styled.button<{ $active: boolean }>`
     right: var(--space-4);
     bottom: -6px;
     height: 1px;
-    background: var(--accent);
+    background: var(--primary);
     transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
     transform-origin: center;
     transition: transform var(--transition-base);
@@ -389,7 +389,7 @@ const QuoteButton = styled.a`
   transition: border-color var(--transition-base), color var(--transition-base);
 
   &:hover {
-    border-color: var(--accent);
+    border-color: var(--primary);
     color: var(--accent);
   }
 `;
@@ -540,6 +540,6 @@ const MobileQuoteButton = styled.a`
 
   &:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--primary);
   }
 `;
