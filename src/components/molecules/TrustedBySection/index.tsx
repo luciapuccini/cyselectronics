@@ -65,13 +65,36 @@ const TrustedBySection = () => {
 export default TrustedBySection;
 
 const Section = styled.section`
-  background: var(--secondary);
+  position: relative;
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ffffff;
+    background-image: radial-gradient(circle, #c8cacc 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 50%,
+      transparent 30%,
+      black 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 50%,
+      transparent 30%,
+      black 100%
+    );
+    z-index: 0;
+  }
 `;
 
 const Inner = styled.div`
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;

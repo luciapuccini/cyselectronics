@@ -51,9 +51,11 @@ const Carousel = () => {
     <Wrapper>
       {slides.map((slide, i) => (
         <Slide key={slide.header} image={slide.image} active={i === current}>
-          <AccentBar />
-          <Header>{slide.header}</Header>
-          <Detail>{slide.detail}</Detail>
+          <TextPanel>
+            <AccentBar />
+            <Header>{slide.header}</Header>
+            <Detail>{slide.detail}</Detail>
+          </TextPanel>
         </Slide>
       ))}
       <Dots>
@@ -98,6 +100,23 @@ const Slide = styled.div<{ image: string; active: boolean }>`
 
   @media (max-width: 599px) {
     padding: 3rem 1.5rem 4rem;
+  }
+`;
+
+const TextPanel = styled.div`
+  background: rgba(18, 92, 52, 0.78);
+  border-radius: 18px;
+  padding: 2.25rem 2.75rem 3rem;
+  max-width: min(640px, 90%);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+
+  @media (max-width: 959px) {
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  @media (max-width: 599px) {
+    padding: 1.75rem 1.5rem 2rem;
   }
 `;
 

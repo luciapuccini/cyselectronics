@@ -13,16 +13,16 @@ const Home = () => {
   return (
     <>
       <Carousel />
-      <Hero className="bg-grid">
+      {/* <Hero className="bg-grid">
         <Title>C&S Controles y Sistemas</Title>
         <Lede>
           We complement existing technologies with our own developments,
           aligned with the specific needs of the client, providing solutions
           to problems that have no reception in traditional suppliers.
         </Lede>
-      </Hero>
+      </Hero> */}
       <TrustedBySection />
-      <LocationMap />
+      {/* <LocationMap /> */}
     </>
   );
 };
