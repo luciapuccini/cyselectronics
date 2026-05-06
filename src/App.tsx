@@ -10,6 +10,7 @@ import ErrorPage from './routes/Error';
 import Home from './routes/Home';
 import Products from './routes/Products';
 import Services from './routes/Services';
+import Solutions from './routes/Solutions';
 
 // Full-width pages (Home has carousel + full-bleed sections)
 const FullWidthLayout = () => (
@@ -38,6 +39,7 @@ const App = () => (
       <Route element={<PageLayout />}>
         <Route path="/company" element={<Company />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/solutions" element={<Solutions />} />
         <Route path="/products/*" element={<Products />} />
         <Route path="/services" element={<Services />} />
         <Route path="*" element={<ErrorPage />} />
