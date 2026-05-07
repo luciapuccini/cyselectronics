@@ -19,9 +19,9 @@ const NAV_ITEMS: NavItem[] = [
   // { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
   {
     code: '02',
-    label: 'Products',
-    href: '/products',
-    match: (path) => path.startsWith('/products'),
+    label: 'Solutions',
+    href: '/solutions',
+    match: (path) => path.startsWith('/solutions'),
     // children: [
     //   { label: 'Positioning', href: '/products/positioning' },
     //   { label: 'Protection', href: '/products/protection' },
