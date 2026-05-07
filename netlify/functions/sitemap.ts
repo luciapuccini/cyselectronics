@@ -1,3 +1,5 @@
+// fallow-ignore-file unused-file
+// Netlify framework convention: deployed from /netlify/functions/ by filename
 import type { Handler } from '@netlify/functions';
 
 const EN_BASE = 'https://www.cyselectronics.com';

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { domainConfig } from '../config/domain';
 
-export type Bilingual = { en: string; es: string };
+type Bilingual = { en: string; es: string };
 type TitleInput = string | Bilingual | undefined;
 
 function resolve(input: TitleInput, locale: 'en' | 'es'): string | undefined {

@@ -7,10 +7,20 @@ interface Props {
 }
 
 const Product: React.FC<Props> = ({ product }) => {
-  // @ts-ignore
-  const { complete_title, title, description, image, detail } = getProduct(product);
+  const productData = getProduct(product);
   const isMagnaposi = product === 'magnaposi';
 
+  if (!productData) {
+    return (
+      <Container>
+        <Header>Product not found</Header>
+        <p>The requested product is not available.</p>
+      </Container>
+    );
+  }
+
+  const { complete_title, title, description, image, detail } = productData;
+  
   return (
     <Container>
       <Header>{complete_title || title}</Header>

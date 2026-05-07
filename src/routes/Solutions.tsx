@@ -495,65 +495,101 @@ const ProductCard = ({ item }: { item: ProductItem }) => (
         <ProductName>{item.name}</ProductName>
         <ProductDetail>{item.detail}</ProductDetail>
 
-        {item.modes && (
-          <ModeList>
-            {item.modes.map((mode) => (
-              <ModeCard key={mode.name}>
-                <ModeName>{mode.name}</ModeName>
-                <ModeDescription>{mode.description}</ModeDescription>
-              </ModeCard>
-            ))}
-          </ModeList>
-        )}
-
-        {item.features && (
-          <FeatureList>
-            {item.features.map((feature) => (
-              <li key={feature}>{feature}</li>
-            ))}
-          </FeatureList>
-        )}
-
-        {item.specs && item.specs.length > 0 && (
-          <SpecTable>
-            {item.specs.map((spec) => (
-              <SpecRow key={spec.label}>
-                <SpecLabel>{spec.label}</SpecLabel>
-                <SpecValue>{spec.value}</SpecValue>
-              </SpecRow>
-            ))}
-          </SpecTable>
-        )}
-
-        {(item.ctas || item.supportingLink) && (
-          <CtaRow>
-            {item.ctas?.map((cta) => (
-              <CardButton
-                key={cta.label}
-                href={cta.href}
-                $variant={cta.variant}
-                target={cta.newTab ? '_blank' : undefined}
-                rel={cta.newTab ? 'noreferrer' : undefined}
-                download={cta.download}
-              >
-                {cta.label}
-              </CardButton>
-            ))}
-            {item.supportingLink && (
-              <SupportingLink
-                href={item.supportingLink.href}
-                target={item.supportingLink.newTab ? '_blank' : undefined}
-                rel={item.supportingLink.newTab ? 'noreferrer' : undefined}
-              >
-                {item.supportingLink.label}
-              </SupportingLink>
-            )}
-          </CtaRow>
-        )}
+        <ProductModes modes={item.modes} />
+        <ProductFeatures features={item.features} />
+        <ProductSpecs specs={item.specs} />
+        <ProductActions ctas={item.ctas} supportingLink={item.supportingLink} />
       </ProductBody>
     </ProductGrid>
   </ProductCardRoot>
 );
+
+const ProductModes = ({ modes }: { modes?: Mode[] }) => {
+  if (!modes || modes.length === 0) {
+    return null;
+  }
+
+  return (
+    <ModeList>
+      {modes.map((mode) => (
+        <ModeCard key={mode.name}>
+          <ModeName>{mode.name}</ModeName>
+          <ModeDescription>{mode.description}</ModeDescription>
+        </ModeCard>
+      ))}
+    </ModeList>
+  );
+};
+
+const ProductFeatures = ({ features }: { features?: Feature[] }) => {
+  if (!features || features.length === 0) {
+    return null;
+  }
+
+  return (
+    <FeatureList>
+      {features.map((feature) => (
+        <li key={feature}>{feature}</li>
+      ))}
+    </FeatureList>
+  );
+};
+
+const ProductSpecs = ({ specs }: { specs?: Spec[] }) => {
+  if (!specs || specs.length === 0) {
+    return null;
+  }
+
+  return (
+    <SpecTable>
+      {specs.map((spec) => (
+        <SpecRow key={spec.label}>
+          <SpecLabel>{spec.label}</SpecLabel>
+          <SpecValue>{spec.value}</SpecValue>
+        </SpecRow>
+      ))}
+    </SpecTable>
+  );
+};
+
+const ProductActions = ({
+  ctas,
+  supportingLink,
+}: {
+  ctas?: Cta[];
+  supportingLink?: ProductItem['supportingLink'];
+}) => {
+  const hasCtas = Boolean(ctas && ctas.length > 0);
+  if (!hasCtas && !supportingLink) {
+    return null;
+  }
+
+  return (
+    <CtaRow>
+      {ctas?.map((cta) => (
+        <CardButton
+          key={cta.label}
+          href={cta.href}
+          $variant={cta.variant}
+          target={cta.newTab ? '_blank' : undefined}
+          rel={cta.newTab ? 'noreferrer' : undefined}
+          download={cta.download}
+        >
+          {cta.label}
+        </CardButton>
+      ))}
+      {supportingLink && (
+        <SupportingLink
+          href={supportingLink.href}
+          target={supportingLink.newTab ? '_blank' : undefined}
+          rel={supportingLink.newTab ? 'noreferrer' : undefined}
+        >
+          {supportingLink.label}
+        </SupportingLink>
+      )}
+    </CtaRow>
+  );
+};
 
 const ServiceCard = ({ item }: { item: ServiceItem }) => (
   <ServiceCardRoot>
