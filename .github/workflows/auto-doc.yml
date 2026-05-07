@@ -1,77 +1,99 @@
-name: AI‑Generated Documentation for PRs
+name: Issue Quality Enhancer
 
 on:
-  pull_request:
-    types: [closed]
+  issues:
+    types: [opened]
 
 jobs:
-  doc-gen:
-    # Only on actual merges; skip our own docs PRs to prevent loops
-    if: >
-      github.event.pull_request.merged == true &&
-      !startsWith(github.event.pull_request.head.ref, 'ai-docs/')
-
+  enhance-issue:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
-      pull-requests: write
+      issues: write
+      contents: read
 
     steps:
       # ---------------------------------------------------------------
-      # 1️⃣ Checkout the base branch at the merge commit
-      #    fetch-depth: 2 gives us HEAD (merge) and HEAD~1 (previous tip)
+      # 1️⃣ Checkout so we can read docs/agents/triage-labels.md
       # ---------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.base.ref }}
-          fetch-depth: 2
 
       # ---------------------------------------------------------------
-      # 2️⃣ Build the Ollama prompt: diff + current AGENT_DOCS.md
+      # 2️⃣ Build the Ollama prompt from the new issue + triage labels
       # ---------------------------------------------------------------
       - name: Build prompt
         env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          # Diff introduced by this merge (works for merge, squash, and rebase)
-          git diff HEAD~1 HEAD -- \
-            ':(exclude)**/node_modules' \
-            ':(exclude)**/.git*' \
-            ':(exclude)**/.github' \
-            ':(exclude)**/dist' \
-            ':(exclude)**/build' \
-            | head -c 6000 > /tmp/pr_diff.txt
-
-          # Read existing AGENT_DOCS.md (cap at 2000 chars to stay within context)
-          if [ -f AGENT_DOCS.md ]; then
-            head -c 2000 AGENT_DOCS.md > /tmp/current_docs.txt
-          else
-            echo '(no existing documentation)' > /tmp/current_docs.txt
-          fi
+          printf '%s' "${ISSUE_BODY:-*(no body provided)*}" > /tmp/issue_body.txt
 
           {
-            echo 'You are a technical writer maintaining AGENT_DOCS.md for a software project.'
-            echo 'This file is a concise tech-stack and architecture reference, similar to a README.'
-            echo 'Keep it under 120 lines. Use markdown headings and bullet points.'
-            echo ''
-            echo 'Task:'
-            echo '- Read the current AGENT_DOCS.md and the PR diff below.'
-            echo '- If the diff introduces relevant changes (new deps, frameworks, architecture, config),'
-            echo '  reply with the full updated AGENT_DOCS.md content — nothing else.'
-            echo '- If the diff has no impact on the tech stack or architecture, reply with exactly: NO_UPDATE'
-            echo ''
-            echo '=== CURRENT AGENT_DOCS.md ==='
-            cat /tmp/current_docs.txt
-            echo ''
-            echo '=== PR INFO ==='
-            printf 'Title: %s\n' "$PR_TITLE"
-            printf 'Number: #%s\n' "$PR_NUMBER"
-            echo ''
-            echo '=== DIFF ==='
-            cat /tmp/pr_diff.txt
+            cat << 'HEADER'
+# Issue Quality Enhancer
+Enhance new issues to make them clear, well-structured, and easy to understand.
+
+HEADER
+
+            echo "## Issue to enhance"
+            printf '- Number: #%s\n' "$ISSUE_NUMBER"
+            printf '- Author: @%s\n' "$ISSUE_AUTHOR"
+            printf '- Title:  %s\n' "$ISSUE_TITLE"
+            echo "- Body:"
+            echo ""
+            cat /tmp/issue_body.txt
+
+            echo ""
+            echo "## Repository triage labels"
+            echo ""
+            cat docs/agents/triage-labels.md
+
+            cat << 'TASKS'
+
+## Your tasks
+
+### 1. Improve the title
+Add an emoji prefix based on the issue type:
+- 🐛 Bug
+- ✨ Feature
+- 📝 Docs
+- 🔧 Refactor
+- ⚡ Performance
+Example: `🐛 Fix login error when password contains special characters`
+
+### 2. Restructure the body
+**For bugs:**
+```
+## 🐛 Description
+## 📋 Steps to Reproduce
+## ✅ Expected vs ❌ Actual Behavior
+```
+**For features:**
+```
+## ✨ Description
+## 🎯 Why is this needed?
+## 📐 Proposed Solution
+```
+
+### 3. Output format
+Respond ONLY with a single valid JSON object — no extra text:
+{
+  "title": "improved title",
+  "body": "improved body (use \\n for newlines)",
+  "labels": ["label1"],
+  "comment": "one-sentence summary of improvements"
+}
+
+Available labels (use 1–3): needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix
+
+## Rules
+- Never change the original meaning
+- If already well-written, make minimal changes
+- Keep it helpful, not verbose
+TASKS
           } > /tmp/ollama_prompt.txt
 
       # ---------------------------------------------------------------
@@ -83,44 +105,87 @@ jobs:
       - name: Pull model
         run: ollama pull tinyllama
 
-      - name: Generate updated docs
+      - name: Generate enhancement
         id: ollama
         run: |
           RESPONSE=$(curl -s http://localhost:11434/api/generate \
             -H 'Content-Type: application/json' \
             -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
-                  --arg model tinyllama \
-                  '{model: $model, prompt: $prompt, stream: false}')" \
+                  '{model: "tinyllama", prompt: $prompt, stream: false}')" \
             | jq -r '.response // ""')
 
           echo "$RESPONSE" > /tmp/ollama_response.txt
 
-          if [ "$RESPONSE" = "NO_UPDATE" ] || [ -z "$RESPONSE" ]; then
-            echo "skip=true" >> $GITHUB_OUTPUT
+          if [ -z "$RESPONSE" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
           else
-            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
       # ---------------------------------------------------------------
-      # 4️⃣ Write AGENT_DOCS.md and open a PR (skipped if no changes)
+      # 4️⃣ Parse the JSON response and apply changes via gh CLI
       # ---------------------------------------------------------------
-      - name: Write AGENT_DOCS.md
+      - name: Apply changes
         if: steps.ollama.outputs.skip == 'false'
-        run: cp /tmp/ollama_response.txt AGENT_DOCS.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Robustly extract the first valid JSON object that contains "title"
+          JSON=$(python3 - <<'PYEOF'
+import sys, json, re
 
-      - name: Open documentation PR
-        if: steps.ollama.outputs.skip == 'false'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          base: ${{ github.event.pull_request.base.ref }}
-          branch: ai-docs/pr-${{ github.event.pull_request.number }}
-          commit-message: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
-          title: "docs: update AGENT_DOCS.md for PR #${{ github.event.pull_request.number }}"
-          body: |
-            Auto-generated update to `AGENT_DOCS.md` based on changes merged in PR #${{ github.event.pull_request.number }}.
+with open('/tmp/ollama_response.txt') as f:
+    text = f.read()
 
-            Review and merge if the content looks accurate.
+for match in re.finditer(r'\{', text):
+    start = match.start()
+    depth = 0
+    for i, ch in enumerate(text[start:], start):
+        if ch == '{':
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0:
+                candidate = text[start:i+1]
+                try:
+                    obj = json.loads(candidate)
+                    if 'title' in obj:
+                        print(json.dumps(obj))
+                        sys.exit(0)
+                except json.JSONDecodeError:
+                    pass
+                break
 
-            **Model:** `tinyllama` via Ollama
-          labels: autogenerated, documentation
-          delete-branch: true
+print('{}')
+PYEOF
+)
+
+          TITLE=$(echo "$JSON" | jq -r '.title // empty')
+          BODY=$(echo "$JSON"  | jq -r '.body  // empty')
+          COMMENT=$(echo "$JSON" | jq -r '.comment // "Issue reviewed and structured by AI."')
+
+          # Update title + body only when the model returned something meaningful
+          if [ -n "$TITLE" ] && [ -n "$BODY" ]; then
+            gh issue edit "$ISSUE_NUMBER" \
+              --repo "$REPO" \
+              --title "$TITLE" \
+              --body  "$BODY"
+            echo "Updated issue #$ISSUE_NUMBER title and body."
+          else
+            echo "Model did not return a valid title/body — skipping edit."
+          fi
+
+          # Apply labels (silently skip any label that does not exist in the repo)
+          echo "$JSON" | jq -r '.labels[]? // empty' | while IFS= read -r label; do
+            gh issue edit "$ISSUE_NUMBER" \
+              --repo "$REPO" \
+              --add-label "$label" 2>/dev/null \
+              || echo "Label '$label' not found in repo, skipping."
+          done
+
+          # Post a comment summarising what was done
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$REPO" \
+            --body "$(printf '🤖 **Issue enhanced by AI**\n\n%s\n\n---\n*Processed by [Issue Quality Enhancer](.github/workflows/auto-doc.yml) · model: tinyllama*' "$COMMENT")"
