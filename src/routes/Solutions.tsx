@@ -1,4 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import magnaposiImg from '../assets/products/Magnaposi.png';
@@ -417,92 +416,68 @@ const Solutions = () => {
     { en: copy.en.metaDescription, es: copy.es.metaDescription },
   );
   const { locale } = useTranslation();
-  const content = useMemo(() => copy[locale], [locale]);
-
-  const [activeSection, setActiveSection] = useState<SectionKey>('positioning');
-  const [activeItemId, setActiveItemId] = useState<string>(
-    content.sections[activeSection].items[0].id,
-  );
-
-  useEffect(() => {
-    const firstItem = content.sections[activeSection].items[0];
-    setActiveItemId(firstItem.id);
-  }, [activeSection, content]);
-
-  const section = content.sections[activeSection];
-  const activeItem = section.items.find((item) => item.id === activeItemId) ?? section.items[0];
-  const hasTabs = section.items.length > 1;
-  const isServices = section.type === 'service';
+  const content = copy[locale];
 
   return (
     <Page>
-      <Hero>
-        <HeroEyebrow>
-          <HeroDash />
-          {content.hero.eyebrow}
-        </HeroEyebrow>
-        <HeroTitle>{content.hero.title}</HeroTitle>
-        <HeroLede>{content.hero.lede}</HeroLede>
-      </Hero>
+      <HeroSection>
+        <Hero>
+          <HeroEyebrow>
+            <HeroDash />
+            {content.hero.eyebrow}
+          </HeroEyebrow>
+          <HeroTitle>{content.hero.title}</HeroTitle>
+          <HeroLede>{content.hero.lede}</HeroLede>
+        </Hero>
+      </HeroSection>
 
-      <Tabs role="tablist">
-        {sectionOrder.map((key) => {
-          const tabContent = content.sections[key];
-          const active = key === activeSection;
-          return (
-            <TabButton
-              key={key}
-              type="button"
-              role="tab"
-              aria-selected={active}
-              onClick={() => setActiveSection(key)}
-            >
-              <TabIcon aria-hidden="true">{renderIcon(key)}</TabIcon>
-              <span>{tabContent.label}</span>
-            </TabButton>
-          );
-        })}
-      </Tabs>
+      {sectionOrder.map((key) => {
+        const section = content.sections[key];
+        const isServices = section.type === 'service';
 
-      <SectionContainer>
-        <SectionDescription>{section.description}</SectionDescription>
+        return (
+          <SolutionsSection key={key} id={key}>
+            <SectionPattern aria-hidden="true" />
+            <SolutionsSectionInner>
+              <SolutionsSectionHeader>
+                <SectionLabel>
+                  <SectionAccent />
+                  <span>{section.label} · {String(section.items.length).padStart(2, '0')}</span>
+                </SectionLabel>
+                <SectionDescription>{section.description}</SectionDescription>
+              </SolutionsSectionHeader>
 
-        {hasTabs && (
-          <SubTabs role="tablist">
-            {section.items.map((item) => {
-              const isActive = item.id === activeItemId;
-              return (
-                <SubTabButton
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveItemId(item.id)}
-                >
-                  {item.name}
-                </SubTabButton>
-              );
-            })}
-          </SubTabs>
-        )}
+              {isServices ? (
+                <ServiceGrid>
+                  {(section.items as ServiceItem[]).map((item) => (
+                    <ServiceCard key={item.id} item={item} />
+                  ))}
+                </ServiceGrid>
+              ) : (
+                <ProductStack>
+                  {(section.items as ProductItem[]).map((item) => (
+                    <ProductCard key={item.id} item={item} />
+                  ))}
+                </ProductStack>
+              )}
+            </SolutionsSectionInner>
+          </SolutionsSection>
+        );
+      })}
 
-        {isServices ? (
-          <ServiceCard item={activeItem as ServiceItem} />
-        ) : (
-          <ProductCard item={activeItem as ProductItem} />
-        )}
-      </SectionContainer>
-
-      <CtaSection>
+      <FinalCtaSection>
         <CtaInner>
           <CtaCopy>
-            <CtaHeading>{content.cta.heading}</CtaHeading>
+            <SectionLabel $tone="light">
+              <SectionAccent />
+              <span>{content.cta.heading}</span>
+            </SectionLabel>
             <CtaBody>{content.cta.body}</CtaBody>
           </CtaCopy>
           <CtaButton href={content.cta.href}>{content.cta.button}</CtaButton>
           <CtaPattern aria-hidden="true" />
         </CtaInner>
-      </CtaSection>
+      </FinalCtaSection>
     </Page>
   );
 };
@@ -604,52 +579,45 @@ const ServiceCard = ({ item }: { item: ServiceItem }) => (
   </ServiceCardRoot>
 );
 
-const renderIcon = (key: SectionKey) => {
-  switch (key) {
-    case 'positioning':
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-          <path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-        </svg>
-      );
-    case 'protection':
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z" />
-          <path d="M9 12l2 2 4-4" />
-        </svg>
-      );
-    case 'services':
-    default:
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
-        </svg>
-      );
-  }
-};
-
 const Page = styled.div`
-  max-width: ${tokens.layout.containerMaxWide};
-  margin: 0 auto;
-  padding: ${tokens.space[16]} ${tokens.space[6]} ${tokens.space[20]};
   display: flex;
   flex-direction: column;
-  gap: ${tokens.space[12]};
+`;
 
-  @media (max-width: ${tokens.bp.lg}) {
-    padding: ${tokens.space[14]} ${tokens.space[6]} ${tokens.space[16]};
-    gap: ${tokens.space[10]};
+const HeroSection = styled.section`
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(3rem, 6vw, 4rem);
+  background: var(--background);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        90deg,
+        rgba(16, 25, 17, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        rgba(16, 25, 17, 0.05) 1px,
+        transparent 1px
+      );
+    background-size: 22px 22px;
+    opacity: 0.35;
+    pointer-events: none;
   }
 `;
 
 const Hero = styled.header`
+  position: relative;
+  z-index: var(--z-raised);
   display: flex;
   flex-direction: column;
   gap: ${tokens.space[4]};
   max-width: 720px;
+  margin: 0 auto;
 `;
 
 const HeroEyebrow = styled.span`
@@ -689,97 +657,103 @@ const HeroLede = styled.p`
   max-width: 580px;
 `;
 
-const Tabs = styled.nav`
-  display: flex;
-  gap: ${tokens.space[1]};
-  border: 1px solid ${tokens.colors.border};
-  position: sticky;
-  top: calc(${tokens.layout.headerHeight} + ${tokens.space[2]});
-  z-index: ${tokens.z.sticky};
-  background: ${tokens.colors.card};
-  padding-bottom: ${tokens.space[1]};
+const SolutionsSection = styled.section`
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+  padding: clamp(4rem, 7vw, 6rem) var(--space-8);
+  overflow: hidden;
+
+  &:nth-of-type(even) {
+    background: var(--card);
+  }
 
   @media (max-width: ${tokens.bp.lg}) {
-    top: calc(${tokens.layout.headerHeightMobile} + ${tokens.space[2]});
-    overflow-x: auto;
+    padding: clamp(3rem, 10vw, 4.5rem) var(--space-6);
   }
 `;
 
-const TabButton = styled.button`
-  appearance: none;
-  border: none;
-  background: none;
-  padding: ${tokens.space[4]} ${tokens.space[5]};
-  display: inline-flex;
-  align-items: center;
-  gap: ${tokens.space[2]};
-  font-size: 0.85rem;
-  font-weight: ${tokens.fontWeight.medium};
-  letter-spacing: ${tokens.letter.tight};
-  color: ${tokens.colors.mutedForeground};
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color ${tokens.transition.fast}, border-color ${tokens.transition.fast};
-
-  &[aria-selected='true'] {
-    color: ${tokens.colors.primary};
-    border-bottom-color: ${tokens.colors.primary};
-    font-weight: ${tokens.fontWeight.semibold};
-  }
-
-  &:hover {
-    color: ${tokens.colors.primary};
-  }
+const SectionPattern = styled.div`
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      90deg,
+      rgba(16, 25, 17, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(16, 25, 17, 0.06) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+  opacity: 0.28;
+  pointer-events: none;
 `;
 
-const TabIcon = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-`;
-
-const SectionContainer = styled.section`
+const SolutionsSectionInner = styled.div`
+  position: relative;
+  z-index: var(--z-raised);
+  max-width: var(--container-max-wide);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: ${tokens.space[6]};
+  gap: clamp(var(--space-6), 6vw, var(--space-12));
+`;
+
+const SolutionsSectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+
+  @media (min-width: 960px) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+`;
+
+const SectionLabel = styled.span<{ $tone?: 'default' | 'light' }>`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-extreme);
+  text-transform: uppercase;
+  color: ${({ $tone }) => ($tone === 'light' ? 'var(--accent-foreground)' : 'var(--accent)')};
+`;
+
+const SectionAccent = styled.span`
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: currentColor;
 `;
 
 const SectionDescription = styled.p`
   margin: 0;
-  font-size: ${tokens.fontSize.lg};
-  color: ${tokens.colors.mutedForeground};
-  line-height: ${tokens.lineHeight.relaxed};
-  max-width: 760px;
+  max-width: clamp(520px, 55vw, 720px);
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: var(--muted-foreground);
+  line-height: var(--line-relaxed);
+  text-wrap: pretty;
 `;
 
-const SubTabs = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${tokens.space[2]};
+const ProductStack = styled.div`
+  display: grid;
+  gap: clamp(var(--space-6), 5vw, var(--space-10));
 `;
 
-const SubTabButton = styled.button`
-  appearance: none;
-  border-radius: ${tokens.radius.md};
-  border: 1px solid ${tokens.colors.border};
-  color: ${tokens.colors.mutedForeground};
-  font-size: ${tokens.fontSize.sm};
-  font-weight: ${tokens.fontWeight.medium};
-  padding: ${tokens.space[2]} ${tokens.space[4]};
-  cursor: pointer;
-  transition: background ${tokens.transition.fast}, color ${tokens.transition.fast}, border-color ${tokens.transition.fast};
+const ServiceGrid = styled.div`
+  display: grid;
+  gap: var(--space-6);
 
-  &[aria-selected='true'] {
-    background: ${tokens.colors.primary};
-    border-color: ${tokens.colors.primary};
-    color: ${tokens.colors.primaryForeground};
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  &:hover {
-    color: ${tokens.colors.primary};
-    border-color: ${tokens.colors.primary};
-    background: rgba(255, 255, 255, 0.02);
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 `;
 
@@ -1043,26 +1017,30 @@ const ServiceSubsectionDetail = styled.span`
   color: ${tokens.colors.mutedForeground};
 `;
 
-const CtaSection = styled.section`
-  margin-top: ${tokens.space[10]};
+const FinalCtaSection = styled.section`
+  position: relative;
+  border-top: 1px solid var(--border);
+  background: var(--background);
+  padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(5rem, 8vw, 6.5rem);
 `;
 
 const CtaInner = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: ${tokens.radius.xl};
-  padding: ${tokens.space[12]} ${tokens.space[10]};
+  padding: clamp(${tokens.space[10]}, 6vw, ${tokens.space[12]}) clamp(${tokens.space[8]}, 8vw, ${tokens.space[10]});
   background: ${tokens.colors.accent};
   display: flex;
   flex-wrap: wrap;
   gap: ${tokens.space[6]};
   align-items: center;
   justify-content: space-between;
+  max-width: var(--container-max-wide);
+  margin: 0 auto;
 
   @media (max-width: ${tokens.bp.lg}) {
     flex-direction: column;
     align-items: flex-start;
-    padding: ${tokens.space[10]} ${tokens.space[8]};
   }
 `;
 
@@ -1073,14 +1051,6 @@ const CtaCopy = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${tokens.space[2]};
-`;
-
-const CtaHeading = styled.h2`
-  margin: 0;
-  font-size: clamp(1.6rem, 3vw, 1.9rem);
-  font-weight: ${tokens.fontWeight.bold};
-  line-height: ${tokens.lineHeight.snug};
-  color: ${tokens.colors.accentForeground};
 `;
 
 const CtaBody = styled.p`
