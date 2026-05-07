@@ -4,12 +4,9 @@ import styled from 'styled-components';
 import CustomNavBar from './components/organisms/NavBar/NavBar';
 import './App.css';
 import Footer from './components/Footer';
-import Company from './routes/Company';
 import Contact from './routes/Contact';
 import ErrorPage from './routes/Error';
 import Home from './routes/Home';
-import Products from './routes/Products';
-import Services from './routes/Services';
 import Solutions from './routes/Solutions';
 
 // Full-width pages (Home has carousel + full-bleed sections)
@@ -37,10 +34,9 @@ const App = () => (
         <Route path="/" element={<Home />} />
       </Route>
       <Route element={<PageLayout />}>
-        <Route path="/company" element={<Company />} />
+
         <Route path="/solutions" element={<Solutions />} />
-        <Route path="/products/*" element={<Products />} />
-        <Route path="/services" element={<Services />} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>

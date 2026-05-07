@@ -4,16 +4,8 @@ import logo from '../assets/cys-branding.svg';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Company', href: '/company' },
-  { label: 'Products', href: '/products' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact Us', href: '/contact' },
-];
-
-const productLinks = [
-  { label: 'Magnaposi SM-500T', href: '/products/positioning' },
-  { label: 'PEMCC', href: '/products/protection' },
-  { label: 'Protection Rotor', href: '/products/protection' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const Footer = () => (
@@ -29,14 +21,6 @@ const Footer = () => (
         <ColTitle>Navigation</ColTitle>
         <ColLinks>
           {navLinks.map((l) => (
-            <FooterLink key={l.label} href={l.href}>{l.label}</FooterLink>
-          ))}
-        </ColLinks>
-      </Col>
-      <Col>
-        <ColTitle>Products</ColTitle>
-        <ColLinks>
-          {productLinks.map((l) => (
             <FooterLink key={l.label} href={l.href}>{l.label}</FooterLink>
           ))}
         </ColLinks>

@@ -6,13 +6,9 @@ const EN_BASE = 'https://www.cyselectronics.com';
 const ES_BASE = 'https://www.controlesysistemas.com.ar';
 
 const ROUTES = [
-  { path: '/',                         changefreq: 'monthly', priority: '1.0' },
-  { path: '/company',                  changefreq: 'yearly',  priority: '0.7' },
-  { path: '/services',                 changefreq: 'monthly', priority: '0.8' },
-  { path: '/products',                 changefreq: 'monthly', priority: '0.8' },
-  { path: '/products/positioning',     changefreq: 'monthly', priority: '0.8' },
-  { path: '/products/protection',      changefreq: 'monthly', priority: '0.8' },
-  { path: '/contact',                  changefreq: 'yearly',  priority: '0.6' },
+  { path: '/',           changefreq: 'monthly', priority: '1.0' },
+  { path: '/solutions',  changefreq: 'monthly', priority: '0.8' },
+  { path: '/contact',    changefreq: 'yearly',  priority: '0.6' },
 ];
 
 function buildSitemap(baseUrl: string): string {

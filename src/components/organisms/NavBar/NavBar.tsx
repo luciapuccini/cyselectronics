@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import type { RefObject } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -11,61 +10,32 @@ type NavItem = {
   label: string;
   href: string;
   match: (path: string) => boolean;
-  children?: Array<{ label: string; href: string }>;
 };
 
 const NAV_ITEMS: NavItem[] = [
   { code: '01', label: 'Home', href: '/', match: (path) => path === '/' },
-  { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
+
   {
-    code: '03',
+    code: '02',
     label: 'Solutions',
     href: '/solutions',
-    match: (path) => path.startsWith('/solutions') || path.startsWith('/products'),
-    children: [
-      { label: 'Positioning', href: '/products/positioning' },
-      { label: 'Protection', href: '/products/protection' },
-    ],
+    match: (path) => path.startsWith('/solutions'),
   },
-  { code: '04', label: 'Services', href: '/services', match: (path) => path.startsWith('/services') },
-  { code: '05', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
+
+  { code: '03', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
 ];
 
 const CTA = { href: '/contact', label: 'Request quote' };
 
 const CustomNavBar = () => {
   const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   const activePath = location.pathname;
 
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpenDropdown(null);
-      }
-    };
-
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => document.removeEventListener('mousedown', handleOutsideClick);
-  }, []);
-
-  useEffect(() => {
     setMenuOpen(false);
-    setOpenDropdown(null);
   }, [activePath]);
-
-  useEffect(() => {
-    const productItem = NAV_ITEMS.find((item) => item.children);
-    setMobileProductsOpen(productItem ? productItem.match(activePath) : false);
-  }, [activePath]);
-
-  const toggleDropdown = (code: string) => {
-    setOpenDropdown((prev) => (prev === code ? null : code));
-  };
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -75,22 +45,11 @@ const CustomNavBar = () => {
     setMenuOpen(false);
   };
 
-  const toggleMobileProducts = () => {
-    setMobileProductsOpen((prev) => !prev);
-  };
-
   return (
     <Header>
       <HeaderInner>
         <Logo />
-        <DesktopNavigation
-          items={NAV_ITEMS}
-          activePath={activePath}
-          openDropdown={openDropdown}
-          onToggleDropdown={toggleDropdown}
-          onCloseDropdown={() => setOpenDropdown(null)}
-          dropdownRef={dropdownRef}
-        />
+        <DesktopNavigation items={NAV_ITEMS} activePath={activePath} />
         <MobileToggle
           type="button"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -103,8 +62,6 @@ const CustomNavBar = () => {
         items={NAV_ITEMS}
         activePath={activePath}
         menuOpen={menuOpen}
-        mobileProductsOpen={mobileProductsOpen}
-        onToggleProducts={toggleMobileProducts}
         onNavigate={closeMenu}
       />
     </Header>
@@ -122,51 +79,18 @@ const Logo = () => (
 type DesktopNavigationProps = {
   items: NavItem[];
   activePath: string;
-  openDropdown: string | null;
-  onToggleDropdown: (code: string) => void;
-  onCloseDropdown: () => void;
-  dropdownRef: RefObject<HTMLDivElement>;
 };
 
-const DesktopNavigation = ({ items, activePath, openDropdown, onToggleDropdown, onCloseDropdown, dropdownRef }: DesktopNavigationProps) => (
+const DesktopNavigation = ({ items, activePath }: DesktopNavigationProps) => (
   <DesktopNav>
     <NavList aria-label="Main navigation">
       {items.map((item) => {
         const active = item.match(activePath);
-
-        if (!item.children) {
-          return (
-            <NavLink key={item.code} href={item.href} $active={active}>
-              <NavCode>{item.code}</NavCode>
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        }
-
-        const isOpen = openDropdown === item.code;
         return (
-          <NavDropdown key={item.code} ref={dropdownRef}>
-            <NavDropdownToggle
-              type="button"
-              onClick={() => onToggleDropdown(item.code)}
-              $active={active}
-              aria-expanded={isOpen}
-              aria-haspopup="true"
-            >
-              <NavCode>{item.code}</NavCode>
-              <span>{item.label}</span>
-              <Chevron $open={isOpen} aria-hidden>⌄</Chevron>
-            </NavDropdownToggle>
-            {isOpen && (
-              <DropdownPanel role="menu">
-                {item.children.map((child) => (
-                  <DropdownLink key={child.href} href={child.href} onClick={onCloseDropdown}>
-                    {child.label}
-                  </DropdownLink>
-                ))}
-              </DropdownPanel>
-            )}
-          </NavDropdown>
+          <NavLink key={item.code} href={item.href} $active={active}>
+            <NavCode>{item.code}</NavCode>
+            <span>{item.label}</span>
+          </NavLink>
         );
       })}
     </NavList>
@@ -181,53 +105,22 @@ type MobileNavigationProps = {
   items: NavItem[];
   activePath: string;
   menuOpen: boolean;
-  mobileProductsOpen: boolean;
-  onToggleProducts: () => void;
   onNavigate: () => void;
 };
 
-const MobileNavigation = ({ items, activePath, menuOpen, mobileProductsOpen, onToggleProducts, onNavigate }: MobileNavigationProps) => (
+const MobileNavigation = ({ items, activePath, menuOpen, onNavigate }: MobileNavigationProps) => (
   <MobileMenu $open={menuOpen}>
     <MobileNavList aria-label="Mobile navigation">
       {items.map((item) => {
         const active = item.match(activePath);
-
-        if (!item.children) {
-          return (
-            <MobileNavLink key={item.code} href={item.href} $active={active} onClick={onNavigate}>
-              <MobileLinkContent>
-                <NavCode>{item.code}</NavCode>
-                <span>{item.label}</span>
-              </MobileLinkContent>
-              <Chevron aria-hidden $open={false}>↗</Chevron>
-            </MobileNavLink>
-          );
-        }
-
         return (
-          <MobileDropdown key={item.code}>
-            <MobileDropdownToggle
-              type="button"
-              onClick={onToggleProducts}
-              $active={active}
-              aria-expanded={mobileProductsOpen}
-            >
-              <MobileDropdownLabel>
-                <NavCode>{item.code}</NavCode>
-                <span>{item.label}</span>
-              </MobileDropdownLabel>
-              <Chevron $open={mobileProductsOpen} aria-hidden>⌄</Chevron>
-            </MobileDropdownToggle>
-            {mobileProductsOpen && (
-              <MobileSubList>
-                {item.children.map((child) => (
-                  <MobileSubLink key={child.href} href={child.href} onClick={onNavigate}>
-                    {child.label}
-                  </MobileSubLink>
-                ))}
-              </MobileSubList>
-            )}
-          </MobileDropdown>
+          <MobileNavLink key={item.code} href={item.href} $active={active} onClick={onNavigate}>
+            <MobileLinkContent>
+              <NavCode>{item.code}</NavCode>
+              <span>{item.label}</span>
+            </MobileLinkContent>
+            <Chevron aria-hidden $open={false}>↗</Chevron>
+          </MobileNavLink>
         );
       })}
     </MobileNavList>
@@ -346,72 +239,11 @@ const NavLink = styled.a<{ $active: boolean }>`
   }
 `;
 
-const NavDropdown = styled.div`
-  position: relative;
-`;
-
-const NavDropdownToggle = styled.button<{ $active: boolean }>`
-  ${navBaseStyles}
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: ${({ $active }) => ($active ? 'var(--foreground)' : 'var(--muted-foreground)')};
-
-  &:hover {
-    color: var(--foreground);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: var(--space-4);
-    right: var(--space-4);
-    bottom: -6px;
-    height: 1px;
-    background: var(--primary);
-    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
-    transform-origin: center;
-    transition: transform var(--transition-base);
-  }
-`;
-
 const Chevron = styled.span<{ $open: boolean }>`
   font-size: var(--font-size-xs);
   transform: rotate(${({ $open }) => ($open ? '180deg' : '0deg')});
   transition: transform var(--transition-base);
   color: var(--muted-foreground);
-`;
-
-const DropdownPanel = styled.div`
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 0;
-  min-width: 210px;
-  background: var(--color-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-2) 0.4rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  z-index: var(--z-dropdown);
-`;
-
-const DropdownLink = styled.a`
-  display: block;
-  padding: 0.65rem 1.1rem;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: var(--letter-tight);
-  color: var(--foreground);
-  text-decoration: none;
-  border-radius: var(--radius-lg);
-  transition: background var(--transition-base), color var(--transition-base);
-
-  &:hover {
-    background: var(--secondary);
-    color: var(--foreground);
-  }
 `;
 
 const QuoteButton = styled.a`
@@ -516,51 +348,6 @@ const MobileNavLink = styled.a<{ $active: boolean }>`
   background: ${({ $active }) => ($active ? 'var(--secondary)' : 'transparent')};
 `;
 
-const MobileDropdown = styled.div`
-  border-bottom: 1px solid var(--border);
-`;
-
-const MobileDropdownToggle = styled.button<{ $active: boolean }>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4) var(--space-5);
-  border: none;
-  background: ${({ $active }) => ($active ? 'var(--secondary)' : 'transparent')};
-  text-align: left;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: var(--letter-widest);
-  text-transform: uppercase;
-  color: ${({ $active }) => ($active ? 'var(--accent)' : 'var(--foreground)')};
-`;
-
-const MobileDropdownLabel = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-`;
-
-const MobileSubList = styled.div`
-  background: var(--secondary);
-  display: flex;
-  flex-direction: column;
-`;
-
-const MobileSubLink = styled.a`
-  padding: 0.85rem 2.25rem;
-  text-decoration: none;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--foreground);
-  border-top: 1px solid var(--border);
-
-  &:hover {
-    color: var(--accent);
-  }
-`;
 
 const MobileQuoteButton = styled.a`
   display: inline-flex;
