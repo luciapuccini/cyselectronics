@@ -7,18 +7,6 @@ export const Surface = styled.div`
   box-shadow: none;
 `;
 
-export const InteractiveSurface = styled(Surface)`
-  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
-
-  &:hover {
-    background: var(--background);
-    border-color: var(--accent);
-  }
-`;
-
-export const Panel = styled(Surface)`
-  padding: clamp(var(--space-6), 4vw, var(--space-10));
-`;
 
 export const Card = styled(Surface)`
   display: flex;

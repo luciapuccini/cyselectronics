@@ -5,7 +5,7 @@ import styled from 'styled-components';
  * sharp-corners rule — keeps `--radius-md` for icon affordances next to text.
  * Use only for inline icons; never as a card or section.
  */
-export const IconBadge = styled.span`
+const IconBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;

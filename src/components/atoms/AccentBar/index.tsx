@@ -6,7 +6,7 @@ type AccentBarProps = {
   $color?: string;
 };
 
-export const AccentBar = styled.span<AccentBarProps>`
+const AccentBar = styled.span<AccentBarProps>`
   ${({ $width = '32px', $height = '1px', $color = 'var(--accent)' }) => css`
     display: inline-block;
     width: ${$width};
