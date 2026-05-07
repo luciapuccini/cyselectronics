@@ -51,10 +51,7 @@ export const tokens = {
     20: 'var(--space-20)',
   },
   radius: {
-    sm: 'var(--radius-sm)',
     md: 'var(--radius-md)',
-    lg: 'var(--radius-lg)',
-    xl: 'var(--radius-xl)',
   },
   shadow: {
     sm: 'var(--shadow-sm)',

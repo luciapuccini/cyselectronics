@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import slide1 from '../../../assets/slide-1.webp';
 import slide2 from '../../../assets/slide-2.webp';
 import slide3 from '../../../assets/slide-3.webp';
+import AtomAccentBar from '../../atoms/AccentBar';
 
 const slides = [
   {
@@ -105,7 +106,6 @@ const Slide = styled.div<{ image: string; active: boolean }>`
 
 const TextPanel = styled.div`
   background: var(--color-panel-overlay);
-  border-radius: var(--radius-xl);
   padding: 2.25rem 2.75rem var(--space-12);
   max-width: min(640px, 90%);
   box-shadow: var(--shadow-lg);
@@ -120,13 +120,12 @@ const TextPanel = styled.div`
   }
 `;
 
-const AccentBar = styled.span`
-  display: inline-block;
-  width: 48px;
-  height: 3px;
-  background: var(--primary);
+const AccentBar = styled(AtomAccentBar).attrs({
+  $width: '48px',
+  $height: '3px',
+  $color: 'var(--primary)',
+})`
   margin-bottom: var(--space-4);
-  border-radius: 2px;
 `;
 
 const Header = styled.h2`

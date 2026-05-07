@@ -5,8 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <!-- Default EN metadata — patched to ES at runtime for controlesysistemas.com.ar -->
-  <meta name="description" content="C&S Controles y Sistemas – industrial electronics design, development, and maintenance since 1991." />
+  <!-- Default metadata for cyselectronics.com — patched at runtime to swap the brand name + canonical URL on the .com.ar mirror. The site renders English copy on both domains; <html lang="en"> stays put so browsers auto-offer Spanish translation for Argentine visitors. See docs/adr/0002-english-only-browser-translation.md. -->
+  <meta name="description" content="CYS Electronics – industrial electronics design, development, and maintenance since 1991." />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.cyselectronics.com" />
@@ -18,14 +18,14 @@
   <script>
     (() => {
       const h = location.hostname;
-      const isES = h.includes('controlesysistemas') || h.endsWith('.com.ar');
-      if (!isES) return;
-      // Keep lang="en" so the browser auto-offers Spanish translation for Argentine visitors
+      const isCsArDomain = h.includes('controlesysistemas') || h.endsWith('.com.ar');
+      if (!isCsArDomain) return;
+      // Brand-only swap: English copy stays, brand name switches to C&S Controles y Sistemas.
       const base = 'https://www.controlesysistemas.com.ar';
       const ogMap = {
         'og:url': base,
-        'og:title': 'C&S Controles y Sistemas | Electrónica Industrial desde 1991',
-        'og:description': 'Diseño, desarrollo y mantenimiento de electrónica industrial desde 1991.',
+        'og:title': 'C&S Controles y Sistemas | Industrial Electronics since 1991',
+        'og:description': 'C&S Controles y Sistemas — industrial electronics design, development, and maintenance since 1991.',
         'og:image': `${base}/logo512.png`,
       };
       document.querySelectorAll('meta[property]').forEach((m) => {
@@ -33,7 +33,7 @@
         if (ogMap[p]) m.setAttribute('content', ogMap[p]);
       });
       const desc = document.querySelector('meta[name="description"]');
-      if (desc) desc.setAttribute('content', 'C&S Controles y Sistemas – diseño, desarrollo y mantenimiento de electrónica industrial desde 1991.');
+      if (desc) desc.setAttribute('content', 'C&S Controles y Sistemas — industrial electronics design, development, and maintenance since 1991.');
       const canonical = document.querySelector('link[rel="canonical"]');
       if (canonical) canonical.setAttribute('href', base);
       document.title = 'C&S Controles y Sistemas';

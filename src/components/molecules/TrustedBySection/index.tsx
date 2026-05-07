@@ -74,8 +74,6 @@ export default TrustedBySection;
 const Section = styled.section`
   position: relative;
   padding: clamp(3.5rem, 7vw, 6rem) var(--space-8);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
   overflow: hidden;
 `;
 
@@ -149,9 +147,7 @@ const Grid = styled.div`
   margin-top: clamp(2.75rem, 6vw, 4rem);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border: 1px solid var(--border);
-  background: var(--border);
-  gap: 1px;
+  gap: var(--space-3);
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -172,13 +168,14 @@ const LogoCell = styled.div`
   align-items: center;
   justify-content: center;
   aspect-ratio: 3 / 2;
-  background: oklch(0.99 0.002 120 / 0.85);
+  background: var(--card);
+  border: 1px solid var(--border);
   padding: var(--space-6);
-  transition: background 0.25s ease;
+  transition: border-color var(--transition-base);
   overflow: hidden;
 
   &:hover {
-    background: oklch(0.96 0.01 140 / 0.95);
+    border-color: var(--accent);
   }
 
   @media (max-width: 599px) {

@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 
-import { useTranslation } from '../../../hooks/useTranslation';
 import { tokens } from '../../../styles/tokens';
+import { Card as SurfaceCard } from '../../atoms/Surface';
 
 type FormState = {
   name: string;
@@ -18,49 +18,27 @@ type FormErrors = Partial<Record<keyof FormState, string>>;
 const initialState: FormState = { name: '', email: '', phone: '', company: '', message: '' };
 
 const copy = {
-  en: {
-    formTitle: 'Contact form',
-    name: 'Name',
-    email: 'Email',
-    phone: 'Phone',
-    company: 'Company',
-    message: 'Message',
-    required: '* Required fields',
-    submit: 'Send message',
-    submitting: 'Sending…',
-    sent: 'Message sent',
-    sentBody: 'Thank you for reaching out. We will get back to you shortly.',
-    sendAnother: 'Send another message',
-    errors: {
-      name: 'Name is required',
-      email: 'Email is required',
-      emailInvalid: 'Invalid email',
-      message: 'Message is required',
-    },
-  },
-  es: {
-    formTitle: 'Formulario de contacto',
-    name: 'Nombre',
-    email: 'Email',
-    phone: 'Teléfono',
-    company: 'Empresa',
-    message: 'Mensaje',
-    required: '* Campos requeridos',
-    submit: 'Enviar mensaje',
-    submitting: 'Enviando…',
-    sent: 'Mensaje enviado',
-    sentBody: 'Gracias por contactarnos. Responderemos a la brevedad posible.',
-    sendAnother: 'Enviar otro mensaje',
-    errors: {
-      name: 'Nombre requerido',
-      email: 'Email requerido',
-      emailInvalid: 'Email inválido',
-      message: 'Mensaje requerido',
-    },
+  formTitle: 'Contact form',
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
+  company: 'Company',
+  message: 'Message',
+  required: '* Required fields',
+  submit: 'Send message',
+  submitting: 'Sending…',
+  sent: 'Message sent',
+  sentBody: 'Thank you for reaching out. We will get back to you shortly.',
+  sendAnother: 'Send another message',
+  errors: {
+    name: 'Name is required',
+    email: 'Email is required',
+    emailInvalid: 'Invalid email',
+    message: 'Message is required',
   },
 };
 
-type CopyVariant = typeof copy.en;
+type CopyVariant = typeof copy;
 
 const useContactFormState = (t: CopyVariant) => {
   const [form, setForm] = useState<FormState>(initialState);
@@ -114,17 +92,20 @@ const useContactFormState = (t: CopyVariant) => {
 };
 
 const ContactForm = () => {
-  const { locale } = useTranslation();
-  const t = copy[locale];
-  const formState = useContactFormState(t);
+  const formState = useContactFormState(copy);
 
   return (
     <Card>
       {formState.submitted ? (
-        <ContactSuccess title={t.sent} body={t.sentBody} actionLabel={t.sendAnother} onReset={formState.handleReset} />
+        <ContactSuccess
+          title={copy.sent}
+          body={copy.sentBody}
+          actionLabel={copy.sendAnother}
+          onReset={formState.handleReset}
+        />
       ) : (
         <ContactFormFields
-          t={t}
+          t={copy}
           form={formState.form}
           errors={formState.errors}
           sending={formState.sending}
@@ -297,12 +278,8 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-const Card = styled.div`
-  background: ${tokens.colors.card};
-  border: 1px solid ${tokens.colors.border};
-  border-radius: ${tokens.radius.lg};
+const Card = styled(SurfaceCard)`
   padding: ${tokens.space[8]} ${tokens.space[6]};
-  box-shadow: ${tokens.shadow.sm};
 `;
 
 const Form = styled.form`
@@ -364,7 +341,6 @@ const baseField = `
   color: var(--foreground);
   outline: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  border-radius: var(--radius-md);
 `;
 
 const errorBorder = 'rgba(200, 50, 50, 0.5)';
@@ -425,14 +401,11 @@ const SubmitButton = styled.button<{ $sending: boolean }>`
   color: ${tokens.colors.primaryForeground};
   background: ${(p) => (p.$sending ? tokens.colors.mutedForeground : tokens.colors.primary)};
   border: none;
-  border-radius: ${tokens.radius.md};
   cursor: ${(p) => (p.$sending ? 'wait' : 'pointer')};
-  transition: transform ${tokens.transition.base}, box-shadow ${tokens.transition.base};
-  box-shadow: ${(p) => (p.$sending ? 'none' : '0 4px 14px rgba(9, 137, 38, 0.25)')};
+  transition: transform ${tokens.transition.base};
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(9, 137, 38, 0.3);
   }
 `;
 
@@ -449,7 +422,6 @@ const SuccessState = styled.div`
 const SuccessBadge = styled.div`
   width: 56px;
   height: 56px;
-  border-radius: 50%;
   background: ${tokens.colors.secondary};
   display: flex;
   align-items: center;

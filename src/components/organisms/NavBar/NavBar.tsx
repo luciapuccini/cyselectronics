@@ -284,7 +284,6 @@ const MobileToggle = styled.button`
   height: 42px;
   border: 1px solid var(--border);
   background: var(--card);
-  border-radius: var(--radius-lg);
   cursor: pointer;
 
   svg {

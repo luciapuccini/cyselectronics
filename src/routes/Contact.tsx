@@ -1,56 +1,39 @@
 import styled from 'styled-components';
 
+import IconBadge from '../components/atoms/IconBadge';
+import { Card, Surface } from '../components/atoms/Surface';
+import SectionHero from '../components/molecules/SectionHero';
 import ContactForm from '../components/organisms/ContactForm';
 import { usePageTitle } from '../hooks/usePageTitle';
-import { useTranslation } from '../hooks/useTranslation';
 import { tokens } from '../styles/tokens';
 
 const copy = {
-  en: {
-    eyebrow: 'Contact',
-    title: 'Let’s talk about\nyour next project',
-    lede: 'Engineering solutions in industrial control and automation. We are ready to help.',
-    infoTitle: 'Contact information',
-    address: 'Address',
-    phone: 'Phone',
-    email: 'E-mail',
-    addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Province of Buenos Aires'],
-    phoneLines: ['+54-336-4426734'],
-    emailLines: ['info@controlesysistemas.com.ar'],
-  },
-  es: {
-    eyebrow: 'Contacto',
-    title: 'Hablemos sobre\nsu próximo proyecto',
-    lede: 'Soluciones de ingeniería en control y automatización industrial. Estamos listos para ayudarle.',
-    infoTitle: 'Información de contacto',
-    address: 'Dirección',
-    phone: 'Teléfono',
-    email: 'E-mail',
-    addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Provincia de Buenos Aires'],
-    phoneLines: ['+54-336-4426734'],
-    emailLines: ['info@controlesysistemas.com.ar'],
-  },
+  eyebrow: 'Contact',
+  title: 'Let’s talk about\nyour next project',
+  lede: 'Engineering solutions in industrial control and automation. We are ready to help.',
+  infoTitle: 'Contact information',
+  address: 'Address',
+  phone: 'Phone',
+  email: 'E-mail',
+  addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Province of Buenos Aires'],
+  phoneLines: ['+54-336-4426734'],
+  emailLines: ['info@controlesysistemas.com.ar'],
 };
 
-type ContactCopy = typeof copy.en;
+type ContactCopy = typeof copy;
 
 const Contact = () => {
   usePageTitle(
-    { en: 'Contact', es: 'Contacto' },
-    {
-      en: 'Get in touch with C&S Controles y Sistemas for industrial electronics projects and inquiries.',
-      es: 'Contacte a C&S Controles y Sistemas para proyectos y consultas de electrónica industrial.',
-    },
+    'Contact',
+    'Get in touch with C&S Controles y Sistemas for industrial electronics projects and inquiries.',
   );
-  const { locale } = useTranslation();
-  const t = copy[locale];
 
   return (
     <Page>
-      <ContactHero eyebrow={t.eyebrow} title={t.title} lede={t.lede} />
+      <ContactHero eyebrow={copy.eyebrow} title={copy.title} lede={copy.lede} />
       <Grid>
         <InfoColumn>
-          <ContactInfo info={t} />
+          <ContactInfo info={copy} />
         </InfoColumn>
         <ContactForm />
       </Grid>
@@ -61,14 +44,9 @@ const Contact = () => {
 export default Contact;
 
 const ContactHero = ({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) => (
-  <Hero>
-    <Eyebrow>
-      <EyebrowDash />
-      {eyebrow}
-    </Eyebrow>
-    <Title>{title}</Title>
-    <Lede>{lede}</Lede>
-  </Hero>
+  <HeroWrapper>
+    <SectionHero eyebrow={eyebrow} title={title} lede={lede} />
+  </HeroWrapper>
 );
 
 const ContactInfo = ({ info }: { info: ContactCopy }) => {
@@ -107,7 +85,7 @@ type InfoItemProps = {
 
 const InfoItem = ({ icon, label, lines, mono }: InfoItemProps) => (
   <Item>
-    <ItemIcon>{icon}</ItemIcon>
+    <IconBadge>{icon}</IconBadge>
     <ItemBody>
       <ItemLabel>{label}</ItemLabel>
       <ItemValue $mono={mono}>
@@ -147,47 +125,8 @@ const Page = styled.div`
   width: 100%;
 `;
 
-const Hero = styled.section`
+const HeroWrapper = styled.section`
   padding-top: ${tokens.space[14]};
-`;
-
-const Eyebrow = styled.div`
-  font-family: ${tokens.font.mono};
-  font-size: 0.68rem;
-  font-weight: ${tokens.fontWeight.medium};
-  text-transform: uppercase;
-  letter-spacing: ${tokens.letter.widest};
-  color: ${tokens.colors.primary};
-  margin-bottom: ${tokens.space[3]};
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
-
-const EyebrowDash = styled.span`
-  display: inline-block;
-  width: 28px;
-  height: 1.5px;
-  background: ${tokens.colors.primary};
-`;
-
-const Title = styled.h1`
-  font-family: ${tokens.font.sans};
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: ${tokens.fontWeight.bold};
-  line-height: ${tokens.lineHeight.snug};
-  letter-spacing: -0.02em;
-  color: ${tokens.colors.foreground};
-  margin: 0 0 ${tokens.space[3]};
-  white-space: pre-line;
-`;
-
-const Lede = styled.p`
-  font-size: 1.05rem;
-  line-height: ${tokens.lineHeight.relaxed};
-  color: ${tokens.colors.mutedForeground};
-  max-width: 520px;
-  margin: 0;
 `;
 
 const Grid = styled.section`
@@ -210,15 +149,9 @@ const InfoColumn = styled.div`
   gap: ${tokens.space[8]};
 `;
 
-const InfoCard = styled.div`
-  background: ${tokens.colors.card};
-  border: 1px solid ${tokens.colors.border};
-  border-radius: ${tokens.radius.lg};
-  padding: ${tokens.space[6]} ${tokens.space[6]};
-  display: flex;
-  flex-direction: column;
+const InfoCard = styled(Card)`
+  padding: ${tokens.space[6]};
   gap: ${tokens.space[6]};
-  box-shadow: ${tokens.shadow.sm};
 `;
 
 const SectionLabel = styled.div`
@@ -236,18 +169,6 @@ const Item = styled.div`
   display: flex;
   gap: 14px;
   align-items: flex-start;
-`;
-
-const ItemIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: ${tokens.radius.md};
-  background: ${tokens.colors.secondary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${tokens.colors.accent};
-  flex-shrink: 0;
 `;
 
 const ItemBody = styled.div`
@@ -272,12 +193,8 @@ const ItemValue = styled.div<{ $mono?: boolean }>`
   word-break: break-word;
 `;
 
-const MapCard = styled.div`
-  background: ${tokens.colors.card};
-  border: 1px solid ${tokens.colors.border};
-  border-radius: ${tokens.radius.lg};
+const MapCard = styled(Surface)`
   overflow: hidden;
-  box-shadow: ${tokens.shadow.sm};
 `;
 
 const MapFrame = styled.iframe`

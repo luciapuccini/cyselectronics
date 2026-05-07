@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import magnaposiImg from '../assets/products/Magnaposi.png';
 import pemccImg from '../assets/products/pemcc.png';
 import rotorImg from '../assets/products/rotor.jpg';
+import AccentBar from '../components/atoms/AccentBar';
+import { Card, Surface } from '../components/atoms/Surface';
+import SectionHero from '../components/molecules/SectionHero';
 import { usePageTitle } from '../hooks/usePageTitle';
-import { useTranslation } from '../hooks/useTranslation';
 import { tokens } from '../styles/tokens';
 
-type Locale = 'en' | 'es';
 type SectionKey = 'positioning' | 'protection' | 'services';
 
 type Spec = { label: string; value: string };
@@ -66,7 +67,7 @@ type ServiceSection = {
 
 type SectionCopy = ProductSection | ServiceSection;
 
-type LocaleCopy = {
+type Copy = {
   metaTitle: string;
   metaDescription: string;
   hero: {
@@ -83,366 +84,191 @@ type LocaleCopy = {
   };
 };
 
-const copy: Record<Locale, LocaleCopy> = {
-  en: {
-    metaTitle: 'Solutions',
-    metaDescription:
-      'Industrial electronics solutions covering positioning systems, protection systems, and lifecycle engineering services.',
-    hero: {
-      eyebrow: 'Solutions',
-      title: 'Industrial electronics for critical operations',
-      lede:
-        'Positioning systems, protection systems, and lifecycle engineering services — designed and manufactured by C&S Controles y Sistemas.',
+const copy: Copy = {
+  metaTitle: 'Solutions',
+  metaDescription:
+    'Industrial electronics solutions covering positioning systems, protection systems, and lifecycle engineering services.',
+  hero: {
+    eyebrow: 'Solutions',
+    title: 'Industrial electronics for critical operations',
+    lede:
+      'Positioning systems, protection systems, and lifecycle engineering services — designed and manufactured by C&S Controles y Sistemas.',
+  },
+  sections: {
+    positioning: {
+      type: 'product',
+      label: 'Positioning',
+      description:
+        'Precision measurement systems for industrial positioning — contact-free, maintenance-free, built for harsh environments.',
+      items: [
+        {
+          id: 'magnaposi',
+          name: 'MAGNAPOSI',
+          tagline: 'Steel catenary measurement in pickling processes',
+          detail:
+            'In pickling processes it is important to control the depth to which the material is immersed. To achieve that, a reliable measurement must be done. The MAGNAPOSI System performs this function without contact with the acid solution and is maintenance-free.',
+          image: magnaposiImg,
+          specs: [
+            { label: 'Contact', value: 'Non-contact' },
+            { label: 'Maintenance', value: 'Maintenance-free' },
+            { label: 'Environment', value: 'Acid-resistant' },
+            { label: 'Application', value: 'Pickling lines' },
+          ],
+          ctas: [
+            { label: 'Request info', href: '/contact', variant: 'primary' },
+            {
+              label: 'Download PDF',
+              href: '/Magnaposi_eng_datasheet_3.02.pdf',
+              variant: 'secondary',
+              download: true,
+            },
+          ],
+          supportingLink: {
+            label: 'Visit magnaposi.com',
+            href: 'https://magnaposi.com',
+            newTab: true,
+          },
+        },
+      ],
     },
-    sections: {
-      positioning: {
-        type: 'product',
-        label: 'Positioning',
-        description:
-          'Precision measurement systems for industrial positioning — contact-free, maintenance-free, built for harsh environments.',
-        items: [
-          {
-            id: 'magnaposi',
-            name: 'MAGNAPOSI',
-            tagline: 'Steel catenary measurement in pickling processes',
-            detail:
-              'In pickling processes it is important to control the depth to which the material is immersed. To achieve that, a reliable measurement must be done. The MAGNAPOSI System performs this function without contact with the acid solution and is maintenance-free.',
-            image: magnaposiImg,
-            specs: [
-              { label: 'Contact', value: 'Non-contact' },
-              { label: 'Maintenance', value: 'Maintenance-free' },
-              { label: 'Environment', value: 'Acid-resistant' },
-              { label: 'Application', value: 'Pickling lines' },
-            ],
-            ctas: [
-              { label: 'Request info', href: '/contact', variant: 'primary' },
-              {
-                label: 'Download PDF',
-                href: '/Magnaposi_eng_datasheet_3.02.pdf',
-                variant: 'secondary',
-                download: true,
-              },
-            ],
-            supportingLink: {
-              label: 'Visit magnaposi.com',
-              href: 'https://magnaposi.com',
+    protection: {
+      type: 'product',
+      label: 'Protection',
+      description:
+        'Electronic protection systems for DC motors and AC rotor windings — real-time monitoring with configurable trip modes.',
+      items: [
+        {
+          id: 'pemcc',
+          name: 'PEMCC',
+          tagline: 'Electronic protection for DC motors',
+          detail:
+            "C&S's DC motor protection system model PEMCC evaluates the rotor solicitation of a DC machine through its current sensing.",
+          image: pemccImg,
+          modes: [
+            {
+              name: 'Mode TI-2',
+              description:
+                'Designed to replace electromechanical or overcurrent relays in general. It is also possible to configure an instantaneous trip.',
+            },
+            {
+              name: 'Thermal Model mode',
+              description:
+                "Enter the motor physical parameters to analyse the actual thermal state of the machine. Ideal for successive starts or alternating load cycles where TI-2 mode cannot track accumulated heating. Instantaneous trip can also be configured.",
+            },
+          ],
+          specs: [
+            { label: 'Type', value: 'DC motor' },
+            { label: 'Sensing', value: 'Current-based monitoring' },
+            { label: 'Modes', value: 'TI-2 / Thermal model' },
+            { label: 'Trip', value: 'Configurable' },
+          ],
+          ctas: [
+            { label: 'Request info', href: '/contact', variant: 'primary' },
+            {
+              label: 'View manual',
+              href: 'https://e.issuu.com/embed.html?identifier=z39bobtblh88&embedType=script#1523476/13436921',
+              variant: 'secondary',
               newTab: true,
             },
-          },
-        ],
-      },
-      protection: {
-        type: 'product',
-        label: 'Protection',
-        description:
-          'Electronic protection systems for DC motors and AC rotor windings — real-time monitoring with configurable trip modes.',
-        items: [
-          {
-            id: 'pemcc',
-            name: 'PEMCC',
-            tagline: 'Electronic protection for DC motors',
-            detail:
-              "C&S's DC motor protection system model PEMCC evaluates the rotor solicitation of a DC machine through its current sensing.",
-            image: pemccImg,
-            modes: [
-              {
-                name: 'Mode TI-2',
-                description:
-                  'Designed to replace electromechanical or overcurrent relays in general. It is also possible to configure an instantaneous trip.',
-              },
-              {
-                name: 'Thermal Model mode',
-                description:
-                  "Enter the motor physical parameters to analyse the actual thermal state of the machine. Ideal for successive starts or alternating load cycles where TI-2 mode cannot track accumulated heating. Instantaneous trip can also be configured.",
-              },
-            ],
-            specs: [
-              { label: 'Type', value: 'DC motor' },
-              { label: 'Sensing', value: 'Current-based monitoring' },
-              { label: 'Modes', value: 'TI-2 / Thermal model' },
-              { label: 'Trip', value: 'Configurable' },
-            ],
-            ctas: [
-              { label: 'Request info', href: '/contact', variant: 'primary' },
-              {
-                label: 'View manual',
-                href: 'https://e.issuu.com/embed.html?identifier=z39bobtblh88&embedType=script#1523476/13436921',
-                variant: 'secondary',
-                newTab: true,
-              },
-            ],
-          },
-          {
-            id: 'rotor',
-            name: 'Rotor protection',
-            tagline: 'Three-phase rotor current monitoring',
-            detail:
-              "C&S's rotor protection system performs the measurement of the three currents in the rotor winding engines of all sizes. It detects unbalance and overcurrent to prevent damage and provides an output proportional to the imbalance.",
-            image: rotorImg,
-            features: [
-              'Current imbalance detection across three phases',
-              'Overcurrent alarm for preventive action',
-              'Analog output proportional to imbalance',
-              'Keyboard and display interface for adjustments',
-            ],
-            specs: [
-              { label: 'Type', value: 'AC wound rotor' },
-              { label: 'Phases', value: '3-phase measurement' },
-              { label: 'Output', value: 'Proportional current' },
-              { label: 'Interface', value: 'Keyboard + display' },
-            ],
-            ctas: [{ label: 'Request info', href: '/contact', variant: 'primary' }],
-          },
-        ],
-      },
-      services: {
-        type: 'service',
-        label: 'Services',
-        description:
-          'Full-lifecycle engineering — from concept and design through manufacturing, repair, and technical assistance.',
-        items: [
-          {
-            id: 'engineering',
-            name: 'Engineering',
-            intro:
-              'Our product engineering process includes conceptualisation, requirements, specification, architecture design, hardware development, testing, documentation, and reverse engineering.',
-            bullets: [
-              'Electromechanical development requirements',
-              'Mechanical and electrical architecture',
-              'Electronic boards systems design',
-              'Design validation, testing, and verification',
-              'Reverse engineering and documentation',
-            ],
-          },
-          {
-            id: 'electronic',
-            name: 'Electronic services',
-            intro:
-              'Development, manufacturing, and repair of electronic and electromechanical products from concept to turnkey delivery.',
-            bullets: [
-              'Spare parts development and production',
-              'Specialised technical assistance',
-              'Repair of industrial control and power equipment',
-            ],
-          },
-          {
-            id: 'steelmakers',
-            name: 'Steelmakers',
-            intro:
-              'Decades of experience delivering sensing, automatic control, quality, and safety systems tailored to steel production environments.',
-            subsections: [
-              { heading: 'Pickling lines', bullet: 'Catenary measurement system' },
-              { heading: 'Coke plant', bullet: 'Infrared positioning system for coking ovens' },
-            ],
-          },
-        ],
-      },
+          ],
+        },
+        {
+          id: 'rotor',
+          name: 'Rotor protection',
+          tagline: 'Three-phase rotor current monitoring',
+          detail:
+            "C&S's rotor protection system performs the measurement of the three currents in the rotor winding engines of all sizes. It detects unbalance and overcurrent to prevent damage and provides an output proportional to the imbalance.",
+          image: rotorImg,
+          features: [
+            'Current imbalance detection across three phases',
+            'Overcurrent alarm for preventive action',
+            'Analog output proportional to imbalance',
+            'Keyboard and display interface for adjustments',
+          ],
+          specs: [
+            { label: 'Type', value: 'AC wound rotor' },
+            { label: 'Phases', value: '3-phase measurement' },
+            { label: 'Output', value: 'Proportional current' },
+            { label: 'Interface', value: 'Keyboard + display' },
+          ],
+          ctas: [{ label: 'Request info', href: '/contact', variant: 'primary' }],
+        },
+      ],
     },
-    cta: {
-      heading: 'Need a custom solution?',
-      body: 'Our engineering team works with you from concept through turnkey delivery.',
-      button: 'Request a quote',
-      href: '/contact',
+    services: {
+      type: 'service',
+      label: 'Services',
+      description:
+        'Full-lifecycle engineering — from concept and design through manufacturing, repair, and technical assistance.',
+      items: [
+        {
+          id: 'engineering',
+          name: 'Engineering',
+          intro:
+            'Our product engineering process includes conceptualisation, requirements, specification, architecture design, hardware development, testing, documentation, and reverse engineering.',
+          bullets: [
+            'Electromechanical development requirements',
+            'Mechanical and electrical architecture',
+            'Electronic boards systems design',
+            'Design validation, testing, and verification',
+            'Reverse engineering and documentation',
+          ],
+        },
+        {
+          id: 'electronic',
+          name: 'Electronic services',
+          intro:
+            'Development, manufacturing, and repair of electronic and electromechanical products from concept to turnkey delivery.',
+          bullets: [
+            'Spare parts development and production',
+            'Specialised technical assistance',
+            'Repair of industrial control and power equipment',
+          ],
+        },
+        {
+          id: 'steelmakers',
+          name: 'Steelmakers',
+          intro:
+            'Decades of experience delivering sensing, automatic control, quality, and safety systems tailored to steel production environments.',
+          subsections: [
+            { heading: 'Pickling lines', bullet: 'Catenary measurement system' },
+            { heading: 'Coke plant', bullet: 'Infrared positioning system for coking ovens' },
+          ],
+        },
+      ],
     },
   },
-  es: {
-    metaTitle: 'Soluciones',
-    metaDescription:
-      'Soluciones de electrónica industrial que abarcan sistemas de posicionamiento, protección y servicios de ingeniería durante todo el ciclo.',
-    hero: {
-      eyebrow: 'Soluciones',
-      title: 'Electrónica industrial para operaciones críticas',
-      lede:
-        'Sistemas de posicionamiento, protección y servicios de ingeniería integral — diseñados y fabricados por C&S Controles y Sistemas.',
-    },
-    sections: {
-      positioning: {
-        type: 'product',
-        label: 'Posicionamiento',
-        description:
-          'Sistemas de medición de precisión para posicionamiento industrial — sin contacto, sin mantenimiento y preparados para ambientes severos.',
-        items: [
-          {
-            id: 'magnaposi',
-            name: 'MAGNAPOSI',
-            tagline: 'Medición de catenaria en líneas de decapado',
-            detail:
-              'En los procesos de decapado es fundamental controlar la profundidad a la que se sumerge el material. Para ello se requiere una medición confiable. El sistema MAGNAPOSI cumple esta función sin contacto con la solución ácida y no requiere mantenimiento.',
-            image: magnaposiImg,
-            specs: [
-              { label: 'Contacto', value: 'Sin contacto' },
-              { label: 'Mantenimiento', value: 'Sin mantenimiento' },
-              { label: 'Ambiente', value: 'Resistente a ácidos' },
-              { label: 'Aplicación', value: 'Líneas de decapado' },
-            ],
-            ctas: [
-              { label: 'Solicitar información', href: '/contacto', variant: 'primary' },
-              {
-                label: 'Descargar PDF',
-                href: '/Magnaposi_eng_datasheet_3.02.pdf',
-                variant: 'secondary',
-                download: true,
-              },
-            ],
-            supportingLink: {
-              label: 'Visitar magnaposi.com',
-              href: 'https://magnaposi.com',
-              newTab: true,
-            },
-          },
-        ],
-      },
-      protection: {
-        type: 'product',
-        label: 'Protección',
-        description:
-          'Sistemas de protección electrónica para motores de CC y rotores de CA — monitoreo en tiempo real con modos de disparo configurables.',
-        items: [
-          {
-            id: 'pemcc',
-            name: 'PEMCC',
-            tagline: 'Protección electrónica para motores de CC',
-            detail:
-              'El sistema de protección para motores de corriente continua PEMCC de C&S evalúa la solicitación del rotor mediante la medición de corriente.',
-            image: pemccImg,
-            modes: [
-              {
-                name: 'Modo TI-2',
-                description:
-                  'Diseñado para reemplazar relés electromecánicos o de sobrecorriente. Permite configurar un disparo instantáneo.',
-              },
-              {
-                name: 'Modo Modelo Térmico',
-                description:
-                  'Permite ingresar los parámetros físicos del motor para analizar su estado térmico real. Ideal para arranques sucesivos o ciclos alternados de carga. También admite disparo instantáneo.',
-              },
-            ],
-            specs: [
-              { label: 'Tipo', value: 'Motor de CC' },
-              { label: 'Medición', value: 'Monitoreo basado en corriente' },
-              { label: 'Modos', value: 'TI-2 / Modelo térmico' },
-              { label: 'Disparo', value: 'Configurable' },
-            ],
-            ctas: [
-              { label: 'Solicitar información', href: '/contacto', variant: 'primary' },
-              {
-                label: 'Ver manual',
-                href: 'https://e.issuu.com/embed.html?identifier=z39bobtblh88&embedType=script#1523476/13436921',
-                variant: 'secondary',
-                newTab: true,
-              },
-            ],
-          },
-          {
-            id: 'rotor',
-            name: 'Protección de rotor',
-            tagline: 'Monitoreo de corrientes trifásicas en rotor',
-            detail:
-              'El sistema de protección de rotor de C&S mide las tres corrientes en bobinados de rotor de todos los tamaños. Detecta desequilibrios y sobrecorrientes para prevenir fallas y entrega una señal proporcional al desequilibrio.',
-            image: rotorImg,
-            features: [
-              'Detección de desequilibrios de corriente en las tres fases',
-              'Alarma de sobrecorriente para acción preventiva',
-              'Salida analógica proporcional al desequilibrio',
-              'Interfaz con teclado y display para ajustes',
-            ],
-            specs: [
-              { label: 'Tipo', value: 'Rotor bobinado de CA' },
-              { label: 'Fases', value: 'Medición trifásica' },
-              { label: 'Salida', value: 'Corriente proporcional' },
-              { label: 'Interfaz', value: 'Teclado + display' },
-            ],
-            ctas: [{ label: 'Solicitar información', href: '/contacto', variant: 'primary' }],
-          },
-        ],
-      },
-      services: {
-        type: 'service',
-        label: 'Servicios',
-        description:
-          'Ingeniería de punta a punta — desde el concepto y el diseño hasta la fabricación, reparación y asistencia técnica.',
-        items: [
-          {
-            id: 'engineering',
-            name: 'Ingeniería',
-            intro:
-              'Nuestro proceso de ingeniería incluye conceptualización, relevamiento de requisitos, especificación, diseño de arquitectura, desarrollo de hardware, ensayos, documentación y retroingeniería.',
-            bullets: [
-              'Relevamiento de requisitos electromecánicos',
-              'Arquitecturas mecánicas y eléctricas',
-              'Diseño de sistemas y placas electrónicas',
-              'Ensayos, pruebas y verificación de diseños',
-              'Retroingeniería y documentación',
-            ],
-          },
-          {
-            id: 'electronic',
-            name: 'Servicios electrónicos',
-            intro:
-              'Desarrollo, fabricación y reparación de productos electrónicos y electromecánicos desde el concepto hasta la entrega llave en mano.',
-            bullets: [
-              'Desarrollo y producción de repuestos a medida',
-              'Asistencia técnica especializada',
-              'Reparación de equipos industriales de control y potencia',
-            ],
-          },
-          {
-            id: 'steelmakers',
-            name: 'Siderurgia',
-            intro:
-              'Décadas de experiencia implementando sistemas de sensado, control automático, calidad y seguridad para entornos siderúrgicos.',
-            subsections: [
-              { heading: 'Líneas de decapado', bullet: 'Sistema de medición de catenaria' },
-              { heading: 'Coquerías', bullet: 'Sistema de posicionamiento infrarrojo para hornos de coque' },
-            ],
-          },
-        ],
-      },
-    },
-    cta: {
-      heading: '¿Necesita una solución a medida?',
-      body: 'Nuestro equipo de ingeniería lo acompaña desde el concepto hasta la entrega llave en mano.',
-      button: 'Solicitar cotización',
-      href: '/contacto',
-    },
+  cta: {
+    heading: 'Need a custom solution?',
+    body: 'Our engineering team works with you from concept through turnkey delivery.',
+    button: 'Request a quote',
+    href: '/contact',
   },
 };
 
 const sectionOrder: SectionKey[] = ['positioning', 'protection', 'services'];
 
 const Solutions = () => {
-  usePageTitle(
-    { en: copy.en.metaTitle, es: copy.es.metaTitle },
-    { en: copy.en.metaDescription, es: copy.es.metaDescription },
-  );
-  const { locale } = useTranslation();
-  const content = copy[locale];
+  usePageTitle(copy.metaTitle, copy.metaDescription);
 
   return (
     <Page>
-      <SolutionsHero hero={content.hero} />
-      <SolutionsSections sections={content.sections} />
-      <SolutionsFinalCta cta={content.cta} />
+      <SolutionsHero hero={copy.hero} />
+      <SolutionsSections sections={copy.sections} />
+      <SolutionsFinalCta cta={copy.cta} />
     </Page>
   );
 };
 
 export default Solutions;
 
-const SolutionsHero = ({ hero }: { hero: LocaleCopy['hero'] }) => (
+const SolutionsHero = ({ hero }: { hero: Copy['hero'] }) => (
   <HeroSection>
-    <Hero>
-      <HeroEyebrow>
-        <HeroDash />
-        {hero.eyebrow}
-      </HeroEyebrow>
-      <HeroTitle>{hero.title}</HeroTitle>
-      <HeroLede>{hero.lede}</HeroLede>
-    </Hero>
+    <SectionHero eyebrow={hero.eyebrow} title={hero.title} lede={hero.lede} />
   </HeroSection>
 );
 
-const SolutionsSections = ({ sections }: { sections: LocaleCopy['sections'] }) => (
+const SolutionsSections = ({ sections }: { sections: Copy['sections'] }) => (
   <>
     {sectionOrder.map((key) => (
       <SolutionsSectionBlock key={key} id={key} section={sections[key]} />
@@ -456,11 +282,10 @@ const SolutionsSectionBlock = ({ id, section }: { id: SectionKey; section: Secti
 
   return (
     <SolutionsSection id={id}>
-      <SectionPattern aria-hidden="true" />
       <SolutionsSectionInner>
         <SolutionsSectionHeader>
           <SectionLabel>
-            <SectionAccent />
+            <AccentBar $width="36px" $color="currentColor" />
             <span>{section.label} · {countLabel}</span>
           </SectionLabel>
           <SectionDescription>{section.description}</SectionDescription>
@@ -484,18 +309,17 @@ const SolutionsSectionBlock = ({ id, section }: { id: SectionKey; section: Secti
   );
 };
 
-const SolutionsFinalCta = ({ cta }: { cta: LocaleCopy['cta'] }) => (
+const SolutionsFinalCta = ({ cta }: { cta: Copy['cta'] }) => (
   <FinalCtaSection>
     <CtaInner>
       <CtaCopy>
         <SectionLabel $tone="light">
-          <SectionAccent />
+          <AccentBar $width="36px" $color="currentColor" />
           <span>{cta.heading}</span>
         </SectionLabel>
         <CtaBody>{cta.body}</CtaBody>
       </CtaCopy>
       <CtaButton href={cta.href}>{cta.button}</CtaButton>
-      <CtaPattern aria-hidden="true" />
     </CtaInner>
   </FinalCtaSection>
 );
@@ -637,114 +461,26 @@ const Page = styled.div`
 `;
 
 const HeroSection = styled.section`
-  position: relative;
   border-bottom: 1px solid var(--border);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(3rem, 6vw, 4rem);
-  background: var(--background);
-  overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 25, 17, 0.05) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        rgba(16, 25, 17, 0.05) 1px,
-        transparent 1px
-      );
-    background-size: 22px 22px;
-    opacity: 0.35;
-    pointer-events: none;
+  & > header {
+    margin: 0 auto;
   }
-`;
-
-const Hero = styled.header`
-  position: relative;
-  z-index: var(--z-raised);
-  display: flex;
-  flex-direction: column;
-  gap: ${tokens.space[4]};
-  max-width: 720px;
-  margin: 0 auto;
-`;
-
-const HeroEyebrow = styled.span`
-  font-family: ${tokens.font.mono};
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: ${tokens.letter.extreme};
-  color: ${tokens.colors.primary};
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-`;
-
-const HeroDash = styled.span`
-  display: inline-block;
-  width: 32px;
-  height: 2px;
-  border-radius: 999px;
-  background: ${tokens.colors.primary};
-`;
-
-const HeroTitle = styled.h1`
-  font-family: ${tokens.font.display};
-  font-size: clamp(2rem, 4.2vw, 3rem);
-  font-weight: ${tokens.fontWeight.bold};
-  line-height: ${tokens.lineHeight.snug};
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: ${tokens.colors.foreground};
-`;
-
-const HeroLede = styled.p`
-  font-size: 1.05rem;
-  line-height: ${tokens.lineHeight.relaxed};
-  color: ${tokens.colors.mutedForeground};
-  margin: 0;
-  max-width: 580px;
 `;
 
 const SolutionsSection = styled.section`
-  position: relative;
   border-bottom: 1px solid var(--border);
-  background: var(--background);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8);
-  overflow: hidden;
 
-  &:nth-of-type(even) {
-    background: var(--card);
-  }
+  
 
   @media (max-width: ${tokens.bp.lg}) {
     padding: clamp(3rem, 10vw, 4.5rem) var(--space-6);
   }
 `;
 
-const SectionPattern = styled.div`
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-      90deg,
-      rgba(16, 25, 17, 0.06) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      rgba(16, 25, 17, 0.06) 1px,
-      transparent 1px
-    );
-  background-size: 24px 24px;
-  opacity: 0.28;
-  pointer-events: none;
-`;
-
 const SolutionsSectionInner = styled.div`
-  position: relative;
-  z-index: var(--z-raised);
   max-width: var(--container-max-wide);
   margin: 0 auto;
   display: flex;
@@ -775,13 +511,6 @@ const SectionLabel = styled.span<{ $tone?: 'default' | 'light' }>`
   color: ${({ $tone }) => ($tone === 'light' ? 'var(--accent-foreground)' : 'var(--accent)')};
 `;
 
-const SectionAccent = styled.span`
-  display: inline-block;
-  width: 36px;
-  height: 1px;
-  background: currentColor;
-`;
-
 const SectionDescription = styled.p`
   margin: 0;
   max-width: clamp(520px, 55vw, 720px);
@@ -809,12 +538,8 @@ const ServiceGrid = styled.div`
   }
 `;
 
-const ProductCardRoot = styled.article`
-  background: ${tokens.colors.card};
-  border: 1px solid ${tokens.colors.border};
-  border-radius: ${tokens.radius.lg};
+const ProductCardRoot = styled(Surface).attrs({ as: 'article' })`
   overflow: hidden;
-  box-shadow: ${tokens.shadow.sm};
 `;
 
 const ProductGrid = styled.div`
@@ -827,7 +552,7 @@ const ProductGrid = styled.div`
 `;
 
 const ProductVisual = styled.div`
-  background: ${tokens.colors.secondary};
+  
   padding: ${tokens.space[10]};
   display: flex;
   align-items: center;
@@ -890,8 +615,6 @@ const ModeList = styled.div`
 `;
 
 const ModeCard = styled.div`
-  background: ${tokens.colors.secondary};
-  border-radius: ${tokens.radius.md};
   border-left: 3px solid ${tokens.colors.primary};
   padding: ${tokens.space[4]} ${tokens.space[5]};
 `;
@@ -966,12 +689,11 @@ const CardButton = styled.a<{ $variant: CtaVariant }>`
   align-items: center;
   justify-content: center;
   padding: ${tokens.space[2]} ${tokens.space[5]};
-  border-radius: ${tokens.radius.md};
   font-size: ${tokens.fontSize.sm};
   font-weight: ${tokens.fontWeight.semibold};
   letter-spacing: ${tokens.letter.tight};
   text-decoration: none;
-  transition: transform ${tokens.transition.fast}, box-shadow ${tokens.transition.fast}, background ${tokens.transition.fast};
+  transition: transform ${tokens.transition.fast}, background ${tokens.transition.fast};
 
   ${(props) =>
     props.$variant === 'primary'
@@ -980,7 +702,6 @@ const CardButton = styled.a<{ $variant: CtaVariant }>`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   }
 `;
 
@@ -995,16 +716,9 @@ const SupportingLink = styled.a`
   }
 `;
 
-const ServiceCardRoot = styled.article`
-  background: ${tokens.colors.card};
-  border: 1px solid ${tokens.colors.border};
-  border-radius: ${tokens.radius.lg};
+const ServiceCardRoot = styled(Card).attrs({ as: 'article' })`
   padding: ${tokens.space[10]};
-  display: flex;
-  flex-direction: column;
   gap: ${tokens.space[4]};
-  box-shadow: ${tokens.shadow.sm};
-
   @media (max-width: ${tokens.bp['2xl']}) {
     padding: ${tokens.space[8]};
   }
@@ -1051,8 +765,6 @@ const ServiceSubsectionItem = styled.div`
   flex-direction: column;
   gap: ${tokens.space[1]};
   padding: ${tokens.space[4]};
-  background: ${tokens.colors.secondary};
-  border-radius: ${tokens.radius.md};
 `;
 
 const ServiceSubsectionHeading = styled.h4`
@@ -1072,14 +784,10 @@ const ServiceSubsectionDetail = styled.span`
 const FinalCtaSection = styled.section`
   position: relative;
   border-top: 1px solid var(--border);
-  background: var(--background);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(5rem, 8vw, 6.5rem);
 `;
 
 const CtaInner = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-radius: ${tokens.radius.xl};
   padding: clamp(${tokens.space[10]}, 6vw, ${tokens.space[12]}) clamp(${tokens.space[8]}, 8vw, ${tokens.space[10]});
   background: ${tokens.colors.accent};
   display: flex;
@@ -1097,8 +805,6 @@ const CtaInner = styled.div`
 `;
 
 const CtaCopy = styled.div`
-  position: relative;
-  z-index: 1;
   max-width: 520px;
   display: flex;
   flex-direction: column;
@@ -1113,31 +819,18 @@ const CtaBody = styled.p`
 `;
 
 const CtaButton = styled.a`
-  position: relative;
-  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: ${tokens.space[3]} ${tokens.space[8]};
-  border-radius: ${tokens.radius.md};
   background: ${tokens.colors.primaryForeground};
   color: ${tokens.colors.accent};
   font-weight: ${tokens.fontWeight.semibold};
   letter-spacing: ${tokens.letter.tight};
   text-decoration: none;
-  transition: transform ${tokens.transition.fast}, box-shadow ${tokens.transition.fast};
+  transition: transform ${tokens.transition.fast};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
   }
-`;
-
-const CtaPattern = styled.div`
-  position: absolute;
-  inset: 0;
-  opacity: 0.4;
-  pointer-events: none;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.65) 1px, transparent 0);
-  background-size: 28px 28px;
 `;

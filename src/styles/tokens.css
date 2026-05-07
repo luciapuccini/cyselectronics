@@ -61,12 +61,12 @@
 	--space-16: 4rem;
 	--space-20: 5rem;
 
-	/* ===== Radii ===== */
-	--radius-sm: 0.25rem;
+	/* ===== Radii =====
+	 * Sharp-by-default layout system: --radius-md is the only legal radius
+	 * for the IconBadge atom (≤40×40). All cards/sections/panels/buttons use
+	 * 0. See ADR docs/adr/0001-sharp-layout-system.md.
+	 */
 	--radius-md: 0.5rem;
-	--radius: 0.5rem; /* legacy alias for --radius-md */
-	--radius-lg: 12px;
-	--radius-xl: 18px;
 
 	/* ===== Shadows ===== */
 	--shadow-sm: 0 18px 35px var(--color-shadow-soft);
