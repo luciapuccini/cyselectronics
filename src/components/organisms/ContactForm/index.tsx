@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 
 import { useTranslation } from '../../../hooks/useTranslation';
@@ -59,36 +60,37 @@ const copy = {
   },
 };
 
-const ContactForm = () => {
-  const { locale } = useTranslation();
-  const t = copy[locale];
+type CopyVariant = typeof copy.en;
+
+const useContactFormState = (t: CopyVariant) => {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
-    setErrors((err) => ({ ...err, [name]: undefined }));
-  };
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
+  }, []);
 
-  const validate = (): FormErrors => {
+  const validate = useCallback((): FormErrors => {
     const errs: FormErrors = {};
     if (!form.name.trim()) errs.name = t.errors.name;
     if (!form.email.trim()) errs.email = t.errors.email;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = t.errors.emailInvalid;
     if (!form.message.trim()) errs.message = t.errors.message;
     return errs;
-  };
+  }, [form, t]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
+
     setSending(true);
     try {
       await fetch('/', {
@@ -100,103 +102,35 @@ const ContactForm = () => {
     } finally {
       setSending(false);
     }
-  };
+  }, [form, validate]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setForm(initialState);
     setErrors({});
     setSubmitted(false);
-  };
+  }, []);
+
+  return { form, errors, sending, submitted, handleChange, handleSubmit, handleReset };
+};
+
+const ContactForm = () => {
+  const { locale } = useTranslation();
+  const t = copy[locale];
+  const formState = useContactFormState(t);
 
   return (
     <Card>
-      {submitted ? (
-        <SuccessState>
-          <SuccessBadge>
-            <CheckIcon />
-          </SuccessBadge>
-          <div>
-            <SuccessTitle>{t.sent}</SuccessTitle>
-            <SuccessBody>{t.sentBody}</SuccessBody>
-          </div>
-          <ResetButton type="button" onClick={handleReset}>
-            {t.sendAnother} <ArrowRightIcon />
-          </ResetButton>
-        </SuccessState>
+      {formState.submitted ? (
+        <ContactSuccess title={t.sent} body={t.sentBody} actionLabel={t.sendAnother} onReset={formState.handleReset} />
       ) : (
-        <Form
-          name="contact"
-          method="post"
-          netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
-          data-netlify="true"
-          onSubmit={handleSubmit}
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don't fill this out: <input name="bot-field" />
-            </label>
-          </p>
-
-          <SectionLabel>{t.formTitle}</SectionLabel>
-
-          <Row>
-            <Field
-              label={t.name}
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              error={errors.name}
-              required
-            />
-            <Field
-              label={t.email}
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              error={errors.email}
-              required
-            />
-          </Row>
-
-          <Row>
-            <Field
-              label={t.phone}
-              name="phone"
-              type="tel"
-              value={form.phone}
-              onChange={handleChange}
-            />
-            <Field
-              label={t.company}
-              name="company"
-              value={form.company}
-              onChange={handleChange}
-            />
-          </Row>
-
-          <Field
-            label={t.message}
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            error={errors.message}
-            textarea
-            required
-          />
-
-          <div data-netlify-recaptcha="true"></div>
-
-          <SubmitRow>
-            <RequiredHint>{t.required}</RequiredHint>
-            <SubmitButton type="submit" disabled={sending} $sending={sending}>
-              {sending ? t.submitting : t.submit}
-              {!sending && <SendIcon />}
-            </SubmitButton>
-          </SubmitRow>
-        </Form>
+        <ContactFormFields
+          t={t}
+          form={formState.form}
+          errors={formState.errors}
+          sending={formState.sending}
+          onChange={formState.handleChange}
+          onSubmit={formState.handleSubmit}
+        />
       )}
     </Card>
   );
@@ -204,11 +138,112 @@ const ContactForm = () => {
 
 export default ContactForm;
 
+type ContactFormFieldsProps = {
+  t: CopyVariant;
+  form: FormState;
+  errors: FormErrors;
+  sending: boolean;
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+};
+
+const ContactFormFields = ({ t, form, errors, sending, onChange, onSubmit }: ContactFormFieldsProps) => {
+  const fieldGroups = [
+    [
+      { label: t.name, name: 'name' as const, required: true, type: 'text' },
+      { label: t.email, name: 'email' as const, required: true, type: 'email' },
+    ],
+    [
+      { label: t.phone, name: 'phone' as const, type: 'tel' },
+      { label: t.company, name: 'company' as const, type: 'text' },
+    ],
+  ];
+
+  return (
+    <Form
+      name="contact"
+      method="post"
+      netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
+      data-netlify="true"
+      onSubmit={onSubmit}
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Don't fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
+      <SectionLabel>{t.formTitle}</SectionLabel>
+
+      {fieldGroups.map((group) => (
+        <Row key={group.map((field) => field.name).join('-')}>
+          {group.map((field) => (
+            <Field
+              key={field.name}
+              label={field.label}
+              name={field.name}
+              type={field.type}
+              value={form[field.name]}
+              onChange={onChange}
+              error={errors[field.name]}
+              required={field.required}
+            />
+          ))}
+        </Row>
+      ))}
+
+      <Field
+        label={t.message}
+        name="message"
+        value={form.message}
+        onChange={onChange}
+        error={errors.message}
+        textarea
+        required
+      />
+
+      <div data-netlify-recaptcha="true"></div>
+
+      <SubmitRow>
+        <RequiredHint>{t.required}</RequiredHint>
+        <SubmitButton type="submit" disabled={sending} $sending={sending}>
+          {sending ? t.submitting : t.submit}
+          {!sending && <SendIcon />}
+        </SubmitButton>
+      </SubmitRow>
+    </Form>
+  );
+};
+
+type ContactSuccessProps = {
+  title: string;
+  body: string;
+  actionLabel: string;
+  onReset: () => void;
+};
+
+const ContactSuccess = ({ title, body, actionLabel, onReset }: ContactSuccessProps) => (
+  <SuccessState>
+    <SuccessBadge>
+      <CheckIcon />
+    </SuccessBadge>
+    <div>
+      <SuccessTitle>{title}</SuccessTitle>
+      <SuccessBody>{body}</SuccessBody>
+    </div>
+    <ResetButton type="button" onClick={onReset}>
+      {actionLabel} <ArrowRightIcon />
+    </ResetButton>
+  </SuccessState>
+);
+
 type FieldProps = {
   label: string;
   name: keyof FormState;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   required?: boolean;
   type?: string;

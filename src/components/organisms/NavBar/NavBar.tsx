@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { RefObject } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -13,32 +14,31 @@ type NavItem = {
   children?: Array<{ label: string; href: string }>;
 };
 
-// TODO: delete comments -- new verison in progress
 const NAV_ITEMS: NavItem[] = [
   { code: '01', label: 'Home', href: '/', match: (path) => path === '/' },
-  // { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
+  { code: '02', label: 'Company', href: '/company', match: (path) => path.startsWith('/company') },
   {
-    code: '02',
+    code: '03',
     label: 'Solutions',
     href: '/solutions',
-    match: (path) => path.startsWith('/solutions'),
-    // children: [
-    //   { label: 'Positioning', href: '/products/positioning' },
-    //   { label: 'Protection', href: '/products/protection' },
-    // ],
+    match: (path) => path.startsWith('/solutions') || path.startsWith('/products'),
+    children: [
+      { label: 'Positioning', href: '/products/positioning' },
+      { label: 'Protection', href: '/products/protection' },
+    ],
   },
-  // { code: '04', label: 'Services', href: '/services', match: (path) => path.startsWith('/services') },
-  { code: '03', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
+  { code: '04', label: 'Services', href: '/services', match: (path) => path.startsWith('/services') },
+  { code: '05', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
 ];
 
 const CTA = { href: '/contact', label: 'Request quote' };
 
 const CustomNavBar = () => {
   const location = useLocation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const activePath = location.pathname;
 
@@ -63,140 +63,180 @@ const CustomNavBar = () => {
     setMobileProductsOpen(productItem ? productItem.match(activePath) : false);
   }, [activePath]);
 
-  const handleMobileNavigate = () => {
+  const toggleDropdown = (code: string) => {
+    setOpenDropdown((prev) => (prev === code ? null : code));
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const toggleMobileProducts = () => {
+    setMobileProductsOpen((prev) => !prev);
   };
 
   return (
     <Header>
       <HeaderInner>
-        <LogoLink href="/" aria-label="Home">
-          <LogoImg src={logo} alt="C&S Logo" />
-        </LogoLink>
-
-        <DesktopNav>
-          <NavList aria-label="Main navigation">
-            {NAV_ITEMS.map((item) => {
-              const active = item.match(activePath);
-
-              if (item.children) {
-                const isOpen = openDropdown === item.code;
-                return (
-                  <NavDropdown key={item.code} ref={dropdownRef}>
-                    <NavDropdownToggle
-                      type="button"
-                      onClick={() => setOpenDropdown((prev) => (prev === item.code ? null : item.code))}
-                      $active={active}
-                      aria-expanded={isOpen}
-                      aria-haspopup="true"
-                    >
-                      <NavCode>{item.code}</NavCode>
-                      <span>{item.label}</span>
-                      <Chevron $open={isOpen} aria-hidden>⌄</Chevron>
-                    </NavDropdownToggle>
-                    {isOpen && (
-                      <DropdownPanel role="menu">
-                        {item.children.map((child) => (
-                          <DropdownLink
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {child.label}
-                          </DropdownLink>
-                        ))}
-                      </DropdownPanel>
-                    )}
-                  </NavDropdown>
-                );
-              }
-
-              return (
-                <NavLink key={item.code} href={item.href} $active={active}>
-                  <NavCode>{item.code}</NavCode>
-                  <span>{item.label}</span>
-                </NavLink>
-              );
-            })}
-          </NavList>
-          <QuoteButton href={CTA.href}>
-            {CTA.label}
-            <QuoteArrow aria-hidden>↗</QuoteArrow>
-          </QuoteButton>
-        </DesktopNav>
-
+        <Logo />
+        <DesktopNavigation
+          items={NAV_ITEMS}
+          activePath={activePath}
+          openDropdown={openDropdown}
+          onToggleDropdown={toggleDropdown}
+          onCloseDropdown={() => setOpenDropdown(null)}
+          dropdownRef={dropdownRef}
+        />
         <MobileToggle
           type="button"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          onClick={() => setMenuOpen((prev) => !prev)}
+          onClick={toggleMenu}
         >
           {menuOpen ? <CloseGlyph>✕</CloseGlyph> : <MenuGlyph />}
         </MobileToggle>
       </HeaderInner>
-
-      <MobileMenu $open={menuOpen}>
-        <MobileNavList aria-label="Mobile navigation">
-          {NAV_ITEMS.map((item) => {
-            const active = item.match(activePath);
-
-            if (item.children) {
-              return (
-                <MobileDropdown key={item.code}>
-                  <MobileDropdownToggle
-                    type="button"
-                    onClick={() => setMobileProductsOpen((prev) => !prev)}
-                    $active={active}
-                    aria-expanded={mobileProductsOpen}
-                  >
-                    <MobileDropdownLabel>
-                      <NavCode>{item.code}</NavCode>
-                      <span>{item.label}</span>
-                    </MobileDropdownLabel>
-                    <Chevron $open={mobileProductsOpen} aria-hidden>⌄</Chevron>
-                  </MobileDropdownToggle>
-                  {mobileProductsOpen && (
-                    <MobileSubList>
-                      {item.children.map((child) => (
-                        <MobileSubLink
-                          key={child.href}
-                          href={child.href}
-                          onClick={handleMobileNavigate}
-                        >
-                          {child.label}
-                        </MobileSubLink>
-                      ))}
-                    </MobileSubList>
-                  )}
-                </MobileDropdown>
-              );
-            }
-
-            return (
-              <MobileNavLink
-                key={item.code}
-                href={item.href}
-                $active={active}
-                onClick={handleMobileNavigate}
-              >
-                <MobileLinkContent>
-                  <NavCode>{item.code}</NavCode>
-                  <span>{item.label}</span>
-                </MobileLinkContent>
-                <Chevron aria-hidden $open={false}>↗</Chevron>
-              </MobileNavLink>
-            );
-          })}
-        </MobileNavList>
-        <MobileQuoteButton href={CTA.href} onClick={handleMobileNavigate}>
-          {CTA.label}
-          <QuoteArrow aria-hidden>↗</QuoteArrow>
-        </MobileQuoteButton>
-      </MobileMenu>
+      <MobileNavigation
+        items={NAV_ITEMS}
+        activePath={activePath}
+        menuOpen={menuOpen}
+        mobileProductsOpen={mobileProductsOpen}
+        onToggleProducts={toggleMobileProducts}
+        onNavigate={closeMenu}
+      />
     </Header>
   );
 };
 
 export default CustomNavBar;
+
+const Logo = () => (
+  <LogoLink href="/" aria-label="Home">
+    <LogoImg src={logo} alt="C&S Logo" />
+  </LogoLink>
+);
+
+type DesktopNavigationProps = {
+  items: NavItem[];
+  activePath: string;
+  openDropdown: string | null;
+  onToggleDropdown: (code: string) => void;
+  onCloseDropdown: () => void;
+  dropdownRef: RefObject<HTMLDivElement>;
+};
+
+const DesktopNavigation = ({ items, activePath, openDropdown, onToggleDropdown, onCloseDropdown, dropdownRef }: DesktopNavigationProps) => (
+  <DesktopNav>
+    <NavList aria-label="Main navigation">
+      {items.map((item) => {
+        const active = item.match(activePath);
+
+        if (!item.children) {
+          return (
+            <NavLink key={item.code} href={item.href} $active={active}>
+              <NavCode>{item.code}</NavCode>
+              <span>{item.label}</span>
+            </NavLink>
+          );
+        }
+
+        const isOpen = openDropdown === item.code;
+        return (
+          <NavDropdown key={item.code} ref={dropdownRef}>
+            <NavDropdownToggle
+              type="button"
+              onClick={() => onToggleDropdown(item.code)}
+              $active={active}
+              aria-expanded={isOpen}
+              aria-haspopup="true"
+            >
+              <NavCode>{item.code}</NavCode>
+              <span>{item.label}</span>
+              <Chevron $open={isOpen} aria-hidden>⌄</Chevron>
+            </NavDropdownToggle>
+            {isOpen && (
+              <DropdownPanel role="menu">
+                {item.children.map((child) => (
+                  <DropdownLink key={child.href} href={child.href} onClick={onCloseDropdown}>
+                    {child.label}
+                  </DropdownLink>
+                ))}
+              </DropdownPanel>
+            )}
+          </NavDropdown>
+        );
+      })}
+    </NavList>
+    <QuoteButton href={CTA.href}>
+      {CTA.label}
+      <QuoteArrow aria-hidden>↗</QuoteArrow>
+    </QuoteButton>
+  </DesktopNav>
+);
+
+type MobileNavigationProps = {
+  items: NavItem[];
+  activePath: string;
+  menuOpen: boolean;
+  mobileProductsOpen: boolean;
+  onToggleProducts: () => void;
+  onNavigate: () => void;
+};
+
+const MobileNavigation = ({ items, activePath, menuOpen, mobileProductsOpen, onToggleProducts, onNavigate }: MobileNavigationProps) => (
+  <MobileMenu $open={menuOpen}>
+    <MobileNavList aria-label="Mobile navigation">
+      {items.map((item) => {
+        const active = item.match(activePath);
+
+        if (!item.children) {
+          return (
+            <MobileNavLink key={item.code} href={item.href} $active={active} onClick={onNavigate}>
+              <MobileLinkContent>
+                <NavCode>{item.code}</NavCode>
+                <span>{item.label}</span>
+              </MobileLinkContent>
+              <Chevron aria-hidden $open={false}>↗</Chevron>
+            </MobileNavLink>
+          );
+        }
+
+        return (
+          <MobileDropdown key={item.code}>
+            <MobileDropdownToggle
+              type="button"
+              onClick={onToggleProducts}
+              $active={active}
+              aria-expanded={mobileProductsOpen}
+            >
+              <MobileDropdownLabel>
+                <NavCode>{item.code}</NavCode>
+                <span>{item.label}</span>
+              </MobileDropdownLabel>
+              <Chevron $open={mobileProductsOpen} aria-hidden>⌄</Chevron>
+            </MobileDropdownToggle>
+            {mobileProductsOpen && (
+              <MobileSubList>
+                {item.children.map((child) => (
+                  <MobileSubLink key={child.href} href={child.href} onClick={onNavigate}>
+                    {child.label}
+                  </MobileSubLink>
+                ))}
+              </MobileSubList>
+            )}
+          </MobileDropdown>
+        );
+      })}
+    </MobileNavList>
+    <MobileQuoteButton href={CTA.href} onClick={onNavigate}>
+      {CTA.label}
+      <QuoteArrow aria-hidden>↗</QuoteArrow>
+    </MobileQuoteButton>
+  </MobileMenu>
+);
 
 const Header = styled.header`
   position: sticky;

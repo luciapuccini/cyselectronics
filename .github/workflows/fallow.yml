@@ -1,0 +1,28 @@
+name: Fallow Code Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  fallow:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: fallow-rs/fallow@v2
+        with:
+          baseline-dir: fallow-baselines

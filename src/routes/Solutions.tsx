@@ -420,69 +420,85 @@ const Solutions = () => {
 
   return (
     <Page>
-      <HeroSection>
-        <Hero>
-          <HeroEyebrow>
-            <HeroDash />
-            {content.hero.eyebrow}
-          </HeroEyebrow>
-          <HeroTitle>{content.hero.title}</HeroTitle>
-          <HeroLede>{content.hero.lede}</HeroLede>
-        </Hero>
-      </HeroSection>
-
-      {sectionOrder.map((key) => {
-        const section = content.sections[key];
-        const isServices = section.type === 'service';
-
-        return (
-          <SolutionsSection key={key} id={key}>
-            <SectionPattern aria-hidden="true" />
-            <SolutionsSectionInner>
-              <SolutionsSectionHeader>
-                <SectionLabel>
-                  <SectionAccent />
-                  <span>{section.label} · {String(section.items.length).padStart(2, '0')}</span>
-                </SectionLabel>
-                <SectionDescription>{section.description}</SectionDescription>
-              </SolutionsSectionHeader>
-
-              {isServices ? (
-                <ServiceGrid>
-                  {(section.items as ServiceItem[]).map((item) => (
-                    <ServiceCard key={item.id} item={item} />
-                  ))}
-                </ServiceGrid>
-              ) : (
-                <ProductStack>
-                  {(section.items as ProductItem[]).map((item) => (
-                    <ProductCard key={item.id} item={item} />
-                  ))}
-                </ProductStack>
-              )}
-            </SolutionsSectionInner>
-          </SolutionsSection>
-        );
-      })}
-
-      <FinalCtaSection>
-        <CtaInner>
-          <CtaCopy>
-            <SectionLabel $tone="light">
-              <SectionAccent />
-              <span>{content.cta.heading}</span>
-            </SectionLabel>
-            <CtaBody>{content.cta.body}</CtaBody>
-          </CtaCopy>
-          <CtaButton href={content.cta.href}>{content.cta.button}</CtaButton>
-          <CtaPattern aria-hidden="true" />
-        </CtaInner>
-      </FinalCtaSection>
+      <SolutionsHero hero={content.hero} />
+      <SolutionsSections sections={content.sections} />
+      <SolutionsFinalCta cta={content.cta} />
     </Page>
   );
 };
 
 export default Solutions;
+
+const SolutionsHero = ({ hero }: { hero: LocaleCopy['hero'] }) => (
+  <HeroSection>
+    <Hero>
+      <HeroEyebrow>
+        <HeroDash />
+        {hero.eyebrow}
+      </HeroEyebrow>
+      <HeroTitle>{hero.title}</HeroTitle>
+      <HeroLede>{hero.lede}</HeroLede>
+    </Hero>
+  </HeroSection>
+);
+
+const SolutionsSections = ({ sections }: { sections: LocaleCopy['sections'] }) => (
+  <>
+    {sectionOrder.map((key) => (
+      <SolutionsSectionBlock key={key} id={key} section={sections[key]} />
+    ))}
+  </>
+);
+
+const SolutionsSectionBlock = ({ id, section }: { id: SectionKey; section: SectionCopy }) => {
+  const countLabel = String(section.items.length).padStart(2, '0');
+  const isServices = section.type === 'service';
+
+  return (
+    <SolutionsSection id={id}>
+      <SectionPattern aria-hidden="true" />
+      <SolutionsSectionInner>
+        <SolutionsSectionHeader>
+          <SectionLabel>
+            <SectionAccent />
+            <span>{section.label} · {countLabel}</span>
+          </SectionLabel>
+          <SectionDescription>{section.description}</SectionDescription>
+        </SolutionsSectionHeader>
+
+        {isServices ? (
+          <ServiceGrid>
+            {(section.items as ServiceItem[]).map((item) => (
+              <ServiceCard key={item.id} item={item} />
+            ))}
+          </ServiceGrid>
+        ) : (
+          <ProductStack>
+            {(section.items as ProductItem[]).map((item) => (
+              <ProductCard key={item.id} item={item} />
+            ))}
+          </ProductStack>
+        )}
+      </SolutionsSectionInner>
+    </SolutionsSection>
+  );
+};
+
+const SolutionsFinalCta = ({ cta }: { cta: LocaleCopy['cta'] }) => (
+  <FinalCtaSection>
+    <CtaInner>
+      <CtaCopy>
+        <SectionLabel $tone="light">
+          <SectionAccent />
+          <span>{cta.heading}</span>
+        </SectionLabel>
+        <CtaBody>{cta.body}</CtaBody>
+      </CtaCopy>
+      <CtaButton href={cta.href}>{cta.button}</CtaButton>
+      <CtaPattern aria-hidden="true" />
+    </CtaInner>
+  </FinalCtaSection>
+);
 
 const ProductCard = ({ item }: { item: ProductItem }) => (
   <ProductCardRoot>

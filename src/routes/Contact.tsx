@@ -15,7 +15,8 @@ const copy = {
     phone: 'Phone',
     email: 'E-mail',
     addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Province of Buenos Aires'],
-
+    phoneLines: ['+54-336-4426734'],
+    emailLines: ['info@controlesysistemas.com.ar'],
   },
   es: {
     eyebrow: 'Contacto',
@@ -26,9 +27,12 @@ const copy = {
     phone: 'Teléfono',
     email: 'E-mail',
     addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Provincia de Buenos Aires'],
-
+    phoneLines: ['+54-336-4426734'],
+    emailLines: ['info@controlesysistemas.com.ar'],
   },
 };
+
+type ContactCopy = typeof copy.en;
 
 const Contact = () => {
   usePageTitle(
@@ -43,49 +47,11 @@ const Contact = () => {
 
   return (
     <Page>
-      <Hero>
-        <Eyebrow>
-          <EyebrowDash />
-          {t.eyebrow}
-        </Eyebrow>
-        <Title>{t.title}</Title>
-        <Lede>{t.lede}</Lede>
-      </Hero>
-
+      <ContactHero eyebrow={t.eyebrow} title={t.title} lede={t.lede} />
       <Grid>
         <InfoColumn>
-          <InfoCard>
-            <SectionLabel>{t.infoTitle}</SectionLabel>
-
-            <InfoItem
-              icon={<MapPinIcon />}
-              label={t.address}
-              lines={t.addressLines}
-            />
-            <InfoItem
-              icon={<PhoneIcon />}
-              label={t.phone}
-              lines={['+54-336-4426734']}
-              mono
-            />
-            <InfoItem
-              icon={<MailIcon />}
-              label={t.email}
-              lines={['info@controlesysistemas.com.ar']}
-              mono
-            />
-          </InfoCard>
-
-          <MapCard>
-            <MapFrame
-              title="Google map — C&S Controles y Sistemas"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26665.2008965253!2d-60.24076986293017!3d-33.341027880805335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7679b30478e45%3A0x705b2ead1a2421bb!2sGaribaldi%20611%2C%20San%20Nicol%C3%A1s%20de%20Los%20Arroyos%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1622412832927!5m2!1ses!2sar"
-              loading="lazy"
-              allowFullScreen
-            />
-          </MapCard>
+          <ContactInfo info={t} />
         </InfoColumn>
-
         <ContactForm />
       </Grid>
     </Page>
@@ -93,6 +59,44 @@ const Contact = () => {
 };
 
 export default Contact;
+
+const ContactHero = ({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) => (
+  <Hero>
+    <Eyebrow>
+      <EyebrowDash />
+      {eyebrow}
+    </Eyebrow>
+    <Title>{title}</Title>
+    <Lede>{lede}</Lede>
+  </Hero>
+);
+
+const ContactInfo = ({ info }: { info: ContactCopy }) => {
+  const items: InfoItemProps[] = [
+    { icon: <MapPinIcon />, label: info.address, lines: info.addressLines },
+    { icon: <PhoneIcon />, label: info.phone, lines: info.phoneLines, mono: true },
+    { icon: <MailIcon />, label: info.email, lines: info.emailLines, mono: true },
+  ];
+
+  return (
+    <>
+      <InfoCard>
+        <SectionLabel>{info.infoTitle}</SectionLabel>
+        {items.map((item) => (
+          <InfoItem key={item.label} {...item} />
+        ))}
+      </InfoCard>
+      <MapCard>
+        <MapFrame
+          title="Google map — C&S Controles y Sistemas"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26665.2008965253!2d-60.24076986293017!3d-33.341027880805335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7679b30478e45%3A0x705b2ead1a2421bb!2sGaribaldi%20611%2C%20San%20Nicol%C3%A1s%20de%20Los%20Arroyos%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1622412832927!5m2!1ses!2sar"
+          loading="lazy"
+          allowFullScreen
+        />
+      </MapCard>
+    </>
+  );
+};
 
 type InfoItemProps = {
   icon: React.ReactNode;
