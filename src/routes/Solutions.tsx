@@ -6,269 +6,42 @@ import rotorImg from '../assets/products/rotor.jpg';
 import AccentBar from '../components/atoms/AccentBar';
 import { Card, Surface } from '../components/atoms/Surface';
 import SectionHero from '../components/molecules/SectionHero';
+import type { Cta, CtaVariant, Mode, ProductItem, ServiceItem, SiteContent, SolutionsSectionCopy, SolutionsSectionKey, Spec } from '../content';
+import { useLanguage } from '../context/LanguageContext';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { tokens } from '../styles/tokens';
 
-type SectionKey = 'positioning' | 'protection' | 'services';
-
-type Spec = { label: string; value: string };
-type Mode = { name: string; description: string };
-type Feature = string;
-
-type CtaVariant = 'primary' | 'secondary';
-
-type Cta = {
-  label: string;
-  href: string;
-  variant: CtaVariant;
-  newTab?: boolean;
-  download?: boolean;
+const PRODUCT_IMAGES: Record<string, string> = {
+  magnaposi: magnaposiImg,
+  pemcc: pemccImg,
+  rotor: rotorImg,
 };
 
-type ProductItem = {
-  id: string;
-  name: string;
-  tagline: string;
-  detail: string;
-  image: string;
-  specs?: Spec[];
-  modes?: Mode[];
-  features?: Feature[];
-  ctas?: Cta[];
-  supportingLink?: { label: string; href: string; newTab?: boolean };
-};
-
-type ServiceSubsection = {
-  heading: string;
-  bullet: string;
-};
-
-type ServiceItem = {
-  id: string;
-  name: string;
-  intro: string;
-  bullets?: string[];
-  subsections?: ServiceSubsection[];
-};
-
-type ProductSection = {
-  type: 'product';
-  label: string;
-  description: string;
-  items: ProductItem[];
-};
-
-type ServiceSection = {
-  type: 'service';
-  label: string;
-  description: string;
-  items: ServiceItem[];
-};
-
-type SectionCopy = ProductSection | ServiceSection;
-
-type Copy = {
-  metaTitle: string;
-  metaDescription: string;
-  hero: {
-    eyebrow: string;
-    title: string;
-    lede: string;
-  };
-  sections: Record<SectionKey, SectionCopy>;
-  cta: {
-    heading: string;
-    body: string;
-    button: string;
-    href: string;
-  };
-};
-
-const copy: Copy = {
-  metaTitle: 'Solutions',
-  metaDescription:
-    'Industrial electronics solutions covering positioning systems, protection systems, and lifecycle engineering services.',
-  hero: {
-    eyebrow: 'Solutions',
-    title: 'Industrial electronics for critical operations',
-    lede:
-      'Positioning systems, protection systems, and lifecycle engineering services — designed and manufactured by C&S Controles y Sistemas.',
-  },
-  sections: {
-    positioning: {
-      type: 'product',
-      label: 'Positioning',
-      description:
-        'Precision measurement systems for industrial positioning — contact-free, maintenance-free, built for harsh environments.',
-      items: [
-        {
-          id: 'magnaposi',
-          name: 'MAGNAPOSI',
-          tagline: 'Steel catenary measurement in pickling processes',
-          detail:
-            'In pickling processes it is important to control the depth to which the material is immersed. To achieve that, a reliable measurement must be done. The MAGNAPOSI System performs this function without contact with the acid solution and is maintenance-free.',
-          image: magnaposiImg,
-          specs: [
-            { label: 'Contact', value: 'Non-contact' },
-            { label: 'Maintenance', value: 'Maintenance-free' },
-            { label: 'Environment', value: 'Acid-resistant' },
-            { label: 'Application', value: 'Pickling lines' },
-          ],
-          ctas: [
-            { label: 'Request info', href: '/contact', variant: 'primary' },
-            {
-              label: 'Download PDF',
-              href: '/Magnaposi_eng_datasheet_3.02.pdf',
-              variant: 'secondary',
-              download: true,
-            },
-          ],
-          supportingLink: {
-            label: 'Visit magnaposi.com',
-            href: 'https://magnaposi.com',
-            newTab: true,
-          },
-        },
-      ],
-    },
-    protection: {
-      type: 'product',
-      label: 'Protection',
-      description:
-        'Electronic protection systems for DC motors and AC rotor windings — real-time monitoring with configurable trip modes.',
-      items: [
-        {
-          id: 'pemcc',
-          name: 'PEMCC',
-          tagline: 'Electronic protection for DC motors',
-          detail:
-            "C&S's DC motor protection system model PEMCC evaluates the rotor solicitation of a DC machine through its current sensing.",
-          image: pemccImg,
-          modes: [
-            {
-              name: 'Mode TI-2',
-              description:
-                'Designed to replace electromechanical or overcurrent relays in general. It is also possible to configure an instantaneous trip.',
-            },
-            {
-              name: 'Thermal Model mode',
-              description:
-                "Enter the motor physical parameters to analyse the actual thermal state of the machine. Ideal for successive starts or alternating load cycles where TI-2 mode cannot track accumulated heating. Instantaneous trip can also be configured.",
-            },
-          ],
-          specs: [
-            { label: 'Type', value: 'DC motor' },
-            { label: 'Sensing', value: 'Current-based monitoring' },
-            { label: 'Modes', value: 'TI-2 / Thermal model' },
-            { label: 'Trip', value: 'Configurable' },
-          ],
-          ctas: [
-            { label: 'Request info', href: '/contact', variant: 'primary' },
-            {
-              label: 'View manual',
-              href: 'https://e.issuu.com/embed.html?identifier=z39bobtblh88&embedType=script#1523476/13436921',
-              variant: 'secondary',
-              newTab: true,
-            },
-          ],
-        },
-        {
-          id: 'rotor',
-          name: 'Rotor protection',
-          tagline: 'Three-phase rotor current monitoring',
-          detail:
-            "C&S's rotor protection system performs the measurement of the three currents in the rotor winding engines of all sizes. It detects unbalance and overcurrent to prevent damage and provides an output proportional to the imbalance.",
-          image: rotorImg,
-          features: [
-            'Current imbalance detection across three phases',
-            'Overcurrent alarm for preventive action',
-            'Analog output proportional to imbalance',
-            'Keyboard and display interface for adjustments',
-          ],
-          specs: [
-            { label: 'Type', value: 'AC wound rotor' },
-            { label: 'Phases', value: '3-phase measurement' },
-            { label: 'Output', value: 'Proportional current' },
-            { label: 'Interface', value: 'Keyboard + display' },
-          ],
-          ctas: [{ label: 'Request info', href: '/contact', variant: 'primary' }],
-        },
-      ],
-    },
-    services: {
-      type: 'service',
-      label: 'Services',
-      description:
-        'Full-lifecycle engineering — from concept and design through manufacturing, repair, and technical assistance.',
-      items: [
-        {
-          id: 'engineering',
-          name: 'Engineering',
-          intro:
-            'Our product engineering process includes conceptualisation, requirements, specification, architecture design, hardware development, testing, documentation, and reverse engineering.',
-          bullets: [
-            'Electromechanical development requirements',
-            'Mechanical and electrical architecture',
-            'Electronic boards systems design',
-            'Design validation, testing, and verification',
-            'Reverse engineering and documentation',
-          ],
-        },
-        {
-          id: 'electronic',
-          name: 'Electronic services',
-          intro:
-            'Development, manufacturing, and repair of electronic and electromechanical products from concept to turnkey delivery.',
-          bullets: [
-            'Spare parts development and production',
-            'Specialised technical assistance',
-            'Repair of industrial control and power equipment',
-          ],
-        },
-        {
-          id: 'steelmakers',
-          name: 'Steelmakers',
-          intro:
-            'Decades of experience delivering sensing, automatic control, quality, and safety systems tailored to steel production environments.',
-          subsections: [
-            { heading: 'Pickling lines', bullet: 'Catenary measurement system' },
-            { heading: 'Coke plant', bullet: 'Infrared positioning system for coking ovens' },
-          ],
-        },
-      ],
-    },
-  },
-  cta: {
-    heading: 'Need a custom solution?',
-    body: 'Our engineering team works with you from concept through turnkey delivery.',
-    button: 'Request a quote',
-    href: '/contact',
-  },
-};
-
-const sectionOrder: SectionKey[] = ['positioning', 'protection', 'services'];
+const sectionOrder: SolutionsSectionKey[] = ['positioning', 'protection', 'services'];
 
 const Solutions = () => {
-  usePageTitle(copy.metaTitle, copy.metaDescription);
+  const { content } = useLanguage();
+  const { solutions } = content;
+  usePageTitle(solutions.metaTitle, solutions.metaDescription);
 
   return (
     <Page>
-      <SolutionsHero hero={copy.hero} />
-      <SolutionsSections sections={copy.sections} />
-      <SolutionsFinalCta cta={copy.cta} />
+      <SolutionsHero hero={solutions.hero} />
+      <SolutionsSections sections={solutions.sections} />
+      <SolutionsFinalCta cta={solutions.cta} />
     </Page>
   );
 };
 
 export default Solutions;
 
-const SolutionsHero = ({ hero }: { hero: Copy['hero'] }) => (
+const SolutionsHero = ({ hero }: { hero: SiteContent['solutions']['hero'] }) => (
   <HeroSection>
     <SectionHero eyebrow={hero.eyebrow} title={hero.title} lede={hero.lede} />
   </HeroSection>
 );
 
-const SolutionsSections = ({ sections }: { sections: Copy['sections'] }) => (
+const SolutionsSections = ({ sections }: { sections: SiteContent['solutions']['sections'] }) => (
   <>
     {sectionOrder.map((key) => (
       <SolutionsSectionBlock key={key} id={key} section={sections[key]} />
@@ -276,7 +49,7 @@ const SolutionsSections = ({ sections }: { sections: Copy['sections'] }) => (
   </>
 );
 
-const SolutionsSectionBlock = ({ id, section }: { id: SectionKey; section: SectionCopy }) => {
+const SolutionsSectionBlock = ({ id, section }: { id: SolutionsSectionKey; section: SolutionsSectionCopy }) => {
   const countLabel = String(section.items.length).padStart(2, '0');
   const isServices = section.type === 'service';
 
@@ -309,7 +82,7 @@ const SolutionsSectionBlock = ({ id, section }: { id: SectionKey; section: Secti
   );
 };
 
-const SolutionsFinalCta = ({ cta }: { cta: Copy['cta'] }) => (
+const SolutionsFinalCta = ({ cta }: { cta: SiteContent['solutions']['cta'] }) => (
   <FinalCtaSection>
     <CtaInner>
       <CtaCopy>
@@ -328,7 +101,7 @@ const ProductCard = ({ item }: { item: ProductItem }) => (
   <ProductCardRoot>
     <ProductGrid>
       <ProductVisual>
-        <ProductImage src={item.image} alt={item.name} loading="lazy" />
+        <ProductImage src={PRODUCT_IMAGES[item.id]} alt={item.name} loading="lazy" />
       </ProductVisual>
       <ProductBody>
         <ProductTagline>{item.tagline}</ProductTagline>
@@ -361,7 +134,7 @@ const ProductModes = ({ modes }: { modes?: Mode[] }) => {
   );
 };
 
-const ProductFeatures = ({ features }: { features?: Feature[] }) => {
+const ProductFeatures = ({ features }: { features?: string[] }) => {
   if (!features || features.length === 0) {
     return null;
   }
@@ -463,18 +236,14 @@ const Page = styled.div`
 const HeroSection = styled.section`
   border-bottom: 1px solid var(--border);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(3rem, 6vw, 4rem);
-
   & > header {
-    margin: 0 auto;
+    margin: 0 ;
   }
 `;
 
 const SolutionsSection = styled.section`
   border-bottom: 1px solid var(--border);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8);
-
-  
-
   @media (max-width: ${tokens.bp.lg}) {
     padding: clamp(3rem, 10vw, 4.5rem) var(--space-6);
   }

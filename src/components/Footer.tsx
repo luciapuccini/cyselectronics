@@ -1,45 +1,44 @@
 import styled from 'styled-components';
 
 import logo from '../assets/cys-branding.svg';
+import { useLanguage } from '../context/LanguageContext';
 
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Contact', href: '/contact' },
-];
+const Footer = () => {
+  const { content } = useLanguage();
+  const { footer } = content;
+  const { info } = content.contact;
 
-const Footer = () => (
-  <FooterBar>
-    <Grid>
-      <Col>
-        <BrandLogo src={logo} alt="C&S" />
-        <Tagline>
-          Industrial electronics design, development, and maintenance since 1991.
-        </Tagline>
-      </Col>
-      <Col>
-        <ColTitle>Navigation</ColTitle>
-        <ColLinks>
-          {navLinks.map((l) => (
-            <FooterLink key={l.label} href={l.href}>{l.label}</FooterLink>
-          ))}
-        </ColLinks>
-      </Col>
-      <Col>
-        <ColTitle>Contact</ColTitle>
-        <ContactText>
-          +54-336-4426734<br />
-          info@controlesysistemas.com.ar<br />
-          San Nicolás, Buenos Aires, Argentina
-        </ContactText>
-      </Col>
-    </Grid>
-    <BottomBar>
-      <Copyright>© {new Date().getFullYear()} C&S Controles y Sistemas. All rights reserved.</Copyright>
-      <Version>v2.0</Version>
-    </BottomBar>
-  </FooterBar>
-);
+  return (
+    <FooterBar>
+      <Grid>
+        <Col>
+          <BrandLogo src={logo} alt="C&S" />
+          <Tagline>{footer.tagline}</Tagline>
+        </Col>
+        <Col>
+          <ColTitle>{footer.navColumn}</ColTitle>
+          <ColLinks>
+            {content.nav.items.map((l) => (
+              <FooterLink key={l.href} href={l.href}>{l.label}</FooterLink>
+            ))}
+          </ColLinks>
+        </Col>
+        <Col>
+          <ColTitle>{footer.contactColumn}</ColTitle>
+          <ContactText>
+            {info.phone.lines[0]}<br />
+            {info.email.lines[0]}<br />
+            {info.address.lines[2]}
+          </ContactText>
+        </Col>
+      </Grid>
+      <BottomBar>
+        <Copyright>{footer.copyright(new Date().getFullYear())}</Copyright>
+        <Version>{footer.version}</Version>
+      </BottomBar>
+    </FooterBar>
+  );
+};
 
 export default Footer;
 

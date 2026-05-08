@@ -2,53 +2,21 @@ import type { ReactNode, SVGProps } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { useLanguage } from '../../../context/LanguageContext';
 import AccentBar from '../../atoms/AccentBar';
 import { Card } from '../../atoms/Surface';
 
-type Capability = {
-  code: string;
-  title: string;
-  description: string;
-  items: string[];
-  icon: ReactNode;
+const CAPABILITY_ICONS: Record<string, ReactNode> = {
+  'C-01': <CpuGlyph />,
+  'C-02': <CircuitGlyph />,
+  'C-03': <WrenchGlyph />,
+  'C-04': <FactoryGlyph />,
 };
 
-const CAPABILITIES: Capability[] = [
-  {
-    code: 'C-01',
-    title: 'Engineering',
-    description:
-      'Conceptualisation, requirements, architecture and electronic design — verified through rigorous testing.',
-    items: ['Electromechanical R&D', 'PCB & enclosure design', 'Reverse engineering'],
-    icon: <CpuGlyph />,
-  },
-  {
-    code: 'C-02',
-    title: 'Manufacturing',
-    description:
-      'Development and small-to-medium series production of electronic and electromechanical assemblies.',
-    items: ['Spare parts production', 'Turnkey supply', 'Custom enclosures'],
-    icon: <CircuitGlyph />,
-  },
-  {
-    code: 'C-03',
-    title: 'Maintenance',
-    description:
-      'Multibrand repair and modernisation of industrial control and power equipment, on-site or in-shop.',
-    items: ['Drives & PLCs', 'Power converters', 'Sensor calibration'],
-    icon: <WrenchGlyph />,
-  },
-  {
-    code: 'C-04',
-    title: 'Steelmaking',
-    description:
-      'Three decades of mill-floor expertise — sensing, real-time quality and operational safety systems.',
-    items: ['Catenary measurement', 'Coke oven IR positioning', 'Pickling line QC'],
-    icon: <FactoryGlyph />,
-  },
-];
-
 const CapabilitiesSection = () => {
+  const { content } = useLanguage();
+  const { capabilities } = content.home;
+
   return (
     <CapabilitiesWrapper>
       <CapabilitiesInner>
@@ -56,25 +24,23 @@ const CapabilitiesSection = () => {
           <CapabilitiesHeadingStack>
             <CapabilitiesHeading>
               <AccentBar />
-              <CapabilitiesHeadingLabel>Capabilities · 04</CapabilitiesHeadingLabel>
+              <CapabilitiesHeadingLabel>{capabilities.eyebrow}</CapabilitiesHeadingLabel>
             </CapabilitiesHeading>
             <CapabilitiesTitle>
-              Four disciplines.
+              {capabilities.title}
               <br />
-              <CapabilitiesTitleSub>One accountable team.</CapabilitiesTitleSub>
+              <CapabilitiesTitleSub>{capabilities.titleSub}</CapabilitiesTitleSub>
             </CapabilitiesTitle>
           </CapabilitiesHeadingStack>
-          <CapabilitiesIntro>
-            C&S Controles y Sistemas was founded in 1991, with the mission of performing ​​Industrial Electronics designs and developments.
-          </CapabilitiesIntro>
+          <CapabilitiesIntro>{capabilities.intro}</CapabilitiesIntro>
         </CapabilitiesHeader>
 
         <CapabilitiesGrid>
-          {CAPABILITIES.map((capability) => (
+          {capabilities.items.map((capability) => (
             <CapabilityCard key={capability.code}>
               <CapabilityMeta>
                 <CapabilityCode>{capability.code}</CapabilityCode>
-                <CapabilityIcon>{capability.icon}</CapabilityIcon>
+                <CapabilityIcon>{CAPABILITY_ICONS[capability.code]}</CapabilityIcon>
               </CapabilityMeta>
               <CapabilityText>
                 <CapabilityName>{capability.title}</CapabilityName>
@@ -94,7 +60,7 @@ const CapabilitiesSection = () => {
 
         <CapabilitiesFooter>
           <CapabilitiesLink to="/solutions">
-            View full solutions catalogue
+            {capabilities.link}
             <ArrowIcon viewBox="0 0 16 16" role="presentation" aria-hidden>
               <path d="M4 12L12 4" />
               <path d="M6 4H12V10" />
@@ -318,6 +284,7 @@ const CapabilitiesLink = styled(Link)`
 `;
 
 const svgBaseProps: SVGProps<SVGSVGElement> = {
+  'aria-hidden': true,
   width: 24,
   height: 24,
   viewBox: '0 0 24 24',

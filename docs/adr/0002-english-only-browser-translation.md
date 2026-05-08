@@ -1,6 +1,6 @@
 # ADR 0002 — English-only with browser translation
 
-- **Status**: Accepted
+- **Status**: Superseded by [ADR 0003](./0003-native-es-en-language-switcher.md)
 - **Date**: 2026-05-07
 - **Supersedes**: —
 

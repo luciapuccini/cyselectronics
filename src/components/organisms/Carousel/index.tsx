@@ -4,38 +4,22 @@ import styled from 'styled-components';
 import slide1 from '../../../assets/slide-1.webp';
 import slide2 from '../../../assets/slide-2.webp';
 import slide3 from '../../../assets/slide-3.webp';
+import { useLanguage } from '../../../context/LanguageContext';
 import AtomAccentBar from '../../atoms/AccentBar';
 
-const slides = [
-  {
-    image: slide1,
-    header: 'STEELMAKERS',
-    detail:
-      'Our expertise in this market has been improved over the years having made top state of the art solutions related to sensors, automatic control, real-time quality control, equipment protection, etc.',
-  },
-  {
-    image: slide2,
-    header: 'ELECTRONIC',
-    detail:
-      'Development, manufacture and repair of electronic and electromechanical products ranging from the concept to turnkey supply.',
-  },
-  {
-    image: slide3,
-    header: 'ENGINEERING',
-    detail:
-      'Conceptualization, requirements, specification, architecture design, hardware development, testing, documentation and reverse engineering.',
-  },
-];
+const SLIDE_IMAGES = [slide1, slide2, slide3];
 
 const INTERVAL_MS = 4500;
 
 const Carousel = () => {
+  const { content } = useLanguage();
+  const slides = content.home.carousel.slides;
   const [current, setCurrent] = useState(0);
   const [tick, setTick] = useState(0);
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: tick is used as a reset trigger when user navigates manually
   useEffect(() => {
@@ -51,7 +35,8 @@ const Carousel = () => {
   return (
     <Wrapper>
       {slides.map((slide, i) => (
-        <Slide key={slide.header} image={slide.image} active={i === current}>
+        // biome-ignore lint/suspicious/noArrayIndexKey: slides are positional, no stable id
+        <Slide key={i} image={SLIDE_IMAGES[i]} active={i === current}>
           <TextPanel>
             <AccentBar />
             <Header>{slide.header}</Header>
@@ -60,9 +45,10 @@ const Carousel = () => {
         </Slide>
       ))}
       <Dots>
-        {slides.map((slide, i) => (
+        {slides.map((_, i) => (
           <Dot
-            key={slide.header}
+            // biome-ignore lint/suspicious/noArrayIndexKey: slides are positional, no stable id
+            key={i}
             active={i === current}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}

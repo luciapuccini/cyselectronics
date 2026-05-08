@@ -1,58 +1,42 @@
 import styled from 'styled-components';
 
 import pcbDetailImage from '../../../assets/pcb-detail.jpg';
+import { useLanguage } from '../../../context/LanguageContext';
 import AccentBar from '../../atoms/AccentBar';
 import { Surface } from '../../atoms/Surface';
 
-type Stat = {
-  value: string;
-  label: string;
-};
-
-const ABOUT_STATS: Stat[] = [
-  { value: '1991', label: 'Founded' },
-  { value: '30+', label: 'Years on the floor' },
-  { value: '200+', label: 'Industrial deployments' },
-  { value: '24/7', label: 'Field response' },
-];
-
 const AboutSection = () => {
+  const { content } = useLanguage();
+  const { about } = content.home;
+
   return (
     <AboutWrapper>
       <AboutGrid>
         <AboutImagePanel>
-          <AboutImage src={pcbDetailImage} alt="Macro detail of an industrial control board manufactured by C&S" />
+          <AboutImage src={pcbDetailImage} alt={about.imageAlt} />
           <AboutImageOverlay aria-hidden />
           <AboutBadge>
             <BadgeIndicator />
-            File · CYS-PCB-014
+            {about.badge}
           </AboutBadge>
         </AboutImagePanel>
         <AboutContent>
           <AboutContentInner>
             <AboutMeta>
-              <AboutMetaLabel>/About</AboutMetaLabel>
+              <AboutMetaLabel>{about.metaLabel}</AboutMetaLabel>
               <AccentBar $width="48px" $color="var(--border)" />
-              <AboutMetaSupport>C&S Controles y Sistemas</AboutMetaSupport>
+              <AboutMetaSupport>{about.metaSupport}</AboutMetaSupport>
             </AboutMeta>
 
-            <AboutTitle>
-              Industrial electronics, designed and built with full dedication — for over three decades.
-            </AboutTitle>
+            <AboutTitle>{about.title}</AboutTitle>
 
             <AboutCopy>
-              <p>
-                C&S Controles y Sistemas was founded in 1991 with a single mission: to perform industrial
-                electronics design and development with the rigour the factory floor demands.
-              </p>
-              <p>
-                Our values are built around personal attention. Reliability and experience are the two pillars that
-                have anchored our growth — and our customers&apos; trust — over thirty years of practice.
-              </p>
+              <p>{about.copy[0]}</p>
+              <p>{about.copy[1]}</p>
             </AboutCopy>
 
             <AboutStats>
-              {ABOUT_STATS.map((stat) => (
+              {about.stats.map((stat) => (
                 <AboutStat key={stat.label}>
                   <AboutStatLabel>{stat.label}</AboutStatLabel>
                   <AboutStatValue>{stat.value}</AboutStatValue>

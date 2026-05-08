@@ -1,39 +1,25 @@
 import styled from 'styled-components';
 
+import type { SiteContent } from '../content';
 import IconBadge from '../components/atoms/IconBadge';
 import { Card, Surface } from '../components/atoms/Surface';
 import SectionHero from '../components/molecules/SectionHero';
 import ContactForm from '../components/organisms/ContactForm';
+import { useLanguage } from '../context/LanguageContext';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { tokens } from '../styles/tokens';
 
-const copy = {
-  eyebrow: 'Contact',
-  title: 'Let’s talk about\nyour next project',
-  lede: 'Engineering solutions in industrial control and automation. We are ready to help.',
-  infoTitle: 'Contact information',
-  address: 'Address',
-  phone: 'Phone',
-  email: 'E-mail',
-  addressLines: ['Garibaldi 611', 'B2900 San Nicolás de Los Arroyos', 'Province of Buenos Aires'],
-  phoneLines: ['+54-336-4426734'],
-  emailLines: ['info@controlesysistemas.com.ar'],
-};
-
-type ContactCopy = typeof copy;
-
 const Contact = () => {
-  usePageTitle(
-    'Contact',
-    'Get in touch with C&S Controles y Sistemas for industrial electronics projects and inquiries.',
-  );
+  const { content } = useLanguage();
+  const { contact } = content;
+  usePageTitle(contact.metaTitle, contact.metaDescription);
 
   return (
     <Page>
-      <ContactHero eyebrow={copy.eyebrow} title={copy.title} lede={copy.lede} />
+      <ContactHero eyebrow={contact.hero.eyebrow} title={contact.hero.title} lede={contact.hero.lede} />
       <Grid>
         <InfoColumn>
-          <ContactInfo info={copy} />
+          <ContactInfo info={contact.info} />
         </InfoColumn>
         <ContactForm />
       </Grid>
@@ -49,17 +35,17 @@ const ContactHero = ({ eyebrow, title, lede }: { eyebrow: string; title: string;
   </HeroWrapper>
 );
 
-const ContactInfo = ({ info }: { info: ContactCopy }) => {
+const ContactInfo = ({ info }: { info: SiteContent['contact']['info'] }) => {
   const items: InfoItemProps[] = [
-    { icon: <MapPinIcon />, label: info.address, lines: info.addressLines },
-    { icon: <PhoneIcon />, label: info.phone, lines: info.phoneLines, mono: true },
-    { icon: <MailIcon />, label: info.email, lines: info.emailLines, mono: true },
+    { icon: <MapPinIcon />, label: info.address.label, lines: info.address.lines },
+    { icon: <PhoneIcon />, label: info.phone.label, lines: info.phone.lines, mono: true },
+    { icon: <MailIcon />, label: info.email.label, lines: info.email.lines, mono: true },
   ];
 
   return (
     <>
       <InfoCard>
-        <SectionLabel>{info.infoTitle}</SectionLabel>
+        <SectionLabel>{info.title}</SectionLabel>
         {items.map((item) => (
           <InfoItem key={item.label} {...item} />
         ))}
