@@ -2,6 +2,8 @@ import { useCallback, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 
+import type { SiteContent } from '../../../content';
+import { useLanguage } from '../../../context/LanguageContext';
 import { tokens } from '../../../styles/tokens';
 import { Card as SurfaceCard } from '../../atoms/Surface';
 
@@ -17,30 +19,7 @@ type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const initialState: FormState = { name: '', email: '', phone: '', company: '', message: '' };
 
-const copy = {
-  formTitle: 'Contact form',
-  name: 'Name',
-  email: 'Email',
-  phone: 'Phone',
-  company: 'Company',
-  message: 'Message',
-  required: '* Required fields',
-  submit: 'Send message',
-  submitting: 'Sending…',
-  sent: 'Message sent',
-  sentBody: 'Thank you for reaching out. We will get back to you shortly.',
-  sendAnother: 'Send another message',
-  errors: {
-    name: 'Name is required',
-    email: 'Email is required',
-    emailInvalid: 'Invalid email',
-    message: 'Message is required',
-  },
-};
-
-type CopyVariant = typeof copy;
-
-const useContactFormState = (t: CopyVariant) => {
+const useContactFormState = (t: Pick<SiteContent['contact']['form'], 'errors'>) => {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [sending, setSending] = useState(false);
@@ -92,20 +71,22 @@ const useContactFormState = (t: CopyVariant) => {
 };
 
 const ContactForm = () => {
-  const formState = useContactFormState(copy);
+  const { content } = useLanguage();
+  const t = content.contact.form;
+  const formState = useContactFormState(t);
 
   return (
     <Card>
       {formState.submitted ? (
         <ContactSuccess
-          title={copy.sent}
-          body={copy.sentBody}
-          actionLabel={copy.sendAnother}
+          title={t.sent}
+          body={t.sentBody}
+          actionLabel={t.sendAnother}
           onReset={formState.handleReset}
         />
       ) : (
         <ContactFormFields
-          t={copy}
+          t={t}
           form={formState.form}
           errors={formState.errors}
           sending={formState.sending}
@@ -120,7 +101,7 @@ const ContactForm = () => {
 export default ContactForm;
 
 type ContactFormFieldsProps = {
-  t: CopyVariant;
+  t: SiteContent['contact']['form'];
   form: FormState;
   errors: FormErrors;
   sending: boolean;
@@ -135,8 +116,8 @@ const ContactFormFields = ({ t, form, errors, sending, onChange, onSubmit }: Con
       { label: t.email, name: 'email' as const, required: true, type: 'email' },
     ],
     [
-      { label: t.phone, name: 'phone' as const, type: 'tel' },
-      { label: t.company, name: 'company' as const, type: 'text' },
+      { label: t.phone, name: 'phone' as const, required: false as const, type: 'tel' },
+      { label: t.company, name: 'company' as const, required: false as const, type: 'text' },
     ],
   ];
 

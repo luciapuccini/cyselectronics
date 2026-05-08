@@ -4,65 +4,57 @@ import styled from 'styled-components';
 
 import logo from '../../../assets/cys-branding.svg';
 import MenuIcon from '../../../assets/menu.svg?react';
+import type { Locale } from '../../../content';
+import { useLanguage } from '../../../context/LanguageContext';
 
-type NavItem = {
-  code: string;
-  label: string;
-  href: string;
-  match: (path: string) => boolean;
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { code: '01', label: 'Home', href: '/', match: (path) => path === '/' },
-
-  {
-    code: '02',
-    label: 'Solutions',
-    href: '/solutions',
-    match: (path) => path.startsWith('/solutions'),
-  },
-
-  { code: '03', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
-];
-
-const CTA = { href: '/contact', label: 'Request quote' };
+const matchHref = (href: string, path: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
 
 const CustomNavBar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { content, locale, setLocale } = useLanguage();
+  const { nav } = content;
 
   const activePath = location.pathname;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: activePath is a trigger, not used inside the effect body
   useEffect(() => {
     setMenuOpen(false);
   }, [activePath]);
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <Header>
       <HeaderInner>
         <Logo />
-        <DesktopNavigation items={NAV_ITEMS} activePath={activePath} />
+        <DesktopNavigation
+          items={nav.items}
+          activePath={activePath}
+          cta={nav.cta}
+          locale={locale}
+          setLocale={setLocale}
+          langSwitch={nav.langSwitch}
+        />
         <MobileToggle
           type="button"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? nav.ariaClose : nav.ariaOpen}
           onClick={toggleMenu}
         >
           {menuOpen ? <CloseGlyph>✕</CloseGlyph> : <MenuGlyph />}
         </MobileToggle>
       </HeaderInner>
       <MobileNavigation
-        items={NAV_ITEMS}
+        items={nav.items}
         activePath={activePath}
+        cta={nav.cta}
         menuOpen={menuOpen}
         onNavigate={closeMenu}
+        locale={locale}
+        setLocale={setLocale}
+        langSwitch={nav.langSwitch}
       />
     </Header>
   );
@@ -76,16 +68,49 @@ const Logo = () => (
   </LogoLink>
 );
 
+type NavItem = { code: string; label: string; href: string };
+type LangSwitchLabels = { en: string; es: string };
+
+type LanguageSwitcherProps = {
+  locale: Locale;
+  setLocale: (l: Locale) => void;
+  labels: LangSwitchLabels;
+};
+
+const LanguageSwitcher = ({ locale, setLocale, labels }: LanguageSwitcherProps) => (
+  <LangToggle>
+    <LangOption
+      type="button"
+      $active={locale === 'es'}
+      onClick={() => setLocale('es')}
+    >
+      {labels.es}
+    </LangOption>
+    <LangDivider aria-hidden>·</LangDivider>
+    <LangOption
+      type="button"
+      $active={locale === 'en'}
+      onClick={() => setLocale('en')}
+    >
+      {labels.en}
+    </LangOption>
+  </LangToggle>
+);
+
 type DesktopNavigationProps = {
   items: NavItem[];
   activePath: string;
+  cta: { label: string; href: string };
+  locale: Locale;
+  setLocale: (l: Locale) => void;
+  langSwitch: LangSwitchLabels;
 };
 
-const DesktopNavigation = ({ items, activePath }: DesktopNavigationProps) => (
+const DesktopNavigation = ({ items, activePath, cta, locale, setLocale, langSwitch }: DesktopNavigationProps) => (
   <DesktopNav>
     <NavList aria-label="Main navigation">
       {items.map((item) => {
-        const active = item.match(activePath);
+        const active = matchHref(item.href, activePath);
         return (
           <NavLink key={item.code} href={item.href} $active={active}>
             <NavCode>{item.code}</NavCode>
@@ -94,8 +119,9 @@ const DesktopNavigation = ({ items, activePath }: DesktopNavigationProps) => (
         );
       })}
     </NavList>
-    <QuoteButton href={CTA.href}>
-      {CTA.label}
+    <LanguageSwitcher locale={locale} setLocale={setLocale} labels={langSwitch} />
+    <QuoteButton href={cta.href}>
+      {cta.label}
       <QuoteArrow aria-hidden>↗</QuoteArrow>
     </QuoteButton>
   </DesktopNav>
@@ -104,15 +130,28 @@ const DesktopNavigation = ({ items, activePath }: DesktopNavigationProps) => (
 type MobileNavigationProps = {
   items: NavItem[];
   activePath: string;
+  cta: { label: string; href: string };
   menuOpen: boolean;
   onNavigate: () => void;
+  locale: Locale;
+  setLocale: (l: Locale) => void;
+  langSwitch: LangSwitchLabels;
 };
 
-const MobileNavigation = ({ items, activePath, menuOpen, onNavigate }: MobileNavigationProps) => (
+const MobileNavigation = ({
+  items,
+  activePath,
+  cta,
+  menuOpen,
+  onNavigate,
+  locale,
+  setLocale,
+  langSwitch,
+}: MobileNavigationProps) => (
   <MobileMenu $open={menuOpen}>
     <MobileNavList aria-label="Mobile navigation">
       {items.map((item) => {
-        const active = item.match(activePath);
+        const active = matchHref(item.href, activePath);
         return (
           <MobileNavLink key={item.code} href={item.href} $active={active} onClick={onNavigate}>
             <MobileLinkContent>
@@ -124,10 +163,13 @@ const MobileNavigation = ({ items, activePath, menuOpen, onNavigate }: MobileNav
         );
       })}
     </MobileNavList>
-    <MobileQuoteButton href={CTA.href} onClick={onNavigate}>
-      {CTA.label}
-      <QuoteArrow aria-hidden>↗</QuoteArrow>
-    </MobileQuoteButton>
+    <MobileBottom>
+      <LanguageSwitcher locale={locale} setLocale={setLocale} labels={langSwitch} />
+      <MobileQuoteButton href={cta.href} onClick={onNavigate}>
+        {cta.label}
+        <QuoteArrow aria-hidden>↗</QuoteArrow>
+      </MobileQuoteButton>
+    </MobileBottom>
   </MobileMenu>
 );
 
@@ -276,6 +318,39 @@ const QuoteArrow = styled.span`
   }
 `;
 
+const LangToggle = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: var(--letter-widest);
+  text-transform: uppercase;
+`;
+
+const LangDivider = styled.span`
+  color: var(--border);
+  user-select: none;
+`;
+
+const LangOption = styled.button<{ $active: boolean }>`
+  background: none;
+  border: none;
+  padding: 0.2rem 0.25rem;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: ${({ $active }) => ($active ? 'default' : 'pointer')};
+  color: ${({ $active }) => ($active ? 'var(--foreground)' : 'var(--muted-foreground)')};
+  font-weight: ${({ $active }) => ($active ? '600' : '400')};
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: ${({ $active }) => ($active ? 'var(--foreground)' : 'var(--accent)')};
+  }
+`;
+
 const MobileToggle = styled.button`
   display: none;
   align-items: center;
@@ -347,13 +422,19 @@ const MobileNavLink = styled.a<{ $active: boolean }>`
   background: ${({ $active }) => ($active ? 'var(--secondary)' : 'transparent')};
 `;
 
+const MobileBottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5);
+  gap: var(--space-4);
+`;
 
 const MobileQuoteButton = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  margin: var(--space-5);
   border: 1px solid var(--border);
   background: var(--card);
   padding: 0.7rem var(--space-5);

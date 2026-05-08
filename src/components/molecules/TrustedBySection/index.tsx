@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import airLiquideLogo from '../../../assets/partners/Air_Liquide.png';
 import akSteelLogo from '../../../assets/partners/AK_Steel.png';
 import arcelorMittalLogo from '../../../assets/partners/ArcelorMittal.png';
@@ -11,6 +12,8 @@ import sidorLogo from '../../../assets/partners/sidor.png';
 import tenarisLogo from '../../../assets/partners/Tenaris Search Result.png';
 import terniumLogo from '../../../assets/partners/Ternium.png';
 import usiminasLogo from '../../../assets/partners/Usiminas_Logo.png';
+
+import { useLanguage } from '../../../context/LanguageContext';
 
 type Partner = {
   name: string;
@@ -35,6 +38,9 @@ const PARTNERS: Partner[] = [
 ];
 
 const TrustedBySection = () => {
+  const { content } = useLanguage();
+  const { trustedBy } = content.home;
+
   return (
     <Section id="partners">
       <Inner>
@@ -42,11 +48,10 @@ const TrustedBySection = () => {
           <HeadingStack>
             <Accent>
               <AccentBar />
-              <AccentLabel>Trusted partners</AccentLabel>
+              <AccentLabel>{trustedBy.accent}</AccentLabel>
             </Accent>
-            <Title>Partners that rely on our work</Title>
+            <Title>{trustedBy.title}</Title>
           </HeadingStack>
-
         </HeadingRow>
         <Grid>
           {PARTNERS.map((partner, index) => (
@@ -61,9 +66,7 @@ const TrustedBySection = () => {
             </LogoCell>
           ))}
         </Grid>
-        <Footnote>For more than three decades we have collaborated with leading
-          industrial companies, delivering tailored electronics solutions
-          where standard suppliers fall short.</Footnote>
+        <Footnote>{trustedBy.footnote}</Footnote>
       </Inner>
     </Section>
   );
@@ -131,17 +134,6 @@ const Title = styled.h2`
   color: var(--foreground);
 `;
 
-const Subtitle = styled.p`
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-  color: var(--muted-foreground);
-  max-width: 360px;
-  line-height: var(--line-relaxed);
-  text-wrap: pretty;
-
-  @media (max-width: 767px) {
-    max-width: 520px;
-  }
-`;
 
 const Grid = styled.div`
   margin-top: clamp(2.75rem, 6vw, 4rem);
