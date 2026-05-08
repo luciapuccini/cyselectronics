@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import './Carousel.css';
 
 import slide1 from '../../../assets/slide-1.webp';
 import slide2 from '../../../assets/slide-2.webp';
 import slide3 from '../../../assets/slide-3.webp';
+import AtomAccentBar from '../../atoms/AccentBar';
 
 const slides = [
   {
@@ -27,9 +27,9 @@ const slides = [
   },
 ];
 
-const INTERVAL_MS = 4000;
+const INTERVAL_MS = 4500;
 
-const SplideCarousel = () => {
+const Carousel = () => {
   const [current, setCurrent] = useState(0);
   const [tick, setTick] = useState(0);
 
@@ -37,6 +37,7 @@ const SplideCarousel = () => {
     setCurrent((c) => (c + 1) % slides.length);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: tick is used as a reset trigger when user navigates manually
   useEffect(() => {
     const id = setInterval(next, INTERVAL_MS);
     return () => clearInterval(id);
@@ -48,86 +49,121 @@ const SplideCarousel = () => {
   };
 
   return (
-    <CarouselWrapper>
+    <Wrapper>
       {slides.map((slide, i) => (
-        <Slide key={i} image={slide.image} active={i === current}>
-          <SlideHeader>{slide.header}</SlideHeader>
-          <SlideDetail>{slide.detail}</SlideDetail>
+        <Slide key={slide.header} image={slide.image} active={i === current}>
+          <TextPanel>
+            <AccentBar />
+            <Header>{slide.header}</Header>
+            <Detail>{slide.detail}</Detail>
+          </TextPanel>
         </Slide>
       ))}
       <Dots>
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            className={`carousel_controls${i === current ? ' is-active' : ''}`}
+        {slides.map((slide, i) => (
+          <Dot
+            key={slide.header}
+            active={i === current}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </Dots>
-    </CarouselWrapper>
+    </Wrapper>
   );
 };
 
-const CarouselWrapper = styled.div`
+export default Carousel;
+
+const Wrapper = styled.div`
   position: relative;
-  height: 50vh;
-  width: 100vw;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
+  max-height: 720px;
   overflow: hidden;
 `;
 
 const Slide = styled.div<{ image: string; active: boolean }>`
   position: absolute;
   inset: 0;
-  background-image: url("${({ image }) => image}");
+  background-image:
+    linear-gradient(135deg, var(--color-overlay-dark-55) 0%, var(--color-overlay-dark-15) 60%, transparent 100%),
+    url("${({ image }) => image}");
   background-size: cover;
   background-position: center;
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  transition: opacity 0.8s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-evenly;
-  opacity: ${({ active }) => (active ? 1 : 0)};
-  transition: opacity 0.6s ease;
+  justify-content: flex-end;
+  padding: var(--space-16) var(--space-16) var(--space-20);
+
   @media (max-width: 599px) {
-    align-items: center;
-    justify-content: center;
+    padding: var(--space-12) var(--space-6) var(--space-16);
   }
 `;
 
-const SlideHeader = styled.h2`
-  color: #ffffff;
-  text-transform: uppercase;
-  font-family: "Raleway", Arial, sans-serif;
-  margin: 0 0 1.375em;
-  background: rgba(30, 126, 52, 0.8);
-  font-size: 1.875em;
-  font-weight: 300;
-  line-height: 1.3;
-  padding: 0.625em 1.25em;
+const TextPanel = styled.div`
+  background: var(--color-panel-overlay);
+  padding: 2.25rem 2.75rem var(--space-12);
+  max-width: min(640px, 90%);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(4px);
+
+  @media (max-width: 959px) {
+    padding: var(--space-8) var(--space-8) var(--space-10);
+  }
+
+  @media (max-width: 599px) {
+    padding: 1.75rem var(--space-6) var(--space-8);
+  }
 `;
 
-const SlideDetail = styled.p`
-  color: #ffffff;
-  font-family: "Raleway", Arial, sans-serif;
-  margin: 0 0 0.937em;
-  background: rgba(30, 126, 52, 0.8);
-  font-size: 1.5em;
-  font-weight: 300;
-  line-height: 1.3;
-  padding: 0.625em 1.25em;
-  max-width: 80vw;
-  @media (max-width: 599px) {
-    display: none;
-  }
+const AccentBar = styled(AtomAccentBar).attrs({
+  $width: '48px',
+  $height: '3px',
+  $color: 'var(--primary)',
+})`
+  margin-bottom: var(--space-4);
+`;
+
+const Header = styled.h2`
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  line-height: var(--line-snug);
+  margin: 0 0 var(--space-3);
+`;
+
+const Detail = styled.p`
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: var(--color-overlay-light-85);
+  max-width: 640px;
+  line-height: var(--line-relaxed);
+  font-weight: var(--font-weight-regular);
+  margin: 0;
 `;
 
 const Dots = styled.div`
   position: absolute;
-  bottom: 0.75rem;
+  bottom: var(--space-6);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
 `;
 
-export default SplideCarousel;
+const Dot = styled.button<{ active: boolean }>`
+  width: ${({ active }) => (active ? '32px' : '10px')};
+  height: 10px;
+  border-radius: 5px;
+  border: none;
+  background: ${({ active }) => (active ? 'var(--primary)' : 'var(--color-overlay-light-40)')};
+  cursor: pointer;
+  transition: all var(--transition-slow);
+  padding: 0;
+`;

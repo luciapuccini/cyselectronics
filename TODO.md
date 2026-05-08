@@ -15,10 +15,6 @@ guaranteed Spanish content on .com.ar in the future, the proper path is translat
 
 
 ## Design
-- simlpify navigation
-- improve cards and spacing
-- re design layout, more SPA feeling
-- images look ugly find alternatives like stats section
 - FAQs 
-- 3 pages should be enough: home, about, products & services
-- keep the carousel & an industrial aestethic
+- Use issues to track todos
+- polish /solutions page

@@ -1,15 +1,6 @@
 import { useEffect } from 'react';
 import { domainConfig } from '../config/domain';
 
-export type Bilingual = { en: string; es: string };
-type TitleInput = string | Bilingual | undefined;
-
-function resolve(input: TitleInput, locale: 'en' | 'es'): string | undefined {
-  if (!input) return undefined;
-  if (typeof input === 'string') return input;
-  return input[locale];
-}
-
 function setMetaByProperty(property: string, content: string) {
   let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
   if (!el) {
@@ -40,25 +31,22 @@ function setCanonical(url: string) {
   el.href = url;
 }
 
-export function usePageTitle(title?: TitleInput, description?: TitleInput) {
+export function usePageTitle(title?: string, description?: string) {
   useEffect(() => {
-    const { locale, siteName, siteUrl, ogImage } = domainConfig;
-    const pageTitle = resolve(title, locale);
-    const pageDesc = resolve(description, locale);
-    const fullTitle = pageTitle ? `${pageTitle} | ${siteName}` : siteName;
+    const { siteName, siteUrl, ogImage } = domainConfig;
+    const fullTitle = title ? `${title} | ${siteName}` : siteName;
     const canonicalUrl = siteUrl + window.location.pathname;
 
     document.title = fullTitle;
-    document.documentElement.lang = locale;
     setCanonical(canonicalUrl);
 
     setMetaByProperty('og:title', fullTitle);
     setMetaByProperty('og:url', canonicalUrl);
     setMetaByProperty('og:image', ogImage);
 
-    if (pageDesc) {
-      setMetaByName('description', pageDesc);
-      setMetaByProperty('og:description', pageDesc);
+    if (description) {
+      setMetaByName('description', description);
+      setMetaByProperty('og:description', description);
     }
   }, [title, description]);
 }

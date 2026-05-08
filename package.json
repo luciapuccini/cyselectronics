@@ -15,11 +15,13 @@
   },
   "devDependencies": {
     "@netlify/functions": "^5.2.0",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
     "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^5.0.0",
+    "fallow": "^2.66.2",
     "typescript": "^5.9.3",
     "vite": "^8.0.10",
     "vite-plugin-svgr": "^4.0.0"

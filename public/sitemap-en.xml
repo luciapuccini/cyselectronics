@@ -6,27 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.cyselectronics.com/company</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.cyselectronics.com/services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cyselectronics.com/products</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cyselectronics.com/products/positioning</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cyselectronics.com/products/protection</loc>
+    <loc>https://www.cyselectronics.com/solutions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

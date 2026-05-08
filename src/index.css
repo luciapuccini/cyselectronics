@@ -1,23 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import './styles/tokens.css';
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
-  font-family: "Raleway", Arial, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 }
 
-h1, h2, h3, b, p, div  {
-  cursor:default;
+h1, h2, h3, b, p, div {
+  cursor: default;
 }
 
 #root {

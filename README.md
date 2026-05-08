@@ -18,3 +18,5 @@ React website for electronics company in San Nicolás, Argentina.
 Hosted with netlify
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/60f4d398-15e8-4fe3-b071-a72caad221f8/deploy-status)](https://app.netlify.com/sites/stoic-morse-cb2407/deploys)
+
+## Themeing and Layouting

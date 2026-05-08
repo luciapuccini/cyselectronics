@@ -1,342 +1,372 @@
-import { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 import logo from '../../../assets/cys-branding.svg';
-import Menu from '../../../assets/menu.svg?react';
+import MenuIcon from '../../../assets/menu.svg?react';
 
-import './NavBar.css';
-
-const getCurrentPage = (path: string) => {
-  const page = path.slice(1);
-  switch (page) {
-    case '': return 0;
-    case 'company': return 1;
-    case 'contact': return 2;
-    case 'products':
-    case 'products/positioning':
-    case 'products/protection': return 3;
-    case 'services': return 4;
-    default: return 0;
-  }
+type NavItem = {
+  code: string;
+  label: string;
+  href: string;
+  match: (path: string) => boolean;
 };
 
+const NAV_ITEMS: NavItem[] = [
+  { code: '01', label: 'Home', href: '/', match: (path) => path === '/' },
+
+  {
+    code: '02',
+    label: 'Solutions',
+    href: '/solutions',
+    match: (path) => path.startsWith('/solutions'),
+  },
+
+  { code: '03', label: 'Contact', href: '/contact', match: (path) => path.startsWith('/contact') },
+];
+
+const CTA = { href: '/contact', label: 'Request quote' };
+
 const CustomNavBar = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [drawerProductsOpen, setDrawerProductsOpen] = useState(false);
   const location = useLocation();
-  const [active, setActive] = useState(getCurrentPage(location.pathname));
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const activePath = location.pathname;
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
+    setMenuOpen(false);
+  }, [activePath]);
 
-  useEffect(() => {
-    setDrawerOpen(false);
-  }, [location]);
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
-  useEffect(() => {
-    document.body.style.overflow = drawerOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [drawerOpen]);
-
-  const closeDrawer = () => setDrawerOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
-    <>
-      <TopBarContainer>
-        <ExtrasContainer>
-          <a href="/">
-            <LogoImg src={logo} alt="cyslogo" />
-          </a>
-          <HamburgerButton onClick={() => setDrawerOpen(true)} aria-label="Open menu">
-            <Menu />
-          </HamburgerButton>
-        </ExtrasContainer>
-        <LinksContainer className="navWrapper">
-          <li className={active === 0 ? 'current' : ''}>
-            <a onClick={() => setActive(0)} href="/">Home</a>
-          </li>
-          <li className={active === 1 ? 'current' : ''}>
-            <a href="/company" onClick={() => setActive(1)}>Company</a>
-          </li>
-          <li className={active === 2 ? 'current' : ''}>
-            <a onClick={() => setActive(2)} href="/contact">Contact Us</a>
-          </li>
-          <DropdownLi ref={dropdownRef} className={active === 3 ? 'current' : ''}>
-            <DropdownToggle
-              onClick={() => setDropdownOpen((d) => !d)}
-              isActive={active === 3}
-            >
-              Products
-            </DropdownToggle>
-            {dropdownOpen && (
-              <DropdownMenu>
-                <a href="/products/positioning" onClick={() => { setActive(3); setDropdownOpen(false); }}>
-                  Positioning
-                </a>
-                <a href="/products/protection" onClick={() => { setActive(3); setDropdownOpen(false); }}>
-                  Protection
-                </a>
-              </DropdownMenu>
-            )}
-          </DropdownLi>
-          <li className={active === 4 ? 'current' : ''}>
-            <a href="/services" onClick={() => setActive(4)}>Services</a>
-          </li>
-        </LinksContainer>
-      </TopBarContainer>
-
-      <Overlay open={drawerOpen} onClick={closeDrawer} />
-      <Drawer open={drawerOpen}>
-        <DrawerHeader>
-          <a href="/" onClick={closeDrawer}>
-            <LogoImg src={logo} alt="cyslogo" />
-          </a>
-          <CloseButton onClick={closeDrawer} aria-label="Close menu">✕</CloseButton>
-        </DrawerHeader>
-        <DrawerNav>
-          <DrawerLink href="/" isActive={active === 0} onClick={() => setActive(0)}>Home</DrawerLink>
-          <DrawerLink href="/company" isActive={active === 1} onClick={() => setActive(1)}>Company</DrawerLink>
-          <DrawerLink href="/contact" isActive={active === 2} onClick={() => setActive(2)}>Contact Us</DrawerLink>
-          <DrawerAccordion>
-            <DrawerAccordionToggle
-              onClick={() => setDrawerProductsOpen((d) => !d)}
-              isActive={active === 3}
-            >
-              Products
-              <Chevron open={drawerProductsOpen}>›</Chevron>
-            </DrawerAccordionToggle>
-            {drawerProductsOpen && (
-              <DrawerSubLinks>
-                <DrawerSubLink href="/products/positioning" onClick={() => setActive(3)}>
-                  Positioning
-                </DrawerSubLink>
-                <DrawerSubLink href="/products/protection" onClick={() => setActive(3)}>
-                  Protection
-                </DrawerSubLink>
-              </DrawerSubLinks>
-            )}
-          </DrawerAccordion>
-          <DrawerLink href="/services" isActive={active === 4} onClick={() => setActive(4)}>Services</DrawerLink>
-        </DrawerNav>
-      </Drawer>
-    </>
+    <Header>
+      <HeaderInner>
+        <Logo />
+        <DesktopNavigation items={NAV_ITEMS} activePath={activePath} />
+        <MobileToggle
+          type="button"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          onClick={toggleMenu}
+        >
+          {menuOpen ? <CloseGlyph>✕</CloseGlyph> : <MenuGlyph />}
+        </MobileToggle>
+      </HeaderInner>
+      <MobileNavigation
+        items={NAV_ITEMS}
+        activePath={activePath}
+        menuOpen={menuOpen}
+        onNavigate={closeMenu}
+      />
+    </Header>
   );
 };
 
 export default CustomNavBar;
 
-const TopBarContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-shadow: 0px 0px 3px #181819;
+const Logo = () => (
+  <LogoLink href="/" aria-label="Home">
+    <LogoImg src={logo} alt="C&S Logo" />
+  </LogoLink>
+);
+
+type DesktopNavigationProps = {
+  items: NavItem[];
+  activePath: string;
+};
+
+const DesktopNavigation = ({ items, activePath }: DesktopNavigationProps) => (
+  <DesktopNav>
+    <NavList aria-label="Main navigation">
+      {items.map((item) => {
+        const active = item.match(activePath);
+        return (
+          <NavLink key={item.code} href={item.href} $active={active}>
+            <NavCode>{item.code}</NavCode>
+            <span>{item.label}</span>
+          </NavLink>
+        );
+      })}
+    </NavList>
+    <QuoteButton href={CTA.href}>
+      {CTA.label}
+      <QuoteArrow aria-hidden>↗</QuoteArrow>
+    </QuoteButton>
+  </DesktopNav>
+);
+
+type MobileNavigationProps = {
+  items: NavItem[];
+  activePath: string;
+  menuOpen: boolean;
+  onNavigate: () => void;
+};
+
+const MobileNavigation = ({ items, activePath, menuOpen, onNavigate }: MobileNavigationProps) => (
+  <MobileMenu $open={menuOpen}>
+    <MobileNavList aria-label="Mobile navigation">
+      {items.map((item) => {
+        const active = item.match(activePath);
+        return (
+          <MobileNavLink key={item.code} href={item.href} $active={active} onClick={onNavigate}>
+            <MobileLinkContent>
+              <NavCode>{item.code}</NavCode>
+              <span>{item.label}</span>
+            </MobileLinkContent>
+            <Chevron aria-hidden $open={false}>↗</Chevron>
+          </MobileNavLink>
+        );
+      })}
+    </MobileNavList>
+    <MobileQuoteButton href={CTA.href} onClick={onNavigate}>
+      {CTA.label}
+      <QuoteArrow aria-hidden>↗</QuoteArrow>
+    </MobileQuoteButton>
+  </MobileMenu>
+);
+
+const Header = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  border-bottom: 1px solid var(--border);
+  background: var(--color-overlay-light-90);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 `;
 
-const ExtrasContainer = styled.div`
+const HeaderInner = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-6);
+  height: var(--header-height);
+  padding: 0 var(--space-8);
+  margin: 0 auto;
+  max-width: var(--container-max-wide);
+
+  @media (max-width: 899px) {
+    padding: 0 var(--space-6);
+  }
+
   @media (max-width: 599px) {
-    width: 100%;
-    padding-right: 1rem;
+    padding: 0 var(--space-5);
+    height: var(--header-height-mobile);
   }
 `;
 
-const LinksContainer = styled.ul`
+const LogoLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+`;
+
+const LogoImg = styled.img`
+  height: 44px;
+  width: auto;
+
   @media (max-width: 599px) {
+    height: 40px;
+  }
+`;
+
+const DesktopNav = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+
+  @media (max-width: 899px) {
     display: none;
   }
 `;
 
-const LogoImg = styled.img`
-  height: 4rem;
-  width: 6.5rem;
-  margin: 0.5em 1em 0.5em 1em;
-  margin-top: 0.6rem;
-`;
-
-const HamburgerButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.25rem;
-  svg {
-    fill: #009c22;
-    height: 2rem;
-    width: 2rem;
-  }
-  @media (max-width: 599px) {
-    display: flex;
-    align-items: center;
-  }
-`;
-
-const Overlay = styled.div<{ open: boolean }>`
-  display: ${({ open }) => (open ? 'block' : 'none')};
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 200;
-`;
-
-const Drawer = styled.nav<{ open: boolean }>`
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 75vw;
-  max-width: 300px;
-  background: #fff;
-  z-index: 201;
-  transform: translateX(${({ open }) => (open ? '0' : '100%')});
-  transition: transform 0.28s ease;
-  display: flex;
-  flex-direction: column;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.18);
-`;
-
-const DrawerHeader = styled.div`
+const NavList = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-right: 0.75rem;
-  border-bottom: 1px solid #e0e0e0;
+  gap: 0.4rem;
 `;
 
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  color: #555;
-  padding: 0.5rem;
-  line-height: 1;
-  &:hover { color: #1e7e34; }
-`;
-
-const DrawerNav = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  flex: 1;
-`;
-
-const DrawerLink = styled.a<{ isActive: boolean }>`
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.95rem;
+const NavCode = styled.span`
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-extreme);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: ${({ isActive }) => (isActive ? 700 : 500)};
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
-  text-decoration: none;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #f0f0f0;
-  &:hover { color: #1e7e34; background: #f9f9f9; }
+  color: var(--primary);
+  opacity: 0.75;
 `;
 
-const DrawerAccordion = styled.div`
-  border-bottom: 1px solid #f0f0f0;
-`;
-
-const DrawerAccordionToggle = styled.button<{ isActive: boolean }>`
-  width: 100%;
-  background: none;
-  border: none;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: ${({ isActive }) => (isActive ? 700 : 500)};
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
-  text-align: left;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
+const navBaseStyles = `
+  display: inline-flex;
   align-items: center;
-  &:hover { color: #1e7e34; background: #f9f9f9; }
-`;
-
-const Chevron = styled.span<{ open: boolean }>`
-  font-size: 1.1rem;
-  color: #888;
-  transform: rotate(${({ open }) => (open ? '90deg' : '0deg')});
-  transition: transform 0.2s ease;
-  display: inline-block;
-`;
-
-const DrawerSubLinks = styled.div`
-  background: #f7f7f7;
-  display: flex;
-  flex-direction: column;
-`;
-
-const DrawerSubLink = styled.a`
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 0.875rem;
+  gap: var(--space-3);
+  padding: 0.6rem var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-widest);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  color: #555;
-  text-decoration: none;
-  padding: 0.8rem 2.25rem;
-  border-top: 1px solid #ebebeb;
-  &:hover { color: #1e7e34; }
-`;
-
-const DropdownLi = styled.li`
+  line-height: var(--line-tight);
   position: relative;
-  display: inline-block;
+  text-decoration: none;
+  transition: color var(--transition-base);
 `;
 
-const DropdownToggle = styled.button<{ isActive: boolean }>`
-  background: none;
-  border: none;
-  padding: 0.5em 0.8em;
-  margin: 0;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: ${({ isActive }) => (isActive ? 'bold' : '500')};
+const NavLink = styled.a<{ $active: boolean }>`
+  ${navBaseStyles}
+  color: ${({ $active }) => ($active ? 'var(--color-text-on-dark-muted)' : 'var(--muted-foreground)')};
+
+  &:hover {
+    color: var(--foreground);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: -6px;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
+    transform-origin: center;
+    transition: transform var(--transition-base);
+  }
+`;
+
+const Chevron = styled.span<{ $open: boolean }>`
+  font-size: var(--font-size-xs);
+  transform: rotate(${({ $open }) => ($open ? '180deg' : '0deg')});
+  transition: transform var(--transition-base);
+  color: var(--muted-foreground);
+`;
+
+const QuoteButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.6rem var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-widest);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: ${({ isActive }) => (isActive ? '#1e7e34' : '#181819')};
-  cursor: pointer;
-  &:hover { color: #1e7e34; font-weight: bold; }
+  text-decoration: none;
+  color: var(--foreground);
+  transition: border-color var(--transition-base), color var(--transition-base);
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--accent);
+  }
 `;
 
-const DropdownMenu = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+const QuoteArrow = styled.span`
+  font-size: 0.8rem;
+  transition: transform var(--transition-base);
+
+  ${QuoteButton}:hover & {
+    transform: translate(2px, -2px);
+  }
+`;
+
+const MobileToggle = styled.button`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--foreground);
+  }
+
+  @media (max-width: 899px) {
+    display: inline-flex;
+  }
+`;
+
+const MenuGlyph = styled(MenuIcon)`
+  width: 20px;
+  height: 20px;
+  stroke: var(--foreground);
+`;
+
+const CloseGlyph = styled.span`
+  font-size: 1.1rem;
+  color: var(--foreground);
+  line-height: var(--line-tight);
+`;
+
+const MobileMenu = styled.div<{ $open: boolean }>`
+  display: none;
+
+  @media (max-width: 899px) {
+    display: ${({ $open }) => ($open ? 'block' : 'none')};
+    border-top: 1px solid var(--border);
+    background: var(--color-overlay-light-96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+`;
+
+const MobileNavList = styled.nav`
   display: flex;
   flex-direction: column;
+`;
+
+const MobileLinkContent = styled.span`
+  display: inline-flex;
   align-items: center;
-  z-index: 100;
-  min-width: 8rem;
-  padding: 0.5rem 0;
-  a {
-    padding: 0.5rem 1rem;
-    width: 90%;
-    text-align: center;
-    color: #181819;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-decoration: none;
-    &:hover { color: #1e7e34; }
+  gap: var(--space-3);
+`;
+
+const MobileNavLink = styled.a<{ $active: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--letter-widest);
+  text-transform: uppercase;
+  color: ${({ $active }) => ($active ? 'var(--accent)' : 'var(--foreground)')};
+  background: ${({ $active }) => ($active ? 'var(--secondary)' : 'transparent')};
+`;
+
+
+const MobileQuoteButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: var(--space-5);
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.7rem var(--space-5);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--letter-widest);
+  text-transform: uppercase;
+  color: var(--foreground);
+  transition: border-color var(--transition-base), color var(--transition-base);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--primary);
   }
 `;
