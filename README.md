@@ -63,4 +63,4 @@ npx tsc --noEmit   # Type-check (no emit)
 | **CONTEXT.md** | Shared vocabulary for the project — module taxonomy, design-system terms, and conventions. Read this before reviewing or refactoring. |
 | **docs/adr/** | Architecture Decision Records. Testing matt pocock skills|
 | **AGENTS.md** | AI agent skill configuration — issue tracker, triage labels, domain docs. |
-| **Claude Code** | AI pair-programming via the `claude` CLI. `.claude/settings.local.json` holds project-scoped tool permissions. |
+

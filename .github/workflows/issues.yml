@@ -43,7 +43,7 @@ jobs:
         uses: ai-action/setup-ollama@v2
 
       - name: Pull model
-        run: ollama pull tinyllama
+        run: ollama pull llama3.2
 
       - name: Generate enhancement
         id: ollama
@@ -51,10 +51,13 @@ jobs:
           RESPONSE=$(curl -s http://localhost:11434/api/generate \
             -H 'Content-Type: application/json' \
             -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
-                  '{model: "tinyllama", prompt: $prompt, stream: false}')" \
+                  '{model: "llama3.2", prompt: $prompt, stream: false, format: "json"}')" \
             | jq -r '.response // ""')
 
           echo "$RESPONSE" > /tmp/ollama_response.txt
+          echo "--- raw model output ---"
+          cat /tmp/ollama_response.txt
+          echo "------------------------"
 
           if [ -z "$RESPONSE" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
