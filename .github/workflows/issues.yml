@@ -1,106 +1,107 @@
-name: Issue Quality Enhancer
+# Disabled - not happy with results
+# name: Issue Quality Enhancer
 
-on:
-  issues:
-    types: [opened]
-  workflow_dispatch:
-    inputs:
-      issue_number:
-        description: Issue number to enhance
-        required: true
-        type: number
+# on:
+#   issues:
+#     types: [opened]
+#   workflow_dispatch:
+#     inputs:
+#       issue_number:
+#         description: Issue number to enhance
+#         required: true
+#         type: number
 
-jobs:
-  enhance-issue:
-    runs-on: ubuntu-latest
+# jobs:
+#   enhance-issue:
+#     runs-on: ubuntu-latest
 
-    permissions:
-      issues: write
-      contents: read
+#     permissions:
+#       issues: write
+#       contents: read
 
-    steps:
-      # ---------------------------------------------------------------
-      # 1️⃣ Checkout so we can read docs/agents/triage-labels.md
-      # ---------------------------------------------------------------
-      - name: Checkout repository
-        uses: actions/checkout@v4
+#     steps:
+#       # ---------------------------------------------------------------
+#       # 1️⃣ Checkout so we can read docs/agents/triage-labels.md
+#       # ---------------------------------------------------------------
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      # ---------------------------------------------------------------
-      # 2️⃣ Build the Ollama prompt from the new issue + triage labels
-      # ---------------------------------------------------------------
-      - name: Build prompt
-        env:
-          ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
-          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
-        run: bash .github/scripts/build-prompt.sh
+#       # ---------------------------------------------------------------
+#       # 2️⃣ Build the Ollama prompt from the new issue + triage labels
+#       # ---------------------------------------------------------------
+#       - name: Build prompt
+#         env:
+#           ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
+#           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+#           ISSUE_TITLE: ${{ github.event.issue.title }}
+#           ISSUE_BODY: ${{ github.event.issue.body }}
+#         run: bash .github/scripts/build-prompt.sh
 
-      # ---------------------------------------------------------------
-      # 3️⃣ Run Ollama
-      # ---------------------------------------------------------------
-      - name: Setup Ollama
-        uses: ai-action/setup-ollama@v2
+#       # ---------------------------------------------------------------
+#       # 3️⃣ Run Ollama
+#       # ---------------------------------------------------------------
+#       - name: Setup Ollama
+#         uses: ai-action/setup-ollama@v2
 
-      - name: Pull model
-        run: ollama pull llama3.2
+#       - name: Pull model
+#         run: ollama pull llama3.2
 
-      - name: Generate enhancement
-        id: ollama
-        run: |
-          RESPONSE=$(curl -s http://localhost:11434/api/generate \
-            -H 'Content-Type: application/json' \
-            -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
-                  '{model: "llama3.2", prompt: $prompt, stream: false, format: "json"}')" \
-            | jq -r '.response // ""')
+#       - name: Generate enhancement
+#         id: ollama
+#         run: |
+#           RESPONSE=$(curl -s http://localhost:11434/api/generate \
+#             -H 'Content-Type: application/json' \
+#             -d "$(jq -n --rawfile prompt /tmp/ollama_prompt.txt \
+#                   '{model: "llama3.2", prompt: $prompt, stream: false, format: "json"}')" \
+#             | jq -r '.response // ""')
 
-          echo "$RESPONSE" > /tmp/ollama_response.txt
-          echo "--- raw model output ---"
-          cat /tmp/ollama_response.txt
-          echo "------------------------"
+#           echo "$RESPONSE" > /tmp/ollama_response.txt
+#           echo "--- raw model output ---"
+#           cat /tmp/ollama_response.txt
+#           echo "------------------------"
 
-          if [ -z "$RESPONSE" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
+#           if [ -z "$RESPONSE" ]; then
+#             echo "skip=true" >> "$GITHUB_OUTPUT"
+#           else
+#             echo "skip=false" >> "$GITHUB_OUTPUT"
+#           fi
 
-      # ---------------------------------------------------------------
-      # 4️⃣ Parse the JSON response and apply changes via gh CLI
-      # ---------------------------------------------------------------
-      - name: Apply changes
-        if: steps.ollama.outputs.skip == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
-          REPO: ${{ github.repository }}
-        run: |
-          JSON=$(python3 .github/scripts/parse-response.py)
+#       # ---------------------------------------------------------------
+#       # 4️⃣ Parse the JSON response and apply changes via gh CLI
+#       # ---------------------------------------------------------------
+#       - name: Apply changes
+#         if: steps.ollama.outputs.skip == 'false'
+#         env:
+#           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
+#           REPO: ${{ github.repository }}
+#         run: |
+#           JSON=$(python3 .github/scripts/parse-response.py)
 
-          TITLE=$(echo "$JSON" | jq -r '.title // empty')
-          BODY=$(echo "$JSON"  | jq -r '.body  // empty')
-          COMMENT=$(echo "$JSON" | jq -r '.comment // "Issue reviewed and structured by AI."')
+#           TITLE=$(echo "$JSON" | jq -r '.title // empty')
+#           BODY=$(echo "$JSON"  | jq -r '.body  // empty')
+#           COMMENT=$(echo "$JSON" | jq -r '.comment // "Issue reviewed and structured by AI."')
 
-          # Update title + body only when the model returned something meaningful
-          if [ -n "$TITLE" ] && [ -n "$BODY" ]; then
-            gh issue edit "$ISSUE_NUMBER" \
-              --repo "$REPO" \
-              --title "$TITLE" \
-              --body  "$BODY"
-            echo "Updated issue #$ISSUE_NUMBER title and body."
-          else
-            echo "Model did not return a valid title/body — skipping edit."
-          fi
+#           # Update title + body only when the model returned something meaningful
+#           if [ -n "$TITLE" ] && [ -n "$BODY" ]; then
+#             gh issue edit "$ISSUE_NUMBER" \
+#               --repo "$REPO" \
+#               --title "$TITLE" \
+#               --body  "$BODY"
+#             echo "Updated issue #$ISSUE_NUMBER title and body."
+#           else
+#             echo "Model did not return a valid title/body — skipping edit."
+#           fi
 
-          # Apply labels (silently skip any label that does not exist in the repo)
-          echo "$JSON" | jq -r '.labels[]? // empty' | while IFS= read -r label; do
-            gh issue edit "$ISSUE_NUMBER" \
-              --repo "$REPO" \
-              --add-label "$label" 2>/dev/null \
-              || echo "Label '$label' not found in repo, skipping."
-          done
+#           # Apply labels (silently skip any label that does not exist in the repo)
+#           echo "$JSON" | jq -r '.labels[]? // empty' | while IFS= read -r label; do
+#             gh issue edit "$ISSUE_NUMBER" \
+#               --repo "$REPO" \
+#               --add-label "$label" 2>/dev/null \
+#               || echo "Label '$label' not found in repo, skipping."
+#           done
 
-          # Post a comment summarising what was done
-          gh issue comment "$ISSUE_NUMBER" \
-            --repo "$REPO" \
-            --body "$(printf '🤖 **Issue enhanced by AI**\n\n%s\n\n---\n*Processed by [Issue Quality Enhancer](.github/workflows/auto-doc.yml) · model: tinyllama*' "$COMMENT")"
+#           # Post a comment summarising what was done
+#           gh issue comment "$ISSUE_NUMBER" \
+#             --repo "$REPO" \
+#             --body "$(printf '🤖 **Issue enhanced by AI**\n\n%s\n\n---\n*Processed by [Issue Quality Enhancer](.github/workflows/auto-doc.yml) · model: tinyllama*' "$COMMENT")"
