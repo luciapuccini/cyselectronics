@@ -3,6 +3,12 @@ name: Issue Quality Enhancer
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to enhance
+        required: true
+        type: number
 
 jobs:
   enhance-issue:
