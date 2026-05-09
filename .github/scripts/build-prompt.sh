@@ -11,9 +11,9 @@ Enhance new issues to make them clear, well-structured, and easy to understand.
 HEADER
 
   echo "## Issue to enhance"
-  printf '- Number: #%s\n' "$ISSUE_NUMBER"
-  printf '- Author: @%s\n' "$ISSUE_AUTHOR"
-  printf '- Title:  %s\n' "$ISSUE_TITLE"
+  echo "- Number: #${ISSUE_NUMBER}"
+  echo "- Author: @${ISSUE_AUTHOR}"
+  echo "- Title:  ${ISSUE_TITLE}"
   echo "- Body:"
   echo ""
   cat /tmp/issue_body.txt
