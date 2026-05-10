@@ -57,11 +57,18 @@ const SolutionsSectionBlock = ({ id, section }: { id: SolutionsSectionKey; secti
     <SolutionsSection id={id}>
       <SolutionsSectionInner>
         <SolutionsSectionHeader>
-          <SectionLabel>
-            <AccentBar $width="36px" $color="currentColor" />
-            <span>{section.label} · {countLabel}</span>
-          </SectionLabel>
-          <SectionDescription>{section.description}</SectionDescription>
+          <SolutionsHeaderStack>
+
+            <SectionLabel>
+              <AccentBar $width="36px" $color="currentColor" />
+              <span>{section.label} · {countLabel}</span>
+            </SectionLabel>
+
+            <SectionTitle>
+              {section.items[0].name}
+            </SectionTitle>
+
+          </SolutionsHeaderStack>
         </SolutionsSectionHeader>
 
         {isServices ? (
@@ -105,7 +112,7 @@ const ProductCard = ({ item }: { item: ProductItem }) => (
       </ProductVisual>
       <ProductBody>
         <ProductTagline>{item.tagline}</ProductTagline>
-        <ProductName>{item.name}</ProductName>
+        {/* <ProductName>{item.name}</ProductName> */}
         <ProductDetail>{item.detail}</ProductDetail>
 
         <ProductModes modes={item.modes} />
@@ -234,6 +241,7 @@ const Page = styled.div`
 `;
 
 const HeroSection = styled.section`
+
   border-bottom: 1px solid var(--border);
   padding: clamp(4rem, 7vw, 6rem) var(--space-8) clamp(3rem, 6vw, 4rem);
   & > header {
@@ -257,16 +265,18 @@ const SolutionsSectionInner = styled.div`
   gap: clamp(var(--space-6), 6vw, var(--space-12));
 `;
 
-const SolutionsSectionHeader = styled.div`
+const SolutionsHeaderStack = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
+  max-width: 640px;
+`
 
-  @media (min-width: 960px) {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
+const SolutionsSectionHeader = styled.div`
+display: flex;
+align-items: center;
+gap: var(--space-3);
+  
 `;
 
 const SectionLabel = styled.span<{ $tone?: 'default' | 'light' }>`
@@ -278,6 +288,15 @@ const SectionLabel = styled.span<{ $tone?: 'default' | 'light' }>`
   letter-spacing: var(--letter-extreme);
   text-transform: uppercase;
   color: ${({ $tone }) => ($tone === 'light' ? 'var(--accent-foreground)' : 'var(--accent)')};
+`;
+
+const SectionTitle = styled.h2`
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.125rem);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--foreground);
 `;
 
 const SectionDescription = styled.p`
@@ -353,18 +372,10 @@ const ProductBody = styled.div`
 
 const ProductTagline = styled.span`
   font-family: ${tokens.font.mono};
-  font-size: ${tokens.fontSize.xs};
+  font-size: ${tokens.fontSize.base};
   text-transform: uppercase;
   letter-spacing: ${tokens.letter.widest};
   color: ${tokens.colors.primary};
-`;
-
-const ProductName = styled.h3`
-  font-size: clamp(1.5rem, 3.2vw, 1.85rem);
-  font-weight: ${tokens.fontWeight.bold};
-  line-height: ${tokens.lineHeight.tight};
-  color: ${tokens.colors.foreground};
-  margin: 0;
 `;
 
 const ProductDetail = styled.p`

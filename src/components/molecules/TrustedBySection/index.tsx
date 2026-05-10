@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import airLiquideLogo from '../../../assets/partners/Air_Liquide.png';
-import akSteelLogo from '../../../assets/partners/AK_Steel.png';
 import arcelorMittalLogo from '../../../assets/partners/ArcelorMittal.png';
 import csnLogo from '../../../assets/partners/Companhia_Siderurgica_Nacional.png';
+import cliffsAKSteel from '../../../assets/partners/cliffs_ak_steel.png';
 import generalElectricLogo from '../../../assets/partners/General_electric.webp';
 import msiGrupoLogo from '../../../assets/partners/msi_grupo.png';
 import nideraLogo from '../../../assets/partners/nidera.png';
@@ -33,7 +33,7 @@ const PARTNERS: Partner[] = [
   { name: 'ArcelorMittal', logo: arcelorMittalLogo, industry: 'Steel' },
   { name: 'Sidersa', logo: sidersaLogo, industry: 'Steel', variant: 'darker' },
   { name: 'General Electric', logo: generalElectricLogo, industry: 'Energy' },
-  { name: 'AK Steel', logo: akSteelLogo, industry: 'Steel' },
+  { name: 'Cliffs', logo: cliffsAKSteel, industry: 'Steel' },
   { name: 'Air Liquide', logo: airLiquideLogo, industry: ' Gas' },
 ];
 
@@ -194,8 +194,8 @@ const LogoMeta = styled.span`
 `;
 
 const LogoImg = styled.img<{ $variant?: 'default' | 'darker' }>`
-  max-width: 64%;
-  max-height: 64%;
+  max-width: 70%;
+  max-height: 70%;
   object-fit: contain;
   filter: ${({ $variant }) =>
     $variant === 'darker'

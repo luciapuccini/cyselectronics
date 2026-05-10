@@ -116,6 +116,7 @@ const CapabilitiesHeading = styled.div`
   display: flex;
   align-items: center;
   gap: var(--space-3);
+
 `;
 
 const CapabilitiesHeadingLabel = styled.span`

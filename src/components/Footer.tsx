@@ -34,7 +34,7 @@ const Footer = () => {
       </Grid>
       <BottomBar>
         <Copyright>{footer.copyright(new Date().getFullYear())}</Copyright>
-        <Version>{footer.version}</Version>
+
       </BottomBar>
     </FooterBar>
   );
@@ -123,10 +123,4 @@ const BottomBar = styled.div`
 const Copyright = styled.span`
   font-size: var(--font-size-xs);
   opacity: 0.4;
-`;
-
-const Version = styled.span`
-  font-size: var(--font-size-xs);
-  opacity: 0.4;
-  font-family: var(--font-mono);
 `;
