@@ -9,7 +9,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "^18.3.1",
+    "react": "^19.2.7",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.3",
     "styled-components": "^6.3.11"
@@ -18,7 +18,7 @@
     "@netlify/functions": "^5.2.0",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^22.0.0",
-    "@types/react": "^18.3.28",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "^18.3.7",
     "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^5.0.0",
