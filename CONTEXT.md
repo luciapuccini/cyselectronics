@@ -1,7 +1,7 @@
 # Project context
 
 C&S Controles y Sistemas — corporate site for an industrial-electronics firm
-(Argentina, est. 1991). React 18 + TypeScript 5 + Vite + styled-components,
+(Argentina, est. 1991). React 18 + TypeScript 5.9 + Vite + styled-components,
 hosted on Netlify. The site is content-light and visually load-bearing: the
 layout *is* the brand.
 
@@ -105,59 +105,31 @@ Defined in [src/App.tsx](src/App.tsx):
       for `/solutions`, `/contact`, and the 404
   - `Footer`
 
-## Internationalisation — English-only with browser translation
+## Internationalisation — bilingual EN/ES via LanguageContext
 
-The site renders **English copy only** on every domain. There is no
-locale state, no translation hook, no per-language copy map. The
-[index.html](index.html) document sets `<html lang="en">` statically;
-that is the only language declaration, and it stays put on the
-`.com.ar` mirror so that Chrome / Safari / Firefox auto-offer
-"Translate this page" to Spanish-speaking visitors.
+The site ships full English and Spanish copy through a `LanguageContext`
+provider. Locale is persisted in `localStorage` (`cys-locale`) and
+defaults to `"en"`.
 
-What is **not** i18n and is allowed to vary by domain:
+### Architecture
 
-- **Brand identity** — `siteName`, `siteUrl`, `ogImage` in
-  [src/config/domain.ts](src/config/domain.ts) split between
-  `cyselectronics.com` (CYS Electronics) and `controlesysistemas.com.ar`
-  (C&S Controles y Sistemas). The runtime `<head>` patch in
-  `index.html` swaps brand metadata when the page is served from the
-  `.com.ar` host.
+- **Content modules** — [src/content/en.ts](src/content/en.ts) and
+  [src/content/es.ts](src/content/es.ts) each export a `SiteContent`
+  object. The type is defined in
+  [src/content/types.ts](src/content/types.ts).
+- **LanguageContext** —
+  [src/context/LanguageContext.tsx](src/context/LanguageContext.tsx)
+  provides `{ content, locale, setLocale }`. Components call
+  `useLanguage()` to read the current content tree.
+- **LanguageProvider** wraps the app in
+  [src/index.tsx](src/index.tsx).
 
-What is **forbidden**:
+### Conventions
 
-- `useTranslation`, `useLanguageState`, or any `LanguageContext`-style
-  pattern. The hook was deleted; do not reintroduce it.
-- `copy = { en: {...}, es: {...} }` blocks, `copy[locale]` indexing,
-  or `Bilingual = { en: string; es: string }` types in
-  `usePageTitle` calls.
-- Spanish UI strings inline in components. Spanish place names in
-  addresses (e.g. "San Nicolás de Los Arroyos") are addresses, not
-  UI copy, and stay.
-- Locale-prefixed routes (`/es/contact`, `/contacto`). Routes are
-  English: `/`, `/solutions`, `/contact`.
-- Writing to `document.documentElement.lang` from app code. The
-  static `lang="en"` in `index.html` is authoritative.
+- All user-facing strings live in the content modules, not inline in
+  components. Components destructure from `useLanguage().content`.
+- Routes are English-only: `/`, `/solutions`, `/contact`. No
+  locale-prefixed routes (`/es/contact`, `/contacto`).
+- Brand identity (`siteName`, `siteUrl`, `ogImage`) varies by domain
+  in [src/config/domain.ts](src/config/domain.ts), not by locale.
 
-See [docs/adr/0002-english-only-browser-translation.md](docs/adr/0002-english-only-browser-translation.md)
-for the rationale.
-
-## Build & verify
-
-- `npm run dev` — Vite dev server.
-- `npm run build` — production build (target ~265 kB JS, ~85 kB gzip).
-- `npx tsc --noEmit` — type check (note: a couple of pre-existing errors
-  exist on `update-2`'s baseline; new code should not add to the count).
-- Grep gates the layout rules enforce:
-  - `grep -rn "border-radius" src/` — only `Surface` (`0`), `IconBadge`
-    (`--radius-md`), and the Carousel pagination dots may match.
-  - `grep -rn "radial-gradient" src/` — only `App.tsx`.
-  - `grep -rn "::before" src/routes/` — must be empty (no per-section
-    gradient overlays).
-  - `grep -rn "gap: 1px" src/` — must be empty (the gap-as-lines trick
-    is forbidden; use a real gap with Surface cards).
-- Grep gates the i18n rule enforces:
-  - `grep -rn "useTranslation\|useLanguageState\|LanguageContext" src/`
-    — must be empty.
-  - `grep -rn "/contacto" src/` — must be empty (English routes only).
-  - `grep -rEn "\\b(en|es):\\s*\\{" src/routes src/components` — must be
-    empty (no bilingual copy blocks).
