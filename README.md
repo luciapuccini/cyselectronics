@@ -66,6 +66,5 @@ npm run preview    # Preview the build locally
 |---|---|
 | **fallow** | Codebase intelligence — dead code, duplication, complexity, circular deps. Runs in sub-second (Rust-based). `npx fallow` for a full report; `npx fallow dead-code` / `npx fallow dupes` for targeted checks. |
 | **CONTEXT.md** | Shared vocabulary for the project — module taxonomy, design-system terms, and conventions. Read this before reviewing or refactoring. |
-| **docs/adr/** | Architecture Decision Records|
-| **AGENTS.md** | Agent guide — issue tracker, labels, domain docs, skills index. `CLAUDE.md` imports it for Claude Code. |
+| **AGENTS.md** | Agent guide — domain context and skills index. `CLAUDE.md` imports it for Claude Code. |
 

@@ -6,8 +6,7 @@ hosted on Netlify. The site is content-light and visually load-bearing: the
 layout *is* the brand.
 
 This document is the shared vocabulary for code review, architecture work,
-and AI-assisted refactoring. ADRs in [docs/adr/](docs/adr/) record decisions
-that should not be re-litigated.
+and AI-assisted refactoring. Rules marked locked-in should not be re-litigated.
 
 ## Module taxonomy
 
@@ -54,7 +53,7 @@ shadow. Hover state, when present, shifts `border-color` toward `--accent`.
 
 For grids of cards, use a normal CSS grid with a real `gap`. Do not use
 the "paint the 1px gap as a divider line" trick — it was tried and
-removed (see [ADR 0001](docs/adr/0001-sharp-layout-system.md)).
+removed.
 
 ### Section hero
 
@@ -63,7 +62,7 @@ is the canonical eyebrow + accent bar + title + lede composition. Used at
 the top of Contact and Solutions pages. Pass `titleAs="h2"` for in-page
 section heroes.
 
-## Visual rules (locked-in, see ADR 0001)
+## Visual rules (locked-in)
 
 - **R1 — Sharp by default.** `border-radius: 0` on every layouting component
   (Section, Card, Panel, hero blocks, image panels, CTA inners) **and every
@@ -86,10 +85,9 @@ section heroes.
   is the source of truth. The mirror in [src/styles/tokens.ts](src/styles/tokens.ts)
   exposes them as `var(--…)` strings for styled-components template literals.
 - **Radius**: only `--radius-md` exists. `--radius-lg`, `--radius-xl`,
-  `--radius-sm`, and the legacy `--radius` alias were removed in
-  [docs/adr/0001-sharp-layout-system.md](docs/adr/0001-sharp-layout-system.md).
+  `--radius-sm`, and the legacy `--radius` alias were removed.
   If a future component needs a non-`--radius-md` corner, it is breaking R1
-  and needs an ADR amendment, not a token addition.
+  and needs an explicit decision to change R1, not a token addition.
 
 ## Page layout topology
 

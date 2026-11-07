@@ -1,23 +1,17 @@
 ## Agent guide
 
-### Issue tracker
+### Domain context
 
-Issues are tracked in GitHub Issues for `luciapuccini/cyselectronics`. See `docs/agents/issue-tracker.md`.
+Read `CONTEXT.md` at the repo root before exploring. It's the project's shared vocabulary and locked-in rules. Name things with its terms; if a concept you need is missing, add it to `CONTEXT.md` rather than inventing a synonym.
 
-### Labels
-
-Issue labels and their meaning. See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-Single-context layout: read `CONTEXT.md` and `docs/adr/` at the repo root before exploring (created as needed). See `docs/agents/domain.md`.
+`docs/` is the maintainer's personal research folder (gitignored). It is not project context; don't read it for rules or conventions.
 
 ### Skills
 
-Project skills live in `.agents/skills/<name>/SKILL.md`. Before starting a task, check the index below; if one matches, read its `SKILL.md` and follow it. How to write and register skills: see `docs/agents/skills.md`.
+Project skills live in `.agents/skills/<name>/SKILL.md`. Before starting a task, check the index below; if one matches, read its `SKILL.md` and follow it.
 
 #### Skills index
 
-| Skill | Use when |
-| ----- | -------- |
-| _none yet_ | |
+| Skill      | Use when |
+| ---------- | -------- |
+| _none yet_ |          |

@@ -25,3 +25,6 @@ yarn-error.log*
 # agent tooling (personal/local state)
 .claude/settings.local.json
 .claude/.cc-writes/
+
+# personal research / notes (not project context)
+/docs/
