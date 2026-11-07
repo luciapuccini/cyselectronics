@@ -12,11 +12,3 @@ Issues and PRDs for this repo live as GitHub issues on `luciapuccini/cyselectron
 - **Close**: `gh issue close <number> --comment "..."`
 
 The repository is inferred automatically from `git remote -v`, so run these commands from inside this clone.
-
-## When a skill says "publish to the issue tracker"
-
-Create a GitHub issue.
-
-## When a skill says "fetch the relevant ticket"
-
-Run `gh issue view <number> --comments`.
